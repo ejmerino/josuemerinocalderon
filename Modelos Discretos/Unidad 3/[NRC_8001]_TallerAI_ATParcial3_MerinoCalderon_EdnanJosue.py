@@ -6,6 +6,15 @@ Versión: 1.0
 """
 
 def control_trafico():
+    """
+    Función que controla si el usuario puede dirigirse desde la carretera donde se encuentra hacia la carretera deseada
+    Se toma en cuenta el estado del tráfico (Si está libre o cerrado)
+    -----------------------------------
+    Parámetros:
+    No tiene parámetros
+    Retorna:
+    No retorna
+    """
     #Se inicializa el costo en 0
     costo=0    
     #Se le pide al usuario que ingrese la carretera en donde se encuentra
