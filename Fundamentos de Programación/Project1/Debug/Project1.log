@@ -1,0 +1,3 @@
+﻿  Circunferencia.cpp
+D:\Josue\C++\Programas\Project1\Circunferencia.cpp(9,19): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  Project1.vcxproj -> D:\Josue\C++\Programas\Project1\Debug\Circunferencia.exe

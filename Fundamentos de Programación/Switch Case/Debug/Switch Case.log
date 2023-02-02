@@ -1,0 +1,5 @@
+﻿  AumentoDeSueldos.cpp
+D:\Josue\C++\Programas\Switch Case\AumentoDeSueldos.cpp(23,20): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Josue\C++\Programas\Switch Case\AumentoDeSueldos.cpp(29,20): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Josue\C++\Programas\Switch Case\AumentoDeSueldos.cpp(35,20): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  Switch Case.vcxproj -> D:\Josue\C++\Programas\Switch Case\Debug\Switch Case.exe

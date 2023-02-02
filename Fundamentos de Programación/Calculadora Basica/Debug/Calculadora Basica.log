@@ -1,0 +1,3 @@
+﻿  CalculadoraBasica.cpp
+D:\Josue\C++\Programas\Calculadora Basica\CalculadoraBasica.cpp(11,48): warning C4101: 'modulo': variable local sin referencia
+  Calculadora Basica.vcxproj -> D:\Josue\C++\Programas\Calculadora Basica\Debug\Calculadora Basica.exe

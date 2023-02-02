@@ -1,0 +1,4 @@
+﻿  Promedios.cpp
+D:\Josue\C++\Programas\Promedios\Promedios.cpp(8,18): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\Josue\C++\Programas\Promedios\Promedios.cpp(10,18): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  Promedios.vcxproj -> D:\Josue\C++\Programas\Promedios\Debug\Promedios.exe
