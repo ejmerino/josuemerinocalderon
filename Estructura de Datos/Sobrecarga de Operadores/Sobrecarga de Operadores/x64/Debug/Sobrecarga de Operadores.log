@@ -1,0 +1,7 @@
+﻿  Complejo.cpp
+  Sobrecarga de Operadores.cpp
+D:\Josue\ESPE\Estructura de Datos\Códigos\Sobrecarga de Operadores\Sobrecarga de Operadores\Sobrecarga de Operadores.cpp(11,12): warning C4101: 'y': variable local sin referencia
+D:\Josue\ESPE\Estructura de Datos\Códigos\Sobrecarga de Operadores\Sobrecarga de Operadores\Sobrecarga de Operadores.cpp(11,9): warning C4101: 'x': variable local sin referencia
+  Ejecutando análisis del código para C/C++...
+  Generando código...
+  Sobrecarga de Operadores.vcxproj -> D:\Josue\ESPE\Estructura de Datos\Códigos\Sobrecarga de Operadores\x64\Debug\Sobrecarga de Operadores.exe

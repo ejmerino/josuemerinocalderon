@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e6e1c45a-5fd0-4a5d-a65f-7dac1dccd372": {
+      "ProjectGuid": "e6e1c45a-5fd0-4a5d-a65f-7dac1dccd372",
+      "DisplayName": "Sobrecarga de Operadores",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

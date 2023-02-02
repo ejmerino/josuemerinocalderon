@@ -1,0 +1,56 @@
+﻿  main.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\functional(753,27): warning C4244: 'return': conversión de 'double' a '_Rx'; posible pérdida de datos
+          with
+          [
+              _Rx=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\functional(919): message : Vea la referencia a la creación de una instancia de la función plantilla "_Rx std::_Invoker_ret<_Rx,false>::_Call<_Callable&,>(_Fx) noexcept(false)" que se está compilando
+          with
+          [
+              _Rx=int,
+              _Callable=main::<lambda_ced3ece56f25c68957621a65d42c927e>,
+              _Fx=main::<lambda_ced3ece56f25c68957621a65d42c927e> &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\functional(920): message : Vea la referencia a la creación de una instancia de la función plantilla "_Rx std::_Invoker_ret<_Rx,false>::_Call<_Callable&,>(_Fx) noexcept(false)" que se está compilando
+          with
+          [
+              _Rx=int,
+              _Callable=main::<lambda_ced3ece56f25c68957621a65d42c927e>,
+              _Fx=main::<lambda_ced3ece56f25c68957621a65d42c927e> &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\functional(919): message : al compilar la función del miembro clase plantilla "_Rx std::_Func_impl_no_alloc<main::<lambda_ced3ece56f25c68957621a65d42c927e>,_Rx>::_Do_call(void)"
+          with
+          [
+              _Rx=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\functional(813): message : Vea la referencia a la creación de una instancia de clase plantilla "std::_Func_impl_no_alloc<main::<lambda_ced3ece56f25c68957621a65d42c927e>,_Ret>" que se está compilando
+          with
+          [
+              _Ret=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\functional(1010): message : vea la referencia a la plantilla de variables 'const bool _Is_large<std::_Func_impl_no_alloc<<lambda_ced3ece56f25c68957621a65d42c927e>,int> >' que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\functional(1143): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::_Func_class<_Ret>::_Reset<main::<lambda_ced3ece56f25c68957621a65d42c927e>>(_Fx &&)" que se está compilando
+          with
+          [
+              _Ret=int,
+              _Fx=main::<lambda_ced3ece56f25c68957621a65d42c927e>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\functional(1143): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::_Func_class<_Ret>::_Reset<main::<lambda_ced3ece56f25c68957621a65d42c927e>>(_Fx &&)" que se está compilando
+          with
+          [
+              _Ret=int,
+              _Fx=main::<lambda_ced3ece56f25c68957621a65d42c927e>
+          ]
+C:\Users\JOSUE\Desktop\Lambda\Lambda\main.cpp(13): message : Vea la referencia a la creación de una instancia de la función plantilla "std::function<T (void)>::function<main::<lambda_ced3ece56f25c68957621a65d42c927e>,0>(_Fx)" que se está compilando
+          with
+          [
+              T=int,
+              _Fx=main::<lambda_ced3ece56f25c68957621a65d42c927e>
+          ]
+C:\Users\JOSUE\Desktop\Lambda\Lambda\main.cpp(7): message : Vea la referencia a la creación de una instancia de la función plantilla "std::function<T (void)>::function<main::<lambda_ced3ece56f25c68957621a65d42c927e>,0>(_Fx)" que se está compilando
+          with
+          [
+              T=int,
+              _Fx=main::<lambda_ced3ece56f25c68957621a65d42c927e>
+          ]
+  Lambda.vcxproj -> C:\Users\JOSUE\Desktop\Lambda\Debug\Lambda.exe

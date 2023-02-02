@@ -1,0 +1,6 @@
+﻿  MainMenu.cpp
+  Operations.cpp
+C:\Users\JOSUE\Desktop\07-07-2021\07-07-2021\Operations.cpp(15,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\JOSUE\Desktop\07-07-2021\07-07-2021\Operations.cpp(39,14): error C2064: el término no se evalúa como una función con 0 argumentos
+  Vector.cpp
+  Generando código...
