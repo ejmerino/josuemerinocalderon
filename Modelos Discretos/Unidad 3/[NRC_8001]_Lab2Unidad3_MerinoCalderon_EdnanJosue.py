@@ -11,11 +11,11 @@ def busqueda_general(objetivo, inicio):
 	Función que ayuda a encontrar la lista de costos mínimos en un grafo, a partir de un nodo de inicio.
 
 	Args:
-		goal (_type_): es una lista de nodos deseados
-		start (_type_): es el nodo desde el que se iniciará la búsqueda.
+		objetivo: es una lista de nodos deseados
+		inicio: es el nodo desde el que se iniciará la búsqueda.
 
-	Returns:
-		_type_: lista de costos mínimos desde el nodo de inicio hasta cada nodo en la lista de objetivos.
+	Retorna:
+		lista de costos mínimos desde el nodo de inicio hasta cada nodo en la lista de objetivos.
 	"""
 	# costoo mínimo hasta
 	# el estado objetivo desde el inicio
