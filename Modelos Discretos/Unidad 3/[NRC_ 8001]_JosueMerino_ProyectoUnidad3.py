@@ -4,7 +4,7 @@ Aplicación: Manhattan Fast
 
 Autor: Ednan Josué Merino Calderón
 
-Versión: 1.1
+Versión: 1.2
 """
 #libreria que uso para obtener la tecla presionada sin necesidad de presionar Enter
 import msvcrt
@@ -489,7 +489,7 @@ turista en general.
 
 De este pensamiento es como surge la idea de Manhattan Fast un proyecto que calcula la ruta más
 rápida para visitar la mayor cantidad de lugares, tal y como requiera el usuario (teniendo un punto
-de principio y un punto destinoal), así tambien calculando el costo aproximando en dólares ($) del recorrido,
+de principio y un punto final), así tambien calculando el costo aproximando en dólares ($) del recorrido,
 en este coste está incluído entradas/souvenirs/comida/fotos.
 
 El objetivo del aplicativo es brindarle una ayuda al usuario para que tenga una óptima y rica experiencia
