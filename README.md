@@ -9,7 +9,7 @@ En este Repositorio se encuentran códigos de las materias impartidas en la carr
  - [Modelos Discretos ⚙️](https://github.com/ejmerino/josuemerinocalderon/tree/main/Modelos%20Discretos)
  - [Pruebas de Software 👨‍🔬](https://github.com/ejmerino/josuemerinocalderon/tree/main/Pruebas%20de%20Software)
  - [Computación Digital 🤖](https://github.com/ejmerino/josuemerinocalderon/tree/main/Computaci%C3%B3n%20Digital)
- - [Aplicaciones Basadas en el Conocimiento 🖥️] (https://github.com/ejmerino/josuemerinocalderon/tree/main/Aplicaciones%20Basadas%20en%20el%20Conocimiento)
+ - [Aplicaciones Basadas en el Conocimiento 🖥️](https://github.com/ejmerino/josuemerinocalderon/tree/main/Aplicaciones%20Basadas%20en%20el%20Conocimiento)
 
 
 ## 🚀 Sobre mí
