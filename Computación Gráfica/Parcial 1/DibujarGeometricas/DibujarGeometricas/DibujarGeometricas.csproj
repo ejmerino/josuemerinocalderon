@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83E174EF-B662-4E87-AA3B-BBE98C96422A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DibujarGeometricas</RootNamespace>
+    <AssemblyName>DibujarGeometricas</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Circulo.cs" />
+    <Compile Include="Cuadrado.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCirculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCirculo.Designer.cs">
+      <DependentUpon>frmCirculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCuadrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCuadrado.Designer.cs">
+      <DependentUpon>frmCuadrado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHexagono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHexagono.Designer.cs">
+      <DependentUpon>frmHexagono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmParalelogramo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParalelogramo.Designer.cs">
+      <DependentUpon>frmParalelogramo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPentagono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPentagono.Designer.cs">
+      <DependentUpon>frmPentagono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRombo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRombo.Designer.cs">
+      <DependentUpon>frmRombo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTrapecio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrapecio.Designer.cs">
+      <DependentUpon>frmTrapecio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTriangulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTriangulo.Designer.cs">
+      <DependentUpon>frmTriangulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hexagono.cs" />
+    <Compile Include="Paralelogramo.cs" />
+    <Compile Include="Pentagono.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmRectangulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRectangulo.Designer.cs">
+      <DependentUpon>frmRectangulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rectangulo.cs" />
+    <Compile Include="Rombo.cs" />
+    <Compile Include="Trapecio.cs" />
+    <Compile Include="Triangulo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCirculo.resx">
+      <DependentUpon>frmCirculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCuadrado.resx">
+      <DependentUpon>frmCuadrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHexagono.resx">
+      <DependentUpon>frmHexagono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParalelogramo.resx">
+      <DependentUpon>frmParalelogramo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPentagono.resx">
+      <DependentUpon>frmPentagono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRombo.resx">
+      <DependentUpon>frmRombo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrapecio.resx">
+      <DependentUpon>frmTrapecio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTriangulo.resx">
+      <DependentUpon>frmTriangulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmRectangulo.resx">
+      <DependentUpon>frmRectangulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
