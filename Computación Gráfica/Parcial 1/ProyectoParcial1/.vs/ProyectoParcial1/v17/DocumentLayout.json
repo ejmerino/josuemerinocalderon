@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\ProyectoParcial1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DE104396-5A24-43DA-A90C-3FCE2A9B0910}|ProyectoParcial1\\ProyectoParcial1.csproj|d:\\josue\\espe\\computaci\u00F3n gr\u00E1fica\\parcial 1\\proyectoparcial1\\proyectoparcial1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE104396-5A24-43DA-A90C-3FCE2A9B0910}|ProyectoParcial1\\ProyectoParcial1.csproj|solutionrelative:proyectoparcial1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE104396-5A24-43DA-A90C-3FCE2A9B0910}|ProyectoParcial1\\ProyectoParcial1.csproj|d:\\josue\\espe\\computaci\u00F3n gr\u00E1fica\\parcial 1\\proyectoparcial1\\proyectoparcial1\\flor_de_la_margarita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE104396-5A24-43DA-A90C-3FCE2A9B0910}|ProyectoParcial1\\ProyectoParcial1.csproj|solutionrelative:proyectoparcial1\\flor_de_la_margarita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE104396-5A24-43DA-A90C-3FCE2A9B0910}|ProyectoParcial1\\ProyectoParcial1.csproj|d:\\josue\\espe\\computaci\u00F3n gr\u00E1fica\\parcial 1\\proyectoparcial1\\proyectoparcial1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DE104396-5A24-43DA-A90C-3FCE2A9B0910}|ProyectoParcial1\\ProyectoParcial1.csproj|solutionrelative:proyectoparcial1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\ProyectoParcial1\\ProyectoParcial1\\Form1.cs",
+              "RelativeDocumentMoniker": "ProyectoParcial1\\Form1.cs",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\ProyectoParcial1\\ProyectoParcial1\\Form1.cs",
+              "RelativeToolTip": "ProyectoParcial1\\Form1.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAMwA0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T15:40:41.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Flor_de_la_Margarita.cs",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\ProyectoParcial1\\ProyectoParcial1\\Flor_de_la_Margarita.cs",
+              "RelativeDocumentMoniker": "ProyectoParcial1\\Flor_de_la_Margarita.cs",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\ProyectoParcial1\\ProyectoParcial1\\Flor_de_la_Margarita.cs",
+              "RelativeToolTip": "ProyectoParcial1\\Flor_de_la_Margarita.cs",
+              "ViewState": "AQIAAKMAAAAAAAAAAAAwwK8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T15:17:17.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\ProyectoParcial1\\ProyectoParcial1\\Form1.cs",
+              "RelativeDocumentMoniker": "ProyectoParcial1\\Form1.cs",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\ProyectoParcial1\\ProyectoParcial1\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ProyectoParcial1\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T15:15:41.359Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

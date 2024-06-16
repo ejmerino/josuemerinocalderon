@@ -1,0 +1,10 @@
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\bin\Debug\ProyectoParcial1.exe.config
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\bin\Debug\ProyectoParcial1.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\bin\Debug\ProyectoParcial1.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\obj\Debug\ProyectoParcial1.csproj.AssemblyReference.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\obj\Debug\ProyectoParcial1.Form1.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\obj\Debug\ProyectoParcial1.Properties.Resources.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\obj\Debug\ProyectoParcial1.csproj.GenerateResource.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\obj\Debug\ProyectoParcial1.csproj.CoreCompileInputs.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\obj\Debug\ProyectoParcial1.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\ProyectoParcial1\ProyectoParcial1\obj\Debug\ProyectoParcial1.pdb
