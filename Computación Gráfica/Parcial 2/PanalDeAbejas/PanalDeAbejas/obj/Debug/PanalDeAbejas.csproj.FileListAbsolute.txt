@@ -1,0 +1,10 @@
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\bin\Debug\PanalDeAbejas.exe.config
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\bin\Debug\PanalDeAbejas.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\bin\Debug\PanalDeAbejas.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\obj\Debug\PanalDeAbejas.csproj.AssemblyReference.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\obj\Debug\PanalDeAbejas.frm1.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\obj\Debug\PanalDeAbejas.Properties.Resources.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\obj\Debug\PanalDeAbejas.csproj.GenerateResource.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\obj\Debug\PanalDeAbejas.csproj.CoreCompileInputs.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\obj\Debug\PanalDeAbejas.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 1\PanalDeAbejas\PanalDeAbejas\obj\Debug\PanalDeAbejas.pdb
