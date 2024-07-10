@@ -1,0 +1,328 @@
+\documentclass{article}
+\usepackage{graphicx,color,amsfonts,babel}
+\usepackage[utf8]{inputenc}
+\usepackage[14pt]{extsizes}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ left=30mm,
+ right=25mm,
+ top=25mm,
+ textheight=250mm,
+ }
+\usepackage{latexsym, amssymb}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{xcolor}
+%\usepackage{fontspec}
+%\setromanfont[BoldFont=ComicSansMSBold.ttf,ItalicFont=comici.ttf]{comicsans.ttf}
+%\setromanfont[BoldFont=CalibriBold.TTF,ItalicFont=CalibriItalic.ttf]{CalibriRegular.ttf}
+%\textcolor{blue}{\it{}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[c]{\thepage}
+\fancyhead[c]{Métodos Numéricos}
+\fancyfoot[l]{Nombre del estudiante}
+\date{}
+\begin{center}
+\includegraphics[scale=0.3]{LOGO-PRINCIPAL.png}
+
+\vspace{0.25cm}
+{\textbf {Departamento de Ciencias Exactas}}
+
+Métodos Numéricos
+
+Docente: Mgs.Fabián Ordóñez M.\quad NRC: NN
+\end{center}
+\begin{document}
+\maketitle
+{\Large \it {Resolver los ejercicios de los Capítulos 1 y 2}}
+
+Escriba oraciones equivalentes
+
+\begin {enumerate}
+\item
+Ni se le ocurrió que no iba a dejar de no callar en todo el día.
+
+\item
+No mande que Juan y Pedro lo hicieran. Lo que ordené fue que Juan o Pedro lo hicieran.
+
+\item
+No es verdad que tu eres brasileño y que tu padre es alemán.
+
+\begin{center}
+\includegraphics[scale=0.3]{Lighthouse}
+\end{center}
+
+
+\item
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} \hline
+$\sim$ & $(A$ & $\vee -$ & $B)$ & $\Longleftrightarrow$ & $(A$ & $\wedge$ & $B)$ & $\vee$ & $(\sim$ & $A$ & $\wedge$& $\sim$ & $B)$  \\ \hline
+V & V & F & V & V & V & V & V & V & F & V & F & F & V\\
+F & V & V & F & V & V & F & F & F & F & V & F & V & F\\
+F & F & V & V & V & F & F & V & F & V & F & F & F & V\\
+V & F & F & F & V & F & F & F & V & V  & F & V & V & F\\ \hline
+\end{tabular}
+
+\item
+
+El número L es el límite de $f_{(x)}$ cuando x tiende al número c si y solo si se verifica la siguiente propiedad
+
+$$\forall\epsilon > 0, \| \exists \delta > 0,  \| \forall x, 0 < |x - c|< \delta, \| \, |f_{(x)} - f_{(c)}| < \epsilon$$
+
+\item
+Una función f: $\mathbb{R} $ se llama uniformemente continua si:
+
+$\forall \epsilon > 0, \| \exists x, y \in  \mathbb{R}, |x - y|< \delta, \| \, |f_{(x)} - f_{(y)}| < \epsilon$
+
+\item
+Traducir a palabras la siguiente expresión matemática: $\forall n\in \mathbb {Z}, n>2 \, \| \forall (x, y, z) \in  \mathbb{R}^3, x^n + y^n = z^n \| \, xyz = 0$
+
+Para cada entero n, con n mayor que 2 se verifica que para cada (x, y, z) que pertenece a $\mathbb{R}^3, x^n + y^n = z^n$ se verifica que xyz = 0.
+
+
+Expresar en forma simbólica las expresiones escritas
+
+\item
+Fue tal el notición que aquel día todo el mundo leyo todos y cada uno de los periódicos
+
+Se expresa simbólicamente, si representamos por P el conjunto de los periódicos, M el conjunto de todas las personas de la ciudad y D el conjunto de los días, mediante
+
+$\exists d, d \in D, \, \| \forall m, m \in  M, \| \forall p, p \in  P \|$ m lee p en d
+
+\item
+La ciudad se llevó la exclusiva y así ese día hubo un periódico que fue leido por todo el mundo
+
+$\exists d, d \in D, \, \| \forall m, m \in  M, \| \exists p, p \in  P \|$ m lee p en d
+
+Escribir en símbolos la negación de las expresiones simbólicas obtenidas en el apartado anterior
+\item
+$\forall d, d \in D, \, \| \exists m, m \in  M, \| \exists p, p \in  P \|$ m no lee p en d
+
+Cada día alguna persona lee alguno de los periódicos \
+\item
+$\forall d, d \in D, \, \| \exists m, m \in  M, \| \forall p, p \in  P \|$ m no lee p en d
+Cada día alguna persona lee todos los periódicos
+
+\item
+Demostar que si n es impar, entonces $m = 3n^3 + 5n^2 - 13n + 1$ es par
+
+Demostración
+
+Partimos de un número impar y debemos llegar a un número par.  Además, podemos representar en forma general a un número par como 2k y a un número impar como (2k + 1), siendo k $\in \mathbb{Z}$
+Por otra parte, ?`Cuánto vale m, si sabemos que n es impar?
+$$
+m = 3(2k + 1)^3 + 5(2k + 1)^2 - 13(2k + 1) + 1$$
+$$m = 3(8k^3 + 12k^2 + 6k + 1) + 5(4k^2 + 4k + 1) - 26k - 13 + 1$$
+Desarrolando los términos, tenemos
+$$ m = 24k^3 + 36k^2 + 18k + 3 + 20k^2 + 20k + 5 - 26k - 13 + 1 $$
+Simplificando términos semejantes, se obtiene
+\begin {equation}
+\label{pregunta 23 ec1}
+m = 24k^3 + 56k^2 + 12k - 4
+\end {equation}
+Agrupando los términos del lado derecho de la igualdad (\ref{pregunta 23 ec1}), tendremos que 
+\begin {equation}
+\label{pregunta 23 ec2}
+m = 2(12k^3 + 28k^2 + 6k - 2)
+\end {equation}
+Finalmente, la igualdad (\ref{pregunta 23 ec2}) indica claramente que m es par 
+\item
+Demostrar que si x e y son números reales positivos, entonces
+
+$$ \sqrt{xy} \leq \frac{x + y}{2}$$
+Demostración
+\\
+
+Si observamos lo que debemos demostrar, 
+
+$$ \sqrt{xy} \leq \frac{x + y}{2}$$
+
+Elevando al cuadrado a dos números positivos, la desigualdad se mantiene, asi
+\begin {equation}
+\label {pregunta 24 ec 3}
+xy \leq \frac{(x + y)^2}{4}
+\end{equation}
+De donde, se llega a obtener que
+\begin {equation}
+\label {pregunta 24 ec 4}
+4xy \leq x^2 + 2xy + y^2
+\end {equation}
+Simplificando términos semejantes, se tiene
+\begin {equation}
+\label {pregunta 24 ec 5}
+0 \leq x^2 - 2xy + y^2
+\end {equation}
+que es equivalente a
+\begin {equation}
+\label {pregunta 24 ec 6}
+(x - y)^2 \geq 0
+\end {equation}
+Si observamos la desigualdad (\ref {pregunta 24 ec 6}), podemos decir que cumple para todo x, y $\in \mathbb{R}$, ya que todo número elevado a potencia par es mayor o igual cero.  Al desarrollar llegamos a (\ref {pregunta 24 ec 5}), que sumando a ambos lados el término 4xy se obtiene la inecuación (\ref {pregunta 24 ec 4}), que es equivalente a (\ref {pregunta 24 ec 3}); resulta entonces que si x e y son números reales positivos, entonces
+$$ \sqrt{xy} \leq \frac{x + y}{2}$$
+\item
+Sea n un número entero.  Demostrar que si $n^3$ es par, entonces n es par
+
+Demostración
+\\ 
+
+A: $n^3$ es impar
+
+B: n es par
+
+Para demostrarlo por contraposición, planteamos lo siguiente
+
+Si n es impar, entonces $n^3$ es impar
+
+Si n es impar, podemos expresarlo como 2k + 1.  Determinemos este número al cubo
+$$n^3 =(2k + 1)^3 $$
+Desarrollando, tenemos
+$$n^3 =8k^3 + 12k + 6k + 1$$
+Si agrupamos excepto el último término, se puede ver claramente que se trata de un impar
+$$n^3 =(8k^3 + 12k + 6k ) + 1$$
+Por el análisis realizado, podemos concluir que para todo entero si $n^3$ es par, entonces n es par utilizando el método de contraposición
+\item
+Demostrar que, de acuerdo con las reglas del ajedrez, cada peón se mueve a lo sumo 6 veces.
+\\ 
+
+Demostración
+
+Vamos a demostrar por reducción al absurdo
+\\ 
+
+Supongamos que un peón puede moverse 7 pasos como mínimo en el juego. Esto haría que el juego tenga 9 filas como mínimo.
+Sabemos que el tablero tiene 8 filas, entonces, se presenta una contradicción, es decir, que lo supuesto es falso; es decir, un peón puede moverse a lo sumo seis pasos
+\item
+Demostrar que los números primos  nunca se acaban, siempre hay más.
+\\ 
+
+Demostración
+\\ 
+
+Vamos a demostrar por reducción al absurdo
+
+Supongamos que hay una cantidad finita de números primos, por ejemplo 10. Esto quiere decir que podemos escribir una lista con los números primos: 
+
+$$a^1, a^2, a^3,, a^{10}$$
+Si multiplicamos entre ellos y sumamos 1, tenemos: 
+$$a^1, a^2, a^3,, a^10 + 1$$
+Dicho número no está en la lista de los números primos analizados, es mayor que cualquiera de ellos, así que este número no es primo, es un número compuesto, se puede dividir por alguno de los números diez números primos considerados inicialmente.  Esto no es
+posible ya que el número compuesto al  dividirlo dará siempre un residuo de uno. Se presenta entonces una contradicción lo que nos permite concluir que lo supuesto es falso y que los números primos nunca se acaban, siempre hay más.
+\item
+Demostrar que 
+\begin {equation}
+\label {pregunta 30 ec 7}
+\displaystyle \sum_{k=1}^{n} \; k^2 = \frac{n(n+1)(2n+1)}{6}
+\end{equation}
+Demostración
+\begin {enumerate}
+\item
+Probemos primero si la proposición cumple para n = 1, es decir si P(1) es cierta
+
+Al substituir 1 por n, tendremos que
+$$1 = \frac{1(2)(3)}{6}$$
+$$1 = 1, $$
+
+lo cual es cierto 
+\item
+Probemos ahora que si la proposición P(h) es cierta, entonces también lo será la proposición P(h + 1)\&
+\\ 
+
+Si P(h) es cierta, llamada hipótesis de inducción, se tiene que 
+\begin {equation}
+\label {pregunta 30 ec 8}
+\displaystyle \sum_{k=1}^{n} \; h^2 = \frac{h(h+1)(2h+1)}{6} = 1 + 4 + 9 + 16 + 25 ... + n^2
+\end {equation}
+A partir de aquí, queremos llegar a ver si P(h + 1) es cierta, es decir, queremos ver si se cumple que
+\begin {equation}
+\label {pregunta 30 ec 9}
+\displaystyle \sum_{k=0}^{n} \; (h+1)^2 = \frac{(h+1)(h+2)(2h+3)}{6}
+\end {equation}
+Consideremos el lado izquierdo de la igualdad (\ref {pregunta 30 ec 9}), tendremos que 
+$$\displaystyle \sum_{k=0}^{n} \; (h+1)^2 =1 + 4 + 9 + 16 + ... + n^2 + (n + 1)^2 $$
+Reemplazando la hipótesis de inducción (\ref{pregunta 30 ec 8}), se tiene
+\begin{align*}
+\displaystyle \sum_{k=0}^{n} \; (h+1)^2 &= \frac {h(h+1)(2h+1)}{6} + (h + 1)^2 \\
+\displaystyle \sum_{k=0}^{n} \; (h+1)^2 &= \frac {h(h+1)(2h+1) + 6(h + 1)^2}{6} \\
+\displaystyle \sum_{k=0}^{n} \; (h+1)^2 &= \frac {(h+1)[h(2h+1) + 6(h + 1)]}{6} \\
+\displaystyle \sum_{k=0}^{n} \; (h+1)^2 &= \frac {(h+1)[2h^2 + h + 6h + 6])}{6} \\
+\displaystyle \sum_{k=0}^{n} \; (h+1)^2 &= \frac {(h+1)[2h^2 + 7h + 6])}{6} \\
+\displaystyle \sum_{k=0}^{n} \; (h+1)^2 &= \frac {(h+1)[(2h + 4)(2h + 3])}{6} \\
+\displaystyle \sum_{k=0}^{n} \; (h+1)^2 &= \frac {(h+1)[(h +2)(2h + 3])}{6}
+\end{align*}
+Hemos demostrado entonces que P(h + 1) es verdadera.
+\\
+
+Por lo tanto, si P(1) y P(h + 1) es verdadera, se verifica entonces la validez de la ecuación.
+\end {enumerate}
+\item
+Demostrar que 
+\begin {equation}
+\displaystyle \sum_{k=1}^{n} \; (2k - 1) = n^2
+\end{equation}
+Demostración
+
+\begin {enumerate}
+\item
+Probemos primero si la proposición cumple para n = 1, es decir si P(1) es cierta
+
+Al substituir 1 por n, tendremos que
+$$2(1) - 1 = 1^2$$
+$$1 = 1,$$
+ lo cual es cierto 
+\item
+Probemos ahora que si la proposición P(h) es cierta, entonces también lo será la proposición P(h + 1)
+
+Si P(h) es cierta, llamada hipótesis de inducción, se tiene que
+\begin {equation}
+\label {pregunta 31 ec 10}
+\displaystyle \sum_{k=1}^{n} \; (2h - 1) = h^2 = 1 + 3 + 5 + ... +(2h - 1)
+\end {equation}
+A partir de aquí, queremos llegar a ver si P(h + 1) es cierta, es decir, queremos ver si se cumple que
+\begin {equation}
+\displaystyle \sum_{k=0}^{n} \; (2h+1) = (h +1)^2
+\end {equation}
+Consideremos el lado izquierdo de la igualdad, tendremos que 
+$$\displaystyle \sum_{k=0}^{n} \; (2h+1) =1 + 3 + 5 + ... + (2h - 1) + (2h + 1) $$
+Reemplazando la hipótesis de inducción (\ref {pregunta 31 ec 10}), se tiene
+\begin{align*}
+\displaystyle \sum_{k=0}^{n} \; (2h + 1) &= h^2+ (2h + 1) \\
+\displaystyle \sum_{k=0}^{n} \; (2h+1) &= h^2 + 2h +1 \\
+\displaystyle \sum_{k=0}^{n} \; (2h+1) &= (h + 1)^2
+\end{align*}
+Hemos demostrado entonces que P(h + 1) es verdadera. 
+\\ 
+
+Por lo tanto, si P(1) y P(h + 1) es verdadera, se verifica entonces la validez de la ecuación tendremos que 
+\end {enumerate}
+\item
+Demostrar que es falso que cada número natural impar es suma de los cuadrados de dos números naturales
+\\
+
+Demostración
+\\
+
+Es suficiente el considerar los números x = 3, y = 5 para mostrar que 
+$$9 = 3^2 + 5^2$$
+Con lo cual se demuestra que el enunciado planteado es falso
+\item
+Observar y experimentar cómo el polinomio $P(x) =x^2 + x + 41$ es tal que sustituyendo x por los enteros 1, 2, 3, ... y bastantes más, nos proporciona números y primos. ?`Será que para todo entero n resulta que P(n) es primo?
+
+
+Es suficiente el considerar por ejemplo el número 10 para mostrar que este no es primo
+$$P(10) = 10^2 + 10 + 41 = 151$$
+Pues este número no es primo, con lo cual se demuestra que el enunciado no cumple para cualquier entero.
+\end{enumerate}
+\begin{verbatim}
+function [D2]=Det2(A)
+ %[D2]=Det2([3 -8;4 4])
+  D2=A(1,1)*A(2,2)-A(1,2)*A(2,1);
+endfunction
+>> [D2]=Det2([3 -8;4 4])
+D2 =  44
+\end{verbatim}
+\end{document}
