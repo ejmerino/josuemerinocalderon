@@ -1,0 +1,13 @@
+docker run -d --name "oracle-xe" -p 1521:1521 -e ORACLE_PASSWORD="1234" gvenzl/oracle-xe
+
+docker run -d --name postgres-local -p 5432:5432 -e POSTGRES_PASSWORD="1234" postgres:latest
+
+docker run -d --name mysql-local -p 3306:3306 -e MYSQL_ROOT_PASSWORD="1234" mysql:latest
+
+docker images
+
+docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" ce8e23bf4459
+
+docker pull mcr.microsoft.com/mssql/server:2022-latest
+
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=myStrong#Password" -p 1433:1433 --name sqlserver-local -d mcr.microsoft.com/mssql/server:2022-latest

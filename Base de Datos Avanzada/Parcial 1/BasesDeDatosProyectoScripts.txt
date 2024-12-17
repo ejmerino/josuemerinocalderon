@@ -1,0 +1,183 @@
+--------------------------------------
+MySQL
+--------------------------------------
+
+CREATE DATABASE SALES_DATA;
+
+USE SALES_DATA;
+
+CREATE TABLE ORDERS (
+    id_order INT AUTO_INCREMENT PRIMARY KEY,
+    date_order DATE NOT NULL,
+    id_customer INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL
+);
+
+INSERT INTO ORDERS (date_order, id_customer, amount) VALUES
+('2024-06-01', 1, 150.25),
+('2024-06-02', 2, 200.50),
+('2024-06-03', 3, 75.00),
+('2024-06-04', 1, 300.75),
+('2024-06-05', 4, 180.00),
+('2024-06-06', 2, 90.50),
+('2024-06-07', 5, 450.25),
+('2024-06-08', 1, 120.00),
+('2024-06-09', 3, 250.75),
+('2024-06-10', 2, 175.50);
+
+
+---------------------------------------
+PostgreSQL
+---------------------------------------
+
+create database CUSTOMERS_DATA;
+
+create database CUSTOMERS_DATA;
+
+-- Crear la tabla CUSTOMERS
+CREATE TABLE CUSTOMERS (
+    id_customer SERIAL PRIMARY KEY,
+    name_customer VARCHAR(100) NOT NULL,
+    lastname_customer VARCHAR(100) NOT NULL,
+    email_customer VARCHAR(100) UNIQUE NOT NULL,
+    phone_customer VARCHAR(20),
+    genre VARCHAR(10),
+    dni VARCHAR(20)
+);
+
+-- Crear la tabla FEEDBACKS
+CREATE TABLE FEEDBACKS (
+    id_feedback SERIAL PRIMARY KEY,
+    id_customer INT REFERENCES CUSTOMERS(id_customer),
+    feeling BOOLEAN NOT NULL,
+    comment TEXT,
+    rating FLOAT,
+    id_sale INT
+);
+
+-- Insertar datos en la tabla FEEDBACKS
+INSERT INTO FEEDBACKS (id_customer, feeling, comment, rating, id_sale) VALUES
+(1, true, 'Buen servicio!', 9, 1),
+(2, true, '¡Excelente experiencia, lo recomendaría!', 10, 2),
+(3, false, 'El servicio fue lento y poco útil.', 3, 3),
+(4, true, 'Muy satisfecho con mi compra.', 8, 4),
+(5, true, 'Excelente calidad del producto.', 9, 5);
+
+-- Insertar datos en la tabla CUSTOMERS
+INSERT INTO CUSTOMERS (name_customer, lastname_customer, email_customer, phone_customer, genre, dni) VALUES
+('Juan', 'Pérez', 'juan.perez@example.com', '123-456-7890', 'Masculino', '12345678'),
+('María', 'Gómez', 'maria.gomez@example.com', '987-654-3210', 'Femenino', '87654321'),
+('Pedro', 'Martínez', 'pedro.martinez@example.com', '555-123-4567', 'Masculino', '13579246'),
+('Ana', 'López', 'ana.lopez@example.com', '444-222-3333', 'Femenino', '98765432'),
+('Carlos', 'Rodríguez', 'carlos.rodriguez@example.com', '777-888-9999', 'Masculino', '24681357');
+
+---------------------------------------------
+SQL Server
+---------------------------------------------
+
+CREATE DATABASE SALES_ANALYSIS;
+
+USE SALES_ANALYSIS;
+
+-- Crear la tabla SALES
+CREATE TABLE SALES (
+    id_sale INT PRIMARY KEY,
+    id_product INT,
+    id_order INT,
+    date_sale DATE,
+    quantity INT,
+    city VARCHAR(100),
+);
+
+-- Crear la tabla MARKETING_ROIS
+CREATE TABLE MARKETING_ROIS (
+    id_roi INT PRIMARY KEY,
+    id_sale INT FOREIGN KEY REFERENCES SALES(id_sale),
+    amount DECIMAL(10, 2)
+);
+
+-- Crear la tabla EMERGING_TRENDS
+CREATE TABLE EMERGING_TRENDS (
+    id_trend INT PRIMARY KEY,
+    id_product INT,
+    description VARCHAR(255),
+    id_feedback INT
+);
+
+-- Inserts para la tabla SALES
+INSERT INTO SALES (id_sale, id_product, id_order, date_sale, quantity, city) VALUES
+(1, 1, 1, '2024-05-01', 5, 'New York'),
+(2, 2, 2, '2024-05-02', 3, 'Los Angeles'),
+(3, 3, 3, '2024-05-03', 10, 'Chicago'),
+(4, 4, 4, '2024-05-04', 8, 'Houston'),
+(5, 5, 5, '2024-05-05', 6, 'Miami');
+
+
+-- Inserts para la tabla MARKETING_ROIS
+INSERT INTO MARKETING_ROIS (id_roi, id_sale, amount) VALUES
+(1, 1, 50.50),
+(2, 2, 20.75),
+(3, 3, 18.25),
+(4, 4, 22.00),
+(5, 5, 25.50);
+
+-- Inserts para la tabla EMERGING_TRENDS
+INSERT INTO EMERGING_TRENDS (id_trend, id_product, description, id_feedback) VALUES
+(1, 1, 'Nueva tendencia en tecnología móvil', 1),
+(2, 2, 'Tendencia emergente en la moda urbana', 2),
+(3, 3, 'Crecimiento de la demanda por productos ecológicos', 3),
+(4, 4, 'Aumento en la popularidad de productos de salud y bienestar', 4),
+(5, 5, 'Tendencia hacia la personalización en productos de consumo', 5);
+
+
+-------------------------------------------
+Oracle
+-------------------------------------------
+
+-- Crear la tabla PRODUCTS
+CREATE TABLE PRODUCTS (
+    id_product NUMBER PRIMARY KEY,
+    name_product VARCHAR2(100),
+    retail_price NUMBER(10, 2),
+    stock NUMBER
+);
+
+-- Crear la tabla PROFITS_MARGIN
+CREATE TABLE PROFITS_MARGIN (
+    id_margin NUMBER PRIMARY KEY,
+    id_product NUMBER REFERENCES PRODUCTS(id_product),
+    profit_margin NUMBER(5, 2)
+);
+
+-- Insertar datos en la tabla PRODUCTS
+INSERT INTO PRODUCTS (id_product, name_product, retail_price, stock) VALUES
+(1, 'Teléfono móvil', 599.99, 50);
+
+INSERT INTO PRODUCTS (id_product, name_product, retail_price, stock) VALUES
+(2, 'Zapatos deportivos', 129.95, 100);
+
+INSERT INTO PRODUCTS (id_product, name_product, retail_price, stock) VALUES
+(3, 'Laptop', 1299.99, 30);
+
+INSERT INTO PRODUCTS (id_product, name_product, retail_price, stock) VALUES
+(4, 'Camiseta básica', 19.99, 200);
+
+INSERT INTO PRODUCTS (id_product, name_product, retail_price, stock) VALUES
+(5, 'Reloj de pulsera', 299.50, 80);
+
+-- Insertar datos en la tabla PROFITS_MARGIN
+INSERT INTO PROFITS_MARGIN (id_margin, id_product, profit_margin) VALUES
+(1, 1, 0.25); -- 25%
+
+INSERT INTO PROFITS_MARGIN (id_margin, id_product, profit_margin) VALUES
+(2, 2, 0.35); -- 35%
+
+INSERT INTO PROFITS_MARGIN (id_margin, id_product, profit_margin) VALUES
+(3, 3, 0.30); -- 30%
+
+INSERT INTO PROFITS_MARGIN (id_margin, id_product, profit_margin) VALUES
+(4, 4, 0.40); -- 40%
+
+INSERT INTO PROFITS_MARGIN (id_margin, id_product, profit_margin) VALUES
+(5, 5, 0.20); -- 20%
+

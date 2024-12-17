@@ -1,0 +1,29 @@
+- Crear la tabla particionada por rango para las fechas de venta
+CREATE TABLE SALES_PARTITIONED_BY_DATE (
+    id_sale INT PRIMARY KEY,
+    id_product INT,
+    id_order INT,
+    date_sale DATE,
+    quantity DECIMAL(10, 2),
+    id_ciudad INT,
+    id_provincia INT,
+    FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad),
+    FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia)
+)
+PARTITION BY RANGE (date_sale) (
+    PARTITION p_before_2024 VALUES LESS THAN (TO_DATE('2024-01-01', 'YYYY-MM-DD')),
+    PARTITION p_q1_2024 VALUES LESS THAN (TO_DATE('2024-04-01', 'YYYY-MM-DD')),
+    PARTITION p_q2_2024 VALUES LESS THAN (TO_DATE('2024-07-01', 'YYYY-MM-DD')),
+    PARTITION p_q3_2024 VALUES LESS THAN (TO_DATE('2024-10-01', 'YYYY-MM-DD')),
+    PARTITION p_q4_2024 VALUES LESS THAN (TO_DATE('2025-01-01', 'YYYY-MM-DD')),
+    PARTITION p_after_2024 VALUES LESS THAN (MAXVALUE)
+);
+
+
+INSERT INTO SALES_PARTITIONED_BY_DATE (id_sale, id_product, id_order, date_sale, quantity, id_ciudad, id_provincia) VALUES
+(1, 101, 1001, '2023-12-31', 1500, 1, 1),
+(2, 102, 1002, '2024-01-15', 1800, 2, 2),
+(3, 103, 1003, '2024-04-15', 1200, 3, 3),
+(4, 104, 1004, '2024-07-15', 1600, 4, 4),
+(5, 105, 1005, '2024-10-15', 1300, 5, 5),
+(6, 106, 1006, '2025-01-15', 1700, 6, 6);
