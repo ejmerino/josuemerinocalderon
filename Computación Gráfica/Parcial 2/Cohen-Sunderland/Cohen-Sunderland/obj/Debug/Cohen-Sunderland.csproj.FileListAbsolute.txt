@@ -1,0 +1,10 @@
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\bin\Debug\Cohen-Sunderland.exe.config
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\bin\Debug\Cohen-Sunderland.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\bin\Debug\Cohen-Sunderland.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\obj\Debug\Cohen-Sunderland.csproj.AssemblyReference.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\obj\Debug\Cohen_Sunderland.Form1.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\obj\Debug\Cohen_Sunderland.Properties.Resources.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\obj\Debug\Cohen-Sunderland.csproj.GenerateResource.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\obj\Debug\Cohen-Sunderland.csproj.CoreCompileInputs.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\obj\Debug\Cohen-Sunderland.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\Cohen-Sunderland\Cohen-Sunderland\obj\Debug\Cohen-Sunderland.pdb

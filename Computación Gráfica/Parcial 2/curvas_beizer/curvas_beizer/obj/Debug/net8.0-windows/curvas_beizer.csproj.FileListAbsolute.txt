@@ -1,0 +1,32 @@
+C:\Users\milen\source\repos\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.exe
+C:\Users\milen\source\repos\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.deps.json
+C:\Users\milen\source\repos\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.runtimeconfig.json
+C:\Users\milen\source\repos\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.dll
+C:\Users\milen\source\repos\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.pdb
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.Form1.resources
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.csproj.GenerateResource.cache
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.AssemblyInfoInputs.cache
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.AssemblyInfo.cs
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.csproj.CoreCompileInputs.cache
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.dll
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\refint\curvas_beizer.dll
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.pdb
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.genruntimeconfig.cache
+C:\Users\milen\source\repos\curvas_beizer\obj\Debug\net8.0-windows\ref\curvas_beizer.dll
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.deps.json
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.runtimeconfig.json
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.dll
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\bin\Debug\net8.0-windows\curvas_beizer.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.Form1.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.csproj.GenerateResource.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.AssemblyInfoInputs.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.AssemblyInfo.cs
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.csproj.CoreCompileInputs.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.dll
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\refint\curvas_beizer.dll
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\curvas_beizer.genruntimeconfig.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\curvas_beizer\curvas_beizer\obj\Debug\net8.0-windows\ref\curvas_beizer.dll

@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\Proyecto\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0E78A129-67C8-4DF0-926E-33BC2C337D0F}|Proyecto\\Proyecto.csproj|d:\\josue\\espe\\computaci\u00F3n gr\u00E1fica\\parcial 2\\proyecto\\proyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0E78A129-67C8-4DF0-926E-33BC2C337D0F}|Proyecto\\Proyecto.csproj|solutionrelative:proyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\Proyecto\\Proyecto\\Form1.cs",
+              "RelativeDocumentMoniker": "Proyecto\\Form1.cs",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\Proyecto\\Proyecto\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Proyecto\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T01:31:51.536Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

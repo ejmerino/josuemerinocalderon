@@ -1,0 +1,136 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7A1518BB-A116-45E5-B3E5-E72F5C6C7CCF}|MarioBros\\MarioBros.csproj|c:\\users\\isaac escobar\\source\\repos\\winform-games-mariobros-main\\winform-games-mariobros-main\\mariobros\\demo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A1518BB-A116-45E5-B3E5-E72F5C6C7CCF}|MarioBros\\MarioBros.csproj|solutionrelative:mariobros\\demo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|MarioBros||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A1518BB-A116-45E5-B3E5-E72F5C6C7CCF}|MarioBros\\MarioBros.csproj|C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\mariobros\\demo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7A1518BB-A116-45E5-B3E5-E72F5C6C7CCF}|MarioBros\\MarioBros.csproj|solutionrelative:mariobros\\demo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4922F0-79AE-48A1-9017-B46F0799FA9E}|Game\\Game.csproj|C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\game\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE4922F0-79AE-48A1-9017-B46F0799FA9E}|Game\\Game.csproj|solutionrelative:game\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4922F0-79AE-48A1-9017-B46F0799FA9E}|Game\\Game.csproj|C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\game\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FE4922F0-79AE-48A1-9017-B46F0799FA9E}|Game\\Game.csproj|solutionrelative:game\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4922F0-79AE-48A1-9017-B46F0799FA9E}|Game\\Game.csproj|C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\game\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FE4922F0-79AE-48A1-9017-B46F0799FA9E}|Game\\Game.csproj|solutionrelative:game\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE4922F0-79AE-48A1-9017-B46F0799FA9E}|Game\\Game.csproj|C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\game\\base.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE4922F0-79AE-48A1-9017-B46F0799FA9E}|Game\\Game.csproj|solutionrelative:game\\base.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A1518BB-A116-45E5-B3E5-E72F5C6C7CCF}|MarioBros\\MarioBros.csproj|c:\\users\\isaac escobar\\source\\repos\\winform-games-mariobros-main\\winform-games-mariobros-main\\mariobros\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MarioBros",
+              "DocumentMoniker": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\MarioBros\\MarioBros.csproj",
+              "RelativeDocumentMoniker": "MarioBros\\MarioBros.csproj",
+              "ToolTip": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\MarioBros\\MarioBros.csproj",
+              "RelativeToolTip": "MarioBros\\MarioBros.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-27T03:15:42.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Demo.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\MarioBros\\Demo.cs",
+              "RelativeDocumentMoniker": "MarioBros\\Demo.cs",
+              "ToolTip": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\MarioBros\\Demo.cs",
+              "RelativeToolTip": "MarioBros\\Demo.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwCAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T05:24:33.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Demo.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\MarioBros\\Demo.cs",
+              "RelativeDocumentMoniker": "MarioBros\\Demo.cs",
+              "ToolTip": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\MarioBros\\Demo.cs [Dise\u00F1o]",
+              "RelativeToolTip": "MarioBros\\Demo.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T05:24:31.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\Game\\Game.cs",
+              "RelativeDocumentMoniker": "Game\\Game.cs",
+              "ToolTip": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\Game\\Game.cs",
+              "RelativeToolTip": "Game\\Game.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAcwBEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T05:24:09.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Base.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\Game\\Base.Designer.cs",
+              "RelativeDocumentMoniker": "Game\\Base.Designer.cs",
+              "ToolTip": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\Game\\Base.Designer.cs",
+              "RelativeToolTip": "Game\\Base.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T05:23:50.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Game.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\Game\\Game.cs",
+              "RelativeDocumentMoniker": "Game\\Game.cs",
+              "ToolTip": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\Game\\Game.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Game\\Game.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T05:08:50.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Base.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\Game\\Base.cs",
+              "RelativeDocumentMoniker": "Game\\Base.cs",
+              "ToolTip": "C:\\Users\\Isaac Escobar\\source\\repos\\Winform-Games-MarioBros-main\\Winform-Games-MarioBros-main\\Game\\Base.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Game\\Base.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T05:08:48.029Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

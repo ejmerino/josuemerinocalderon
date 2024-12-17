@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\",
+  "WorkspaceRootPath": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\panaldeabejas\\panal_de_abejas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\panaldeabejas\\panal_de_abejas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|solutionrelative:panaldeabejas\\panal_de_abejas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\panaldeabejas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|d:\\josue\\espe\\computaci\u00F3n gr\u00E1fica\\parcial 2\\panaldeabejas\\panaldeabejas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|solutionrelative:panaldeabejas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|d:\\josue\\espe\\computaci\u00F3n gr\u00E1fica\\parcial 1\\panaldeabejas\\panaldeabejas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\panaldeabejas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D7D82B17-259F-4406-A5F7-FB27052A2A1C}|PanalDeAbejas\\PanalDeAbejas.csproj|solutionrelative:panaldeabejas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -28,11 +28,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Panal_de_abejas.cs",
-              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\PanalDeAbejas\\Panal_de_abejas.cs",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\PanalDeAbejas\\Panal_de_abejas.cs",
               "RelativeDocumentMoniker": "PanalDeAbejas\\Panal_de_abejas.cs",
-              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\PanalDeAbejas\\Panal_de_abejas.cs",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\PanalDeAbejas\\Panal_de_abejas.cs",
               "RelativeToolTip": "PanalDeAbejas\\Panal_de_abejas.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAA1wCYAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T14:16:06.545Z",
               "EditorCaption": ""
@@ -41,9 +41,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\PanalDeAbejas\\Form1.cs",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\PanalDeAbejas\\Form1.cs",
               "RelativeDocumentMoniker": "PanalDeAbejas\\Form1.cs",
-              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\PanalDeAbejas\\Form1.cs",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\PanalDeAbejas\\Form1.cs",
               "RelativeToolTip": "PanalDeAbejas\\Form1.cs",
               "ViewState": "AQIAABgAAAAAAAAAAAAYwCQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -54,9 +54,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\PanalDeAbejas\\Form1.cs",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\PanalDeAbejas\\Form1.cs",
               "RelativeDocumentMoniker": "PanalDeAbejas\\Form1.cs",
-              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 1\\PanalDeAbejas\\PanalDeAbejas\\Form1.cs [Dise\u00F1o]",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\PanalDeAbejas\\PanalDeAbejas\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "PanalDeAbejas\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T14:10:44.362Z",

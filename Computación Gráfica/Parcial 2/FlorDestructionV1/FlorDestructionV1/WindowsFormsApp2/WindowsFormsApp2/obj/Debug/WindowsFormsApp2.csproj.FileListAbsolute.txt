@@ -1,0 +1,31 @@
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.AssemblyReference.cache
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\Isaac Escobar\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.PoligonosEstrellados.resources
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.AssemblyReference.cache
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.SuggestedBindingRedirects.cache
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.PoligonosEstrellados.resources
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+D:\Computacion_Gráfica\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.AssemblyReference.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.PoligonosEstrellados.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\FlorDestructionV1\FlorDestructionV1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb

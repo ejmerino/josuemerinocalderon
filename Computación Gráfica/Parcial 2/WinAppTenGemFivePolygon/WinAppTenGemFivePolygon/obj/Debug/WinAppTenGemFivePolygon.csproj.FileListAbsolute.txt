@@ -1,0 +1,41 @@
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.exe.config
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.exe
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.pdb
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.AssemblyReference.cache
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.frmTenGemFivePolygon.resources
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.Properties.Resources.resources
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.GenerateResource.cache
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.CoreCompileInputs.cache
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.exe
+C:\Users\jejoc\OneDrive\Escritorio\Jeremy  ESPE\Software\Semestre SII OCT22-FEB23\6. Computación Grafica\Proyectos Parciales\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.pdb
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.exe.config
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.exe
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.pdb
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.AssemblyReference.cache
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.frmTenGemFivePolygon.resources
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.Properties.Resources.resources
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.GenerateResource.cache
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.CoreCompileInputs.cache
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.exe
+C:\Users\Notebook-ASUS\Desktop\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.pdb
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.exe.config
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.exe
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.pdb
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.AssemblyReference.cache
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.SuggestedBindingRedirects.cache
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.frmTenGemFivePolygon.resources
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.Properties.Resources.resources
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.GenerateResource.cache
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.CoreCompileInputs.cache
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.exe
+D:\Computacion_Gráfica\GraficaSpecialZip\grafica\I PARCIAL\Proyecto 1 parcial\Ejercicio 2 Primer parcial\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.exe.config
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\bin\Debug\WinAppTenGemFivePolygon.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.AssemblyReference.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.frmTenGemFivePolygon.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.Properties.Resources.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.GenerateResource.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.csproj.CoreCompileInputs.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\WinAppTenGemFivePolygon\WinAppTenGemFivePolygon\obj\Debug\WinAppTenGemFivePolygon.pdb

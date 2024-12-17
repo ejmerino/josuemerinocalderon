@@ -1,0 +1,21 @@
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\bin\Debug\PoligonoEstrelladoV1.exe.config
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\bin\Debug\PoligonoEstrelladoV1.exe
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\bin\Debug\PoligonoEstrelladoV1.pdb
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.csproj.AssemblyReference.cache
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.csproj.SuggestedBindingRedirects.cache
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.Form1.resources
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.Properties.Resources.resources
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.csproj.GenerateResource.cache
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.csproj.CoreCompileInputs.cache
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.exe
+D:\Computacion_Gráfica\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\bin\Debug\PoligonoEstrelladoV1.exe.config
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\bin\Debug\PoligonoEstrelladoV1.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\bin\Debug\PoligonoEstrelladoV1.pdb
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.csproj.AssemblyReference.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.Form1.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.Properties.Resources.resources
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.csproj.GenerateResource.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.csproj.CoreCompileInputs.cache
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.exe
+D:\Josue\ESPE\Computación Gráfica\Parcial 2\PoligonoEstrelladoV1\PoligonoEstrelladoV1\PoligonoEstrelladoV1\obj\Debug\PoligonoEstrelladoV1.pdb

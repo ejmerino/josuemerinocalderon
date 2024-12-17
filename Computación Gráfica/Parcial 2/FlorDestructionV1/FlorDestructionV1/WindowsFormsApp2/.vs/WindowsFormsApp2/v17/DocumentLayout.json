@@ -1,0 +1,52 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\FlorDestructionV1\\FlorDestructionV1\\WindowsFormsApp2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{056EC0E8-CBC2-4496-BEE8-841E1851495B}|WindowsFormsApp2\\WindowsFormsApp2.csproj|d:\\josue\\espe\\computaci\u00F3n gr\u00E1fica\\parcial 2\\flordestructionv1\\flordestructionv1\\windowsformsapp2\\windowsformsapp2\\windowsformsapp2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{056EC0E8-CBC2-4496-BEE8-841E1851495B}|WindowsFormsApp2\\WindowsFormsApp2.csproj|solutionrelative:windowsformsapp2\\windowsformsapp2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{056EC0E8-CBC2-4496-BEE8-841E1851495B}|WindowsFormsApp2\\WindowsFormsApp2.csproj|D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\FlorDestructionV1\\FlorDestructionV1\\WindowsFormsApp2\\windowsformsapp2\\windowsformsapp2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{056EC0E8-CBC2-4496-BEE8-841E1851495B}|WindowsFormsApp2\\WindowsFormsApp2.csproj|solutionrelative:windowsformsapp2\\windowsformsapp2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WindowsFormsApp2.cs",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\FlorDestructionV1\\FlorDestructionV1\\WindowsFormsApp2\\WindowsFormsApp2\\WindowsFormsApp2.cs",
+              "RelativeDocumentMoniker": "WindowsFormsApp2\\WindowsFormsApp2.cs",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\FlorDestructionV1\\FlorDestructionV1\\WindowsFormsApp2\\WindowsFormsApp2\\WindowsFormsApp2.cs",
+              "RelativeToolTip": "WindowsFormsApp2\\WindowsFormsApp2.cs",
+              "ViewState": "AQIAAE0BAAAAAAAAAAAIwFgBAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T16:34:33.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WindowsFormsApp2.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\FlorDestructionV1\\FlorDestructionV1\\WindowsFormsApp2\\WindowsFormsApp2\\WindowsFormsApp2.cs",
+              "RelativeDocumentMoniker": "WindowsFormsApp2\\WindowsFormsApp2.cs",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Gr\u00E1fica\\Parcial 2\\FlorDestructionV1\\FlorDestructionV1\\WindowsFormsApp2\\WindowsFormsApp2\\WindowsFormsApp2.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WindowsFormsApp2\\WindowsFormsApp2.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T16:34:25.303Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
