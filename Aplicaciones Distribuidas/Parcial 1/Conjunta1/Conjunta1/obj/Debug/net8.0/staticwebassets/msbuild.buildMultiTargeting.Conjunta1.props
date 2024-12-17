@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Conjunta1.props" />
+</Project>
