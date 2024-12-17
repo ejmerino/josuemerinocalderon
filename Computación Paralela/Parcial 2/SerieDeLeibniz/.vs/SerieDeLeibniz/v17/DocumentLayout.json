@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\SerieDeLeibniz\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AC39CF07-C9C2-4D98-8009-C763FD471120}|SerieDeLeibniz\\SerieDeLeibniz.vcxproj|D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\SerieDeLeibniz\\SerieDeLeibniz\\Paralelo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AC39CF07-C9C2-4D98-8009-C763FD471120}|SerieDeLeibniz\\SerieDeLeibniz.vcxproj|solutionrelative:SerieDeLeibniz\\Paralelo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Paralelo.cpp",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\SerieDeLeibniz\\SerieDeLeibniz\\Paralelo.cpp",
+              "RelativeDocumentMoniker": "SerieDeLeibniz\\Paralelo.cpp",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\SerieDeLeibniz\\SerieDeLeibniz\\Paralelo.cpp",
+              "RelativeToolTip": "SerieDeLeibniz\\Paralelo.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-04T16:49:14.928Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

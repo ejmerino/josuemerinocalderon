@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\Examen\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C2C48103-DC3D-4C81-8BAD-C2A76848BA35}|Examen\\Examen.vcxproj|D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\Examen\\Examen\\Merino_Ednan-examen_2-codigo_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C2C48103-DC3D-4C81-8BAD-C2A76848BA35}|Examen\\Examen.vcxproj|solutionrelative:Examen\\Merino_Ednan-examen_2-codigo_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2C48103-DC3D-4C81-8BAD-C2A76848BA35}|Examen\\Examen.vcxproj|D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\Examen\\Examen\\Merino_Ednan-examen_2-codigo_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C2C48103-DC3D-4C81-8BAD-C2A76848BA35}|Examen\\Examen.vcxproj|solutionrelative:Examen\\Merino_Ednan-examen_2-codigo_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Merino_Ednan-examen_2-codigo_2.cpp",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\Examen\\Examen\\Merino_Ednan-examen_2-codigo_2.cpp",
+              "RelativeDocumentMoniker": "Examen\\Merino_Ednan-examen_2-codigo_2.cpp",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\Examen\\Examen\\Merino_Ednan-examen_2-codigo_2.cpp",
+              "RelativeToolTip": "Examen\\Merino_Ednan-examen_2-codigo_2.cpp",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAwC0AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-25T17:45:16.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Merino_Ednan-examen_2-codigo_1.cpp",
+              "DocumentMoniker": "D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\Examen\\Examen\\Merino_Ednan-examen_2-codigo_1.cpp",
+              "RelativeDocumentMoniker": "Examen\\Merino_Ednan-examen_2-codigo_1.cpp",
+              "ToolTip": "D:\\Josue\\ESPE\\Computaci\u00F3n Paralela\\Parcial 2\\Examen\\Examen\\Merino_Ednan-examen_2-codigo_1.cpp",
+              "RelativeToolTip": "Examen\\Merino_Ednan-examen_2-codigo_1.cpp",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAC0AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-25T17:02:09.848Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

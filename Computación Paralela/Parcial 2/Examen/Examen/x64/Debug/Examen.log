@@ -1,0 +1,41 @@
+﻿  Merino_Ednan-examen_2-codigo_1.cpp
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(9,8): error C2131: la expresión no se evaluó como una constante
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(9,16): error C2131: la expresión no se evaluó como una constante
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(9,27): error C2131: la expresión no se evaluó como una constante
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(9,35): error C2131: la expresión no se evaluó como una constante
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(9,46): error C2131: la expresión no se evaluó como una constante
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(9,54): error C2131: la expresión no se evaluó como una constante
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(9,66): error C2131: la expresión no se evaluó como una constante
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(9,74): error C2131: la expresión no se evaluó como una constante
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(10,32): error C2105: '++' necesita valor L
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(12,12): error C3863: el tipo de matriz 'int [tamano][tamano]' no es asignable
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(13,12): error C3863: el tipo de matriz 'int [tamano][tamano]' no es asignable
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(14,12): error C3863: el tipo de matriz 'int [tamano][tamano]' no es asignable
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(15,13): error C3863: el tipo de matriz 'int [tamano][tamano]' no es asignable
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(20,12): error C3863: el tipo de matriz 'int [tamano][tamano]' no es asignable
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(21,12): error C3863: el tipo de matriz 'int [tamano][tamano]' no es asignable
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(23,17): error C2079: 't0' utiliza struct 'main::timeval' sin definir
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(23,21): error C2079: 't1' utiliza struct 'main::timeval' sin definir
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(24,2): error C3861: 'gettimeofday': no se encontró el identificador
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(25,17): error C2146: error de sintaxis: falta ';' delante del identificador 'i'
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(25,19): error C2143: error de sintaxis: falta ';' delante de '<'
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(25,19): error C2143: error de sintaxis: falta ')' delante de '<'
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(25,19): error C2059: error de sintaxis: '<'
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(25,29): error C2065: 'i': identificador no declarado
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(25,32): error C2059: error de sintaxis: ')'
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(26,3): error C2143: error de sintaxis: falta ';' delante de 'for'
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(28,8): error C2065: 'i': identificador no declarado
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(28,19): error C2065: 'i': identificador no declarado
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(30,2): error C3861: 'gettimeofday': no se encontró el identificador
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(33,18): error C2079: 't2' utiliza struct 'main::timevale' sin definir
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(33,22): error C2079: 't3' utiliza struct 'main::timevale' sin definir
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(34,2): error C3861: 'gettimeofday': no se encontró el identificador
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(39,7): error C3688: sufijo literal no válido 'i'; no se encontró el operador literal o la plantilla de operador literal 'operator ""i'
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(42,2): error C3861: 'gettimeofday': no se encontró el identificador
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(43,25): error C2059: error de sintaxis: ':'
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(28,5): error C2036: 'int [tamano][tamano]': tamaño desconocido
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(28,9): error C2036: 'int [tamano][tamano]': tamaño desconocido
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(28,17): error C2036: 'int [tamano][tamano]': tamaño desconocido
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(28,20): error C2036: 'int [tamano][tamano]': tamaño desconocido
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(28,27): error C2036: 'int [tamano][tamano]': tamaño desconocido
+D:\Josue\ESPE\Computación Paralela\Parcial 2\Examen\Examen\Merino_Ednan-examen_2-codigo_1.cpp(28,30): error C2036: 'int [tamano][tamano]': tamaño desconocido
