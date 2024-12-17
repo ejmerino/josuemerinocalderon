@@ -1,0 +1,16 @@
+/* myapp/static/css/styles.css */
+body {
+    background-color: #0a7ff5; /* Color de fondo */
+}
+
+h1 {
+    color: #343a40; /* Color de los encabezados */
+}
+
+.container {
+    margin-top: 20px; /* Espacio superior */
+}
+
+.list-group-item {
+    font-size: 18px; /* Tamaño de fuente para los elementos de la lista */
+}

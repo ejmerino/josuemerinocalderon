@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Productos{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centrar contenido de la tabla */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dddddd;
+            text-align: center; /* Centrar contenido de las celdas */
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+        }
+
+        th:hover {
+            background-color: #e0e0e0;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+            transform: scale(1.02);
+        }
+
+        th:hover, th:hover ~ td {
+            background-color: #f1f1f1;
+        }
+
+        tbody tr td:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+            transform: scale(1.02);
+        }
+
+        th:hover::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f1f1f1;
+            z-index: -1;
+            transition: background-color 0.3s;
+        }
+
+        th:hover, th:hover ~ td {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+        }
+
+        tbody tr td:hover, tbody tr th:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+            transform: scale(1.02);
+        }
+
+        .btn-export {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            position: relative;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-export:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-export i {
+            position: absolute;
+            left: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <h1>Productos</h1>
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.nombre }}</td>
+                    <td>$ {{ producto.precio }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-primary btn-export" onclick="exportarCSV()"><i class="bi bi-download"></i> Descargar</button>
+        {% endblock %}
+    </div>
+    <footer>
+        © Marlyn Almeida, Erick Andrade, Josué Merino - 2024. Todos los derechos reservados
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function exportarCSV() {
+            var productos = [];
+
+            {% for producto in productos %}
+            productos.push({
+                nombre: "{{ producto.nombre }}",
+                precio: "{{ producto.precio }}",
+                cantidad: "{{ producto.cantidad }}"
+            });
+            {% endfor %}
+
+            var csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Nombre;Precio;Cantidad\n";
+
+            productos.forEach(function(producto) {
+                var dataString = producto.nombre + ";" + producto.precio + ";" + producto.cantidad;
+                csvContent += dataString + "\n";
+            });
+
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "productos.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
