@@ -11,7 +11,6 @@ En este Repositorio se encuentran códigos de las materias impartidas en la carr
  - [Computación Digital 🤖](https://github.com/ejmerino/josuemerinocalderon/tree/main/Computaci%C3%B3n%20Digital)
  - [Aplicaciones Basadas en el Conocimiento 🖥️](https://github.com/ejmerino/josuemerinocalderon/tree/main/Aplicaciones%20Basadas%20en%20el%20Conocimiento)
  - [Computación Gráfica 🖱️](https://github.com/ejmerino/josuemerinocalderon/tree/main/Computaci%C3%B3n%20Gr%C3%A1fica)
- - [Desarrollo Web Avanzado 🌐](https://github.com/ejmerino/josuemerinocalderon/tree/main/Desarrollo%20Web%20Avanzado)
  - [Métodos Numéricos 🧮](https://github.com/ejmerino/josuemerinocalderon/tree/main/Metodos%20Numericos)
 
 ## 🚀 Sobre mí
