@@ -4,7 +4,7 @@ En este Repositorio se encuentran códigos y archivos de las materias impartidas
 
 ## 📚 Asignaturas
 
-- [Análisis y Diseño de Software 🧑‍💻](https://github.com/ejmerino/josuemerinocalderon/tree/main/Analisis%20y%20Diseno%20de%20Software)
+- [Análisis y Diseño de Software 🧑‍💻](https://github.com/ejmerino/josuemerinocalderon/tree/main/Analisis%20y%20Dise%C3%B1o%20de%20Software)
 - [Aplicaciones Basadas en el Conocimiento 🖥️](https://github.com/ejmerino/josuemerinocalderon/tree/main/Aplicaciones%20Basadas%20en%20el%20Conocimiento)
 - [Aplicaciones Distribuidas 🌐](https://github.com/ejmerino/josuemerinocalderon/tree/main/Aplicaciones%20Distribuidas)
 - [Aplicaciones Móviles 📱](https://github.com/ejmerino/josuemerinocalderon/tree/main/Aplicaciones%20Moviles)
