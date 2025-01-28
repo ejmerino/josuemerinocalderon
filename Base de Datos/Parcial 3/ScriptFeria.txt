@@ -1,0 +1,110 @@
+-- Creación de tablas
+CREATE TABLE Feria (
+    feria_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    siglas VARCHAR(10) UNIQUE NOT NULL,
+    sectores TEXT[]
+);
+
+CREATE TABLE Edición (
+    edicion_id SERIAL PRIMARY KEY,
+    feria_id INT REFERENCES Feria(feria_id),
+    anio INT NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_final DATE NOT NULL,
+    horario VARCHAR(100)
+);
+
+CREATE TABLE Expositor (
+    expositor_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    cif VARCHAR(20) UNIQUE NOT NULL,
+    sitio_web VARCHAR(200),
+    actividad TEXT
+);
+
+CREATE TABLE Stand (
+    stand_id SERIAL PRIMARY KEY,
+    edicion_id INT REFERENCES Edición(edicion_id),
+    expositor_id INT REFERENCES Expositor(expositor_id),
+    numero INT NOT NULL,
+    superficie DECIMAL,
+    precio DECIMAL
+);
+
+CREATE TABLE Visitante (
+    visitante_id SERIAL PRIMARY KEY,
+    nif VARCHAR(20) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    domicilio TEXT
+);
+
+CREATE TABLE Tarjeta_Visita (
+    tarjeta_id SERIAL PRIMARY KEY,
+    stand_id INT REFERENCES Stand(stand_id),
+    visitante_id INT REFERENCES Visitante(visitante_id),
+    fecha_hora TIMESTAMP NOT NULL,
+    observacion TEXT
+);
+
+-- Inserción de datos
+-- Ferias
+INSERT INTO Feria (nombre, siglas, sectores) VALUES
+    ('Feria de Calzado', 'ZAPA', ARRAY['Calzado', 'Moda']);
+INSERT INTO Feria (nombre, siglas, sectores) VALUES
+    ('ExpoTech', 'ET', ARRAY['Tecnología', 'Electrónica']);
+-- Puedes continuar con más inserciones de ferias
+
+-- Ediciones
+INSERT INTO Edición (feria_id, anio, fecha_inicio, fecha_final, horario) VALUES
+    (1, 2005, '2005-09-10', '2005-09-15', '10:00 - 18:00');
+INSERT INTO Edición (feria_id, anio, fecha_inicio, fecha_final, horario) VALUES
+    (2, 2023, '2023-08-20', '2023-08-25', '09:00 - 20:00');
+-- Puedes continuar con más inserciones de ediciones
+
+-- Expositores
+INSERT INTO Expositor (nombre, cif, sitio_web, actividad) VALUES
+    ('Calzados López', 'ES12345678', 'https://calzadoslopez.com', 'Calzado');
+INSERT INTO Expositor (nombre, cif, sitio_web, actividad) VALUES
+    ('Alpargatas Rivas', 'ES87654321', 'https://alpargatasrivas.es', 'Alpargatero');
+-- Puedes continuar con más inserciones de expositores
+
+-- Stands
+INSERT INTO Stand (edicion_id, expositor_id, numero, superficie, precio) VALUES
+    (1, 1, 1, 20.5, 1500.00);
+INSERT INTO Stand (edicion_id, expositor_id, numero, superficie, precio) VALUES
+    (1, 2, 2, 15.0, 1200.00);
+INSERT INTO Stand (edicion_id, expositor_id, numero, superficie, precio) VALUES
+    (1, 2, 3, 18.0, 1300.00); -- Agregando stand "Cocinas C"
+-- Puedes continuar con más inserciones de stands
+
+-- Visitantes
+INSERT INTO Visitante (nif, nombre, domicilio) VALUES
+    ('12345678A', 'María González', 'Calle Mayor, 123');
+INSERT INTO Visitante (nif, nombre, domicilio) VALUES
+    ('98765432B', 'Javier Martínez', 'Avenida Principal, 456');
+-- Puedes continuar con más inserciones de visitantes
+
+-- Tarjetas de visita
+INSERT INTO Tarjeta_Visita (stand_id, visitante_id, fecha_hora, observacion) VALUES
+    (1, 1, '2005-09-10 11:30:00', 'Interesada en botas de invierno');
+INSERT INTO Tarjeta_Visita (stand_id, visitante_id, fecha_hora, observacion) VALUES
+    (2, 2, '2005-09-11 14:15:00', 'Busca alpargatas de colores');
+-- Puedes continuar con más inserciones de tarjetas de visita
+
+-- Puedes continuar con más inserciones de datos para cada tabla
+
+-- Creación de índices y secuencias (igual que antes)
+
+-- Creación de índices
+CREATE INDEX idx_feria_nombre ON Feria(nombre);
+CREATE INDEX idx_expositor_nombre ON Expositor(nombre);
+CREATE INDEX idx_visitante_nif ON Visitante(nif);
+
+-- Creación de secuencias para generar IDs únicos
+CREATE SEQUENCE feria_seq START 1;
+CREATE SEQUENCE edicion_seq START 1;
+CREATE SEQUENCE expositor_seq START 1;
+CREATE SEQUENCE stand_seq START 1;
+CREATE SEQUENCE visitante_seq START 1;
+CREATE SEQUENCE tarjeta_seq START 1;
