@@ -1,42 +1,43 @@
 package com.bancamovil.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.stereotype.Component;
-
+import io.jsonwebtoken.*;
 import java.util.Date;
+import java.util.Map;
 
-@Component
 public class JwtUtil {
 
-    private String secretKey = "moviles1234"; // Usa una clave secreta más robusta en producción
+    private static final String SECRET_KEY = "moviles1234";  // Cambiar por una clave segura
 
-    public String generateToken(String username) {
+    // Método para generar el JWT
+    public static String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 1 hora
-                .signWith(SignatureAlgorithm.HS256, secretKey)
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // Expira en 24 horas
+                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
 
-    public Claims extractClaims(String token) {
+    // Método para validar el JWT
+    public static Claims extractClaims(String token) {
         return Jwts.parser()
-                .setSigningKey(secretKey)
+                .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
                 .getBody();
     }
 
-    public boolean isTokenExpired(String token) {
+    // Método para verificar la validez del token
+    public static boolean isTokenExpired(String token) {
         return extractClaims(token).getExpiration().before(new Date());
     }
 
-    public String extractUsername(String token) {
+    // Método para extraer el nombre de usuario desde el token
+    public static String extractUsername(String token) {
         return extractClaims(token).getSubject();
     }
 
-    public boolean validateToken(String token, String username) {
+    // Método para validar el JWT
+    public static boolean validateToken(String token, String username) {
         return (username.equals(extractUsername(token)) && !isTokenExpired(token));
     }
 }

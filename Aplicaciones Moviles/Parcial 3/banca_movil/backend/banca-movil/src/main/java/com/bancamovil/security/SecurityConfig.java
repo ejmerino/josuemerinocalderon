@@ -9,12 +9,18 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // Configuración de seguridad con la nueva API de Spring Security 6.1
+    private final JwtUtil jwtUtil;
+
+    public SecurityConfig(JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -32,16 +38,19 @@ public class SecurityConfig {
                 )
                 .csrf(csrf -> csrf.disable());  // Desactiva CSRF para simplificar (ajustar según necesidades)
 
+        http.addFilterBefore(new JwtRequestFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);  // Agregamos el filtro JWT
+
         return http.build();  // Es necesario para construir la configuración final
     }
 
-    // Bean para configurar el AuthenticationManager
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.inMemoryAuthentication()
-                .withUser("user").password("{noop}password").roles("USER");
+                .withUser("user")
+                .password("{noop}password")  // Contraseña sin encriptar, ajusta según sea necesario
+                .roles("USER");
         return authenticationManagerBuilder.build();
     }
 }
