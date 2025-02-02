@@ -11,13 +11,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User createUser(User user) {
-        return userRepository.save(user); // Guardar usuario en DB
+    // Registrar usuario
+    public User registerUser(User user) {
+        return userRepository.save(user);
     }
 
-    public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email); // Buscar usuario por email
+    // Iniciar sesión (con credenciales básicas)
+    public User loginUser(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
-
-    // Otras funcionalidades como actualizar, eliminar, etc.
 }

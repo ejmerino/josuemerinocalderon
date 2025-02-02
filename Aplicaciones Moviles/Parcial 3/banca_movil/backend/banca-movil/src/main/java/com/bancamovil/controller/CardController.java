@@ -5,20 +5,30 @@ import com.bancamovil.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/cards")
+@RequestMapping("/cards")
 public class CardController {
 
     @Autowired
     private CardService cardService;
 
+    // Agregar tarjeta
     @PostMapping("/add")
     public Card addCard(@RequestBody Card card) {
-        return cardService.addCard(card); // Agregar tarjeta
+        return cardService.addCard(card);
     }
 
-    @PostMapping("/freeze/{cardId}")
-    public void freezeCard(@PathVariable Long cardId) {
-        cardService.freezeCard(cardId); // Congelar tarjeta
+    // Congelar tarjeta
+    @PostMapping("/freeze/{id}")
+    public Card freezeCard(@PathVariable Long id) {
+        return cardService.freezeCard(id);
+    }
+
+    // Obtener todas las tarjetas de un usuario
+    @GetMapping("/user/{userId}")
+    public List<Card> getCardsByUser(@PathVariable Long userId) {
+        return cardService.getCardsByUser(userId);
     }
 }

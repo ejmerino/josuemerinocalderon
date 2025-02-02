@@ -6,19 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    // Registrar un nuevo usuario
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
-        return userService.createUser(user); // Crear un nuevo usuario
+        return userService.registerUser(user);
     }
 
-    @GetMapping("/email/{email}")
-    public User getUserByEmail(@PathVariable String email) {
-        return userService.getUserByEmail(email); // Obtener usuario por email
+    // Iniciar sesión (Por simplicidad no se implementa autenticación real aquí)
+    @PostMapping("/login")
+    public User loginUser(@RequestParam String email, @RequestParam String password) {
+        return userService.loginUser(email, password);
     }
 }

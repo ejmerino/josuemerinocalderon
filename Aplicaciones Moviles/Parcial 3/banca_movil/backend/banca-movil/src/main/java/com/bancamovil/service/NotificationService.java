@@ -11,9 +11,8 @@ public class NotificationService {
     @Autowired
     private NotificationRepository notificationRepository;
 
+    // Crear notificación
     public Notification createNotification(Notification notification) {
-        return notificationRepository.save(notification); // Crear notificación
+        return notificationRepository.save(notification);
     }
-
-    // Otros métodos para enviar alertas o consultar notificaciones
 }
