@@ -1,12 +1,9 @@
 package com.bancamovil.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "cards")
 public class Card {
 
     @Id
@@ -14,13 +11,15 @@ public class Card {
     private Long id;
 
     private String cardNumber;
-    private String cardHolder;
-    private Double balance;
+    private String cardHolderName;
+    private boolean frozen;
 
-    @Column(name = "is_frozen")
-    private boolean isFrozen;  // Atributo para saber si la tarjeta está congelada
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     // Getters y Setters
+
     public Long getId() {
         return id;
     }
@@ -37,27 +36,27 @@ public class Card {
         this.cardNumber = cardNumber;
     }
 
-    public String getCardHolder() {
-        return cardHolder;
+    public String getCardHolderName() {
+        return cardHolderName;
     }
 
-    public void setCardHolder(String cardHolder) {
-        this.cardHolder = cardHolder;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public void setCardHolderName(String cardHolderName) {
+        this.cardHolderName = cardHolderName;
     }
 
     public boolean isFrozen() {
-        return isFrozen;
+        return frozen;
     }
 
-    public void setFrozen(boolean isFrozen) {
-        this.isFrozen = isFrozen;
+    public void setFrozen(boolean frozen) {
+        this.frozen = frozen;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -1,34 +1,31 @@
 package com.bancamovil.model;
 
 import jakarta.persistence.*;
-import javax.management.Notification;
-import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String email;
-    private String password; // En producción, nunca almacenes contraseñas en texto plano
-    private Double balance;
+    private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Card> cards = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Card> cards;
 
-    @OneToMany(mappedBy = "user")
-    private List<Payment> payments = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Payment> payments;
 
-    @OneToMany(mappedBy = "user")
-    private List<Notification> notifications = new ArrayList<>();
-
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Notification> notifications;
 
     // Getters y Setters
+
     public Long getId() {
         return id;
     }
@@ -61,11 +58,27 @@ public class User {
         this.password = password;
     }
 
-    public Double getBalance() {
-        return balance;
+    public List<Card> getCards() {
+        return cards;
     }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 }

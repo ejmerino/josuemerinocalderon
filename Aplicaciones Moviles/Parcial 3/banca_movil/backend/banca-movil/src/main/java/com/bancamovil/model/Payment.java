@@ -1,27 +1,20 @@
 package com.bancamovil.model;
 
 import jakarta.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Payment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double amount;
-    private String paymentMethod;
+    private String description;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "payment")
-    private List<Transaction> transactions = new ArrayList<>();
-
-    // Getters y setters
-
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -38,12 +31,12 @@ public class Payment {
         this.amount = amount;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public User getUser() {
@@ -52,13 +45,5 @@ public class Payment {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
     }
 }

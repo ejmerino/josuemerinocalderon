@@ -1,23 +1,20 @@
 package com.bancamovil.model;
 
 import jakarta.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Notification {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String message;
-    private Date date;
+    private boolean read;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // Getters y setters
-
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -34,12 +31,12 @@ public class Notification {
         this.message = message;
     }
 
-    public Date getDate() {
-        return date;
+    public boolean isRead() {
+        return read;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setRead(boolean read) {
+        this.read = read;
     }
 
     public User getUser() {

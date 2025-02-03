@@ -5,19 +5,17 @@ import java.util.Date;
 
 @Entity
 public class Transaction {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double amount;
-    private Date transactionDate;
+    private String status;
+    private Date timestamp;
 
-    @ManyToOne
-    @JoinColumn(name = "payment_id")
+    @OneToOne
+    @JoinColumn(name = "payment_id", nullable = false)
     private Payment payment;
 
-    // Getters y setters
-
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -26,20 +24,20 @@ public class Transaction {
         this.id = id;
     }
 
-    public Double getAmount() {
-        return amount;
+    public String getStatus() {
+        return status;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Date getTransactionDate() {
-        return transactionDate;
+    public Date getTimestamp() {
+        return timestamp;
     }
 
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     public Payment getPayment() {

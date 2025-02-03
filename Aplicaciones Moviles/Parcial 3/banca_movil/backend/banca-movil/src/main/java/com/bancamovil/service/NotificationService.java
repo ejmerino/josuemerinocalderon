@@ -12,7 +12,7 @@ public class NotificationService {
     private NotificationRepository notificationRepository;
 
     // Crear notificación
-    public Notification createNotification(Notification notification) {
-        return notificationRepository.save(notification);
+    public Notification createNotification(Notification appNotification) {
+        return notificationRepository.save(appNotification);
     }
 }
