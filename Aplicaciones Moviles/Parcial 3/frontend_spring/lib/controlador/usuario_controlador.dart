@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../modelo/usuario_modelo.dart';
 
 class UsuarioControlador {
-  final String apiUrl = 'http://192.168.100.17:9090/api/usuarios'; // Cambia según tu servidor
+  final String apiUrl = 'http://localhost:9090/api/usuarios'; // Cambia según tu servidor
 
   // Obtener todos los usuarios
   Future<List<Usuario>> obtenerUsuarios() async {
