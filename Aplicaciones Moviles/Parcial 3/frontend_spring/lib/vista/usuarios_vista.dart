@@ -30,74 +30,99 @@ class _UsuariosVistaState extends State<UsuariosVista> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gestión de Usuarios'),
-        backgroundColor: Colors.deepPurple,
+        title: Text('Gestión de Usuarios', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        backgroundColor: Colors.deepPurpleAccent,
+        elevation: 10,
+        shadowColor: Colors.black54,
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh),
+            icon: Icon(Icons.refresh, color: Colors.white),
             onPressed: _refrescarLista,
           ),
         ],
       ),
-      body: FutureBuilder<List<Usuario>>(
-        future: _usuariosFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (snapshot.hasData) {
-            final usuarios = snapshot.data!;
-            return ListView.builder(
-              itemCount: usuarios.length,
-              itemBuilder: (context, index) {
-                final usuario = usuarios[index];
-                return Card(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: ListTile(
-                    title: Text(usuario.nombre),
-                    subtitle: Text(usuario.email),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.edit, color: Colors.blue),
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ModificarUsuario(usuario: usuario, refrescarLista: _refrescarLista),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.white, Colors.grey.shade300],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: FutureBuilder<List<Usuario>>(
+          future: _usuariosFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator(color: Colors.deepPurpleAccent));
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.black)));
+            } else if (snapshot.hasData) {
+              final usuarios = snapshot.data!;
+              return ListView.builder(
+                itemCount: usuarios.length,
+                itemBuilder: (context, index) {
+                  final usuario = usuarios[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                    child: Card(
+                      elevation: 6,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      color: Colors.white.withOpacity(0.9),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.all(20),
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.grey.shade400,
+                          child: Text(usuario.nombre[0].toUpperCase(),
+                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                        ),
+                        title: Text(usuario.nombre, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                        subtitle: Text(usuario.email, style: TextStyle(color: Colors.grey.shade700)),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.edit, color: Colors.blueAccent),
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ModificarUsuario(
+                                      usuario: usuario, refrescarLista: _refrescarLista),
+                                ),
+                              ),
                             ),
-                          ),
+                            IconButton(
+                              icon: Icon(Icons.delete, color: Colors.redAccent),
+                              onPressed: () => EliminarUsuario.mostrarDialogo(
+                                context: context,
+                                usuario: usuario,
+                                refrescarLista: _refrescarLista,
+                              ),
+                            ),
+                          ],
                         ),
-                        IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: () => EliminarUsuario.mostrarDialogo(
-                            context: context,
-                            usuario: usuario,
-                            refrescarLista: _refrescarLista,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                );
-              },
-            );
-          } else {
-            return Center(child: Text('No hay usuarios disponibles'));
-          }
-        },
+                  );
+                },
+              );
+            } else {
+              return Center(child: Text('No hay usuarios disponibles', style: TextStyle(color: Colors.black)));
+            }
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        backgroundColor: Colors.deepPurple,
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => AgregarUsuario(refrescarLista: _refrescarLista),
           ),
         ),
+        backgroundColor: Colors.deepPurpleAccent,
+        child: Icon(Icons.add, size: 30, color: Colors.white),
+        elevation: 6,
       ),
     );
   }
