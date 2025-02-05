@@ -13,23 +13,47 @@ class EliminarUsuario {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Eliminar Usuario'),
-        content: Text('¿Estás seguro de eliminar a ${usuario.nombre}?'),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        title: Row(
+          children: [
+            Icon(Icons.warning, color: Colors.red),
+            SizedBox(width: 10),
+            Text('Eliminar Usuario', style: TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
+        content: Text(
+          '¿Estás seguro de eliminar a ${usuario.nombre}?',
+          style: TextStyle(fontSize: 16),
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancelar'),
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.grey.shade700,
+            ),
+            child: Text('Cancelar', style: TextStyle(fontSize: 16)),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () async {
               await _controlador.eliminarUsuario(usuario.id);
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Usuario eliminado con éxito')),
+                SnackBar(
+                  content: Text('Usuario eliminado con éxito', style: TextStyle(color: Colors.white)),
+                  backgroundColor: Colors.redAccent,
+                ),
               );
               refrescarLista();
               Navigator.pop(context);
             },
-            child: Text('Eliminar'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.redAccent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: Text('Eliminar', style: TextStyle(fontSize: 16, color: Colors.white)),
           ),
         ],
       ),
