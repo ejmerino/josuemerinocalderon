@@ -74,9 +74,12 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Iniciar sesión"),
-        backgroundColor: Colors.blueAccent,
+        title: Text("Iniciar sesión", style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFF1A237E), // Azul oscuro para el AppBar
+        elevation: 0,
+        automaticallyImplyLeading: false, // Quitar la flecha hacia atrás
       ),
+
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),
         child: Column(
@@ -90,7 +93,7 @@ class _LoginViewState extends State<LoginView> {
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
-                labelText: 'Username',
+                labelText: 'Usuario',
                 border: OutlineInputBorder(),
                 filled: true,
                 fillColor: Colors.grey[100],
@@ -102,7 +105,7 @@ class _LoginViewState extends State<LoginView> {
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: 'Password',
+                labelText: 'Contraseña',
                 border: OutlineInputBorder(),
                 filled: true,
                 fillColor: Colors.grey[100],
