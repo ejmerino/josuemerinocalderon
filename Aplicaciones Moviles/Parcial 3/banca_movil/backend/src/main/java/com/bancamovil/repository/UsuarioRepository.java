@@ -4,5 +4,7 @@ import com.bancamovil.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-    boolean existsByNumeroCuenta(String numeroCuenta);
+    Usuario findByNumeroCuenta(String numeroCuenta);
+    Usuario findByUsername(String username);
+    boolean existsByNumeroCuenta(String numero);
 }

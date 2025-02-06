@@ -14,17 +14,20 @@ public class TarjetaController {
     @Autowired
     private TarjetaService tarjetaService;
 
-    @GetMapping("/usuario/{usuarioId}")
-    public List<Tarjeta> obtenerTarjetas(@PathVariable Long usuarioId) {
-        return tarjetaService.obtenerTarjetasPorUsuario(usuarioId);
-    }
-
+    // Crear una nueva tarjeta
     @PostMapping("/agregar")
     public Tarjeta agregarTarjeta(@RequestBody Tarjeta tarjeta) {
         return tarjetaService.agregarTarjeta(tarjeta);
     }
 
-    @PutMapping("/congelar/{tarjetaId}")
+    // Listar todas las tarjetas de un usuario
+    @GetMapping("/usuario/{usuarioId}")
+    public List<Tarjeta> obtenerTarjetas(@PathVariable Long usuarioId) {
+        return tarjetaService.obtenerTarjetasPorUsuario(usuarioId);
+    }
+
+    // Congelar una tarjeta
+    @PostMapping("/congelar/{tarjetaId}")
     public Tarjeta congelarTarjeta(@PathVariable Long tarjetaId) {
         return tarjetaService.congelarTarjeta(tarjetaId);
     }

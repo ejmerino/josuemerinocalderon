@@ -2,8 +2,8 @@ package com.bancamovil.model;
 
 import jakarta.persistence.*;
 
+
 @Entity
-@Table(name = "transferencias")
 public class Transferencia {
 
     @Id
@@ -11,25 +11,55 @@ public class Transferencia {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "pago_id", nullable = false)
-    private Pago pago;
+    @JoinColumn(name = "emisor_id")
+    private Usuario emisor;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "beneficiario_id")
+    private Usuario beneficiario;
+
     private Double monto;
 
-    @Column(nullable = false)
-    private String destino;
+    private String numeroCuentaDestino;
 
     // Getters y Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public Pago getPago() { return pago; }
-    public void setPago(Pago pago) { this.pago = pago; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Double getMonto() { return monto; }
-    public void setMonto(Double monto) { this.monto = monto; }
+    public Usuario getEmisor() {
+        return emisor;
+    }
 
-    public String getDestino() { return destino; }
-    public void setDestino(String destino) { this.destino = destino; }
+    public void setEmisor(Usuario emisor) {
+        this.emisor = emisor;
+    }
+
+    public Usuario getBeneficiario() {
+        return beneficiario;
+    }
+
+    public void setBeneficiario(Usuario beneficiario) {
+        this.beneficiario = beneficiario;
+    }
+
+    public Double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Double monto) {
+        this.monto = monto;
+    }
+
+    public String getNumeroCuentaDestino() {
+        return numeroCuentaDestino;
+    }
+
+    public void setNumeroCuentaDestino(String numeroCuentaDestino) {
+        this.numeroCuentaDestino = numeroCuentaDestino;
+    }
 }
