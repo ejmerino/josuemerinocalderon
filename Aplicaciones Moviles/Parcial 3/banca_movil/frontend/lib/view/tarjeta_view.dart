@@ -5,6 +5,7 @@ import '../model/tarjeta.dart';
 class TarjetaView extends StatefulWidget {
   final int usuarioId;
 
+
   TarjetaView({required this.usuarioId});
 
   @override
@@ -31,8 +32,10 @@ class _TarjetaViewState extends State<TarjetaView> {
       });
     } catch (e) {
       // Manejar error
+      print("Error al cargar tarjetas: $e");
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

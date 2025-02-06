@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../controller/user_controller.dart';
 import 'login_view.dart';
+import 'tarjeta_view.dart';
 
 class CuentaView extends StatelessWidget {
   final String nombre;
@@ -15,6 +18,11 @@ class CuentaView extends StatelessWidget {
     required this.numeroCuenta,
     required this.saldoDisponible,
   });
+
+  Future<int> obtenerUsuarioId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt('id') ?? 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,16 +105,27 @@ class CuentaView extends StatelessWidget {
               SizedBox(height: 20),
 
               ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, '/crearTarjeta'),
-                child: Text('Tarjetas'),
+                onPressed: () async {
+                  int usuarioId = await obtenerUsuarioId();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TarjetaView(usuarioId: usuarioId),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Tarjetas',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 55),
-                  backgroundColor: Colors.teal, // Teal para crear tarjeta
+                  backgroundColor: Colors.teal,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  textStyle: TextStyle(fontSize: 18, color: Colors.white), // Color de texto blanco
                 ),
-              ),
-              SizedBox(height: 20),
+              )
+
+
             ],
           ),
         ),
