@@ -25,17 +25,17 @@ public class UsuarioService {
         }
     }
 
-
-
     // Método para generar un número de cuenta único
     public String generarNumeroCuentaUnico() {
         Random random = new Random();
         String numero;
         do {
-            numero = String.format("%010d", random.nextInt(1_000_000_000));
+            // Genera un número entre 1000000000L y 9999999999L
+            numero = String.format("%010d", (random.nextLong(9000000000L) + 1000000000L));
         } while (usuarioRepository.existsByNumeroCuenta(numero));
         return numero;
     }
+
 
     // Método para registrar un usuario
     public Usuario registrarUsuario(Usuario usuario) {
