@@ -20,6 +20,11 @@ public class TarjetaController {
         return tarjetaService.agregarTarjeta(tarjeta);
     }
 
+    @GetMapping
+    public List<Tarjeta> obtenerTodasLasTarjetas() {
+        return tarjetaService.obtenerTodasLasTarjetas();
+    }
+
     // Listar todas las tarjetas de un usuario
     @GetMapping("/usuario/{usuarioId}")
     public List<Tarjeta> obtenerTarjetas(@PathVariable Long usuarioId) {
@@ -30,5 +35,10 @@ public class TarjetaController {
     @PostMapping("/congelar/{tarjetaId}")
     public Tarjeta congelarTarjeta(@PathVariable Long tarjetaId) {
         return tarjetaService.congelarTarjeta(tarjetaId);
+    }
+    // Descongelar una tarjeta
+    @PostMapping("/descongelar/{tarjetaId}")
+    public Tarjeta descongelarTarjeta(@PathVariable Long tarjetaId) {
+        return tarjetaService.descongelarTarjeta(tarjetaId);
     }
 }

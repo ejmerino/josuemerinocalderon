@@ -7,6 +7,8 @@ import com.bancamovil.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TransferenciaService {
 
@@ -46,5 +48,15 @@ public class TransferenciaService {
         transferencia.setNumeroCuentaDestino(numeroCuentaDestino);
 
         return transferenciaRepository.save(transferencia);
+    }
+
+    // Obtener todas las transferencias
+    public List<Transferencia> obtenerTransferencias() {
+        return transferenciaRepository.findAll(); // Devuelve todas las transferencias
+    }
+
+    // Obtener transferencias por emisor
+    public List<Transferencia> obtenerTransferenciasPorEmisor(Long emisorId) {
+        return transferenciaRepository.findByEmisorId(emisorId); // Devuelve transferencias de un emisor específico
     }
 }

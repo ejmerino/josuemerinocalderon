@@ -23,8 +23,7 @@ public class Tarjeta {
     private String cvv;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private EstadoTarjeta estado;
+    private boolean estado;  // true = activa, false = congelada
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
@@ -46,14 +45,9 @@ public class Tarjeta {
     public String getCvv() { return cvv; }
     public void setCvv(String cvv) { this.cvv = cvv; }
 
-    public EstadoTarjeta getEstado() { return estado; }
-    public void setEstado(EstadoTarjeta estado) { this.estado = estado; }
+    public boolean isEstado() { return estado; }  // Cambié el nombre para seguir las convenciones de Java
+    public void setEstado(boolean estado) { this.estado = estado; }
 
     public Usuario getUsuario() { return usuario; }
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }
-}
-
-public enum EstadoTarjeta {
-    CONGELADA,
-    ACTIVA
 }

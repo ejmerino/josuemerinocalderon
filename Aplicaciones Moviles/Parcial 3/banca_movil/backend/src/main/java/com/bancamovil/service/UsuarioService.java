@@ -5,6 +5,7 @@ import com.bancamovil.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -13,6 +14,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    // Método para login
     public Usuario login(String username, String password) {
         Usuario usuario = usuarioRepository.findByUsername(username);
         if (usuario != null && usuario.getPassword().equals(password)) {
@@ -22,6 +24,7 @@ public class UsuarioService {
         }
     }
 
+    // Método para generar un número de cuenta único
     public String generarNumeroCuentaUnico() {
         Random random = new Random();
         String numero;
@@ -31,8 +34,14 @@ public class UsuarioService {
         return numero;
     }
 
+    // Método para registrar un usuario
     public Usuario registrarUsuario(Usuario usuario) {
         usuario.setNumeroCuenta(generarNumeroCuentaUnico());
         return usuarioRepository.save(usuario);
+    }
+
+    // Método para obtener todos los usuarios (añadido)
+    public List<Usuario> obtenerUsuarios() {
+        return usuarioRepository.findAll();  // Devuelve todos los usuarios
     }
 }
