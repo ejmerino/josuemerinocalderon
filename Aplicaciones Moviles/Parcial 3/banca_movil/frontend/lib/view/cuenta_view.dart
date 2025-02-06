@@ -74,6 +74,12 @@ class _CuentaViewState extends State<CuentaView> {
               },
               child: Text('Crear Tarjeta'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/crearCuenta'); // Ir a crear cuenta
+              },
+              child: Text('Crear Cuenta'),
+            ),
             SizedBox(height: 20),
             Text('Tarjetas vinculadas:'),
             ListView.builder(
