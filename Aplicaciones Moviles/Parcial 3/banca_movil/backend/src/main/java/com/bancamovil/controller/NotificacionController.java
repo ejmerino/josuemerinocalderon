@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/notificaciones")
+@CrossOrigin(origins = "*")
 public class NotificacionController {
 
     @Autowired

@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tarjetas")
+@CrossOrigin(origins = "*")
 public class TarjetaController {
 
     @Autowired
