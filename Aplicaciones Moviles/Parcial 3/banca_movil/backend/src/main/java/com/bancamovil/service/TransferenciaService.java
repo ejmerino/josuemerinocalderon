@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransferenciaService {
@@ -27,10 +28,11 @@ public class TransferenciaService {
         }
 
         // Verificar que la cuenta de destino existe
-        Usuario beneficiario = usuarioRepository.findByNumeroCuenta(numeroCuentaDestino);
-        if (beneficiario == null) {
+        Optional<Usuario> beneficiarioOpt = usuarioRepository.findByNumeroCuenta(numeroCuentaDestino);
+        if (beneficiarioOpt.isEmpty()) {
             throw new RuntimeException("Número de cuenta de destino no encontrado");
         }
+        Usuario beneficiario = beneficiarioOpt.get();
 
         // Realizar la transferencia (restar del emisor y sumar al beneficiario)
         emisor.setSaldoDisponible(emisor.getSaldoDisponible() - monto);

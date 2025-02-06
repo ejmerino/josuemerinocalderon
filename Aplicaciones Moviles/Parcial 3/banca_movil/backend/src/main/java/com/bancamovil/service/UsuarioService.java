@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -23,6 +24,8 @@ public class UsuarioService {
             throw new RuntimeException("Usuario o contraseña incorrectos");
         }
     }
+
+
 
     // Método para generar un número de cuenta único
     public String generarNumeroCuentaUnico() {
@@ -44,4 +47,9 @@ public class UsuarioService {
     public List<Usuario> obtenerUsuarios() {
         return usuarioRepository.findAll();  // Devuelve todos los usuarios
     }
+
+    public Optional<Usuario> obtenerUsuarioPorNumeroCuenta(String numeroCuenta) {
+        return usuarioRepository.findByNumeroCuenta(numeroCuenta);
+    }
+
 }
