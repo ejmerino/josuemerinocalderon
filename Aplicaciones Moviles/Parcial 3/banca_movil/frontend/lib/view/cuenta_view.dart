@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/view/transferir_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../controller/user_controller.dart';
@@ -93,7 +94,12 @@ class CuentaView extends StatelessWidget {
 
               // Botones de acción con un diseño más atractivo
               ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, '/transferir'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TransferirView()),
+                  );
+                },
                 child: Text('Realizar Transferencia'),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 55),
@@ -103,6 +109,7 @@ class CuentaView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
+
 
               ElevatedButton(
                 onPressed: () async {

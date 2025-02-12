@@ -129,8 +129,8 @@ class _LoginViewState extends State<LoginView> {
               Text(errorMessage, style: TextStyle(color: Colors.red, fontSize: 16)),
             ],
             SizedBox(height: 40),
-            Text("¿Olvidaste tu contraseña?", style: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold)),
-            SizedBox(height: 20),
+            //Text("¿Olvidaste tu contraseña?", style: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold)),
+            //SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => Navigator.push(
                 context,
