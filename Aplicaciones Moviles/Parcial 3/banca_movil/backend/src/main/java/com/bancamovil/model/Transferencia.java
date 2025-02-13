@@ -22,6 +22,10 @@ public class Transferencia {
 
     private String numeroCuentaDestino;
 
+    private String motivo;
+
+
+
     // Getters y Setters
     public Long getId() {
         return id;
@@ -62,4 +66,8 @@ public class Transferencia {
     public void setNumeroCuentaDestino(String numeroCuentaDestino) {
         this.numeroCuentaDestino = numeroCuentaDestino;
     }
+
+    public String getMotivo() {return motivo; }
+
+    public void setMotivo(String motivo) {this.motivo = motivo;}
 }

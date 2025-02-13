@@ -19,8 +19,9 @@ public class TransferenciaController {
     @PostMapping("/realizar")
     public Transferencia realizarTransferencia(@RequestParam Long emisorId,
                                                @RequestParam String numeroCuentaDestino,
-                                               @RequestParam Double monto) {
-        return transferenciaService.realizarTransferencia(emisorId, numeroCuentaDestino, monto);
+                                               @RequestParam Double monto,
+                                               @RequestParam String motivo) {
+        return transferenciaService.realizarTransferencia(emisorId, numeroCuentaDestino, monto, motivo);
     }
 
     // Obtener todas las transferencias

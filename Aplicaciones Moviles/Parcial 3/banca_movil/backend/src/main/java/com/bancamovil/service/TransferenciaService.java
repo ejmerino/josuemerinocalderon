@@ -20,7 +20,7 @@ public class TransferenciaService {
     private UsuarioRepository usuarioRepository;
 
     // Realizar transferencia
-    public Transferencia realizarTransferencia(Long emisorId, String numeroCuentaDestino, Double monto) {
+    public Transferencia realizarTransferencia(Long emisorId, String numeroCuentaDestino, Double monto, String motivo) {
         // Verificar que el emisor existe y tiene saldo suficiente
         Usuario emisor = usuarioRepository.findById(emisorId).orElseThrow(() -> new RuntimeException("Emisor no encontrado"));
         if (emisor.getSaldoDisponible() < monto) {
@@ -48,6 +48,8 @@ public class TransferenciaService {
         transferencia.setBeneficiario(beneficiario);
         transferencia.setMonto(monto);
         transferencia.setNumeroCuentaDestino(numeroCuentaDestino);
+        transferencia.setMotivo(motivo);
+
 
         return transferenciaRepository.save(transferencia);
     }
