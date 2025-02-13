@@ -117,7 +117,7 @@ class _LoginViewState extends State<LoginView> {
               onPressed: isLoading ? null : login,
               child: isLoading
                   ? CircularProgressIndicator(color: Colors.white)
-                  : Text('Iniciar sesión', style: TextStyle(fontSize: 18)),
+                  : Text('Iniciar sesión', style: TextStyle(fontSize: 18, color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
                 backgroundColor: Colors.blueAccent,
@@ -136,7 +136,7 @@ class _LoginViewState extends State<LoginView> {
                 context,
                 MaterialPageRoute(builder: (context) => RegistroView()),
               ),
-              child: Text("Crear cuenta", style: TextStyle(fontSize: 18)),
+              child: Text("Crear cuenta", style: TextStyle(fontSize: 18, color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
                 backgroundColor: Colors.greenAccent,
