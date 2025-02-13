@@ -4,7 +4,6 @@ import 'package:frontend/view/transferir_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
 import '../controller/user_controller.dart';
 import 'login_view.dart';
 import 'tarjeta_view.dart';
@@ -28,6 +27,7 @@ class CuentaView extends StatefulWidget {
 
 class _CuentaViewState extends State<CuentaView> {
   List<dynamic> transacciones = [];
+  bool mostrandoEnviadas = true;
 
   @override
   void initState() {
@@ -42,7 +42,7 @@ class _CuentaViewState extends State<CuentaView> {
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);
       setState(() {
-        transacciones = data.where((t) => t['emisor']['numeroCuenta'] == widget.numeroCuenta).toList();
+        transacciones = data;
       });
     }
   }
@@ -54,6 +54,12 @@ class _CuentaViewState extends State<CuentaView> {
 
   @override
   Widget build(BuildContext context) {
+    List<dynamic> transaccionesFiltradas = transacciones.where((t) {
+      return mostrandoEnviadas
+          ? t['emisor']['numeroCuenta'] == widget.numeroCuenta
+          : t['beneficiario']['numeroCuenta'] == widget.numeroCuenta;
+    }).toList();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Cuenta de ${widget.nombre} ${widget.apellido}", style: TextStyle(color: Colors.white)),
@@ -115,30 +121,59 @@ class _CuentaViewState extends State<CuentaView> {
               Text('Historial de Transacciones',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF1A237E))),
               SizedBox(height: 10),
-              transacciones.isEmpty
+              ToggleButtons(
+                borderRadius: BorderRadius.circular(12),
+                selectedColor: Colors.white,
+                fillColor: Color(0xFF1A237E),
+                color: Colors.black87,
+                constraints: BoxConstraints(minWidth: 120, minHeight: 40),
+                isSelected: [mostrandoEnviadas, !mostrandoEnviadas],
+                onPressed: (index) {
+                  setState(() {
+                    mostrandoEnviadas = index == 0;
+                  });
+                },
+                children: [
+                  Text("Realizadas", style: TextStyle(fontSize: 16)),
+                  Text("Recibidas", style: TextStyle(fontSize: 16)),
+                ],
+              ),
+              SizedBox(height: 10),
+              transaccionesFiltradas.isEmpty
                   ? Text('No hay transacciones recientes', style: TextStyle(fontSize: 16, color: Colors.black54))
                   : ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: transacciones.length,
+                itemCount: transaccionesFiltradas.length,
                 itemBuilder: (context, index) {
-                  var transaccion = transacciones[index];
+                  var transaccion = transaccionesFiltradas[index];
+                  bool esEnviada = transaccion['emisor']['numeroCuenta'] == widget.numeroCuenta;
+
                   return Card(
                     margin: EdgeInsets.symmetric(vertical: 8),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     child: ListTile(
                       contentPadding: EdgeInsets.all(12),
-                      title: Text('Para: ${transaccion['beneficiario']['nombre']} ${transaccion['beneficiario']['apellido']}',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      title: Text(
+                        esEnviada
+                            ? 'Para: ${transaccion['beneficiario']['nombre']} ${transaccion['beneficiario']['apellido']}'
+                            : 'De: ${transaccion['emisor']['nombre']} ${transaccion['emisor']['apellido']}',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Cuenta: ${transaccion['numeroCuentaDestino']}'),
+                          Text(
+                            'Cuenta: ${esEnviada ? transaccion['numeroCuentaDestino'] : transaccion['emisor']['numeroCuenta']}',
+                          ),
                           Text('Monto: \$${transaccion['monto']}'),
                           Text('Motivo: ${transaccion['motivo'] ?? 'No especificado'}'),
                         ],
                       ),
-                      trailing: Icon(Icons.monetization_on, color: Colors.green),
+                      trailing: Icon(
+                        Icons.monetization_on,
+                        color: esEnviada ? Colors.green : Colors.blue,
+                      ),
                     ),
                   );
                 },
