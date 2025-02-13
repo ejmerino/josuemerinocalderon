@@ -12,6 +12,7 @@ class TransferirView extends StatefulWidget {
 class _TransferirViewState extends State<TransferirView> {
   final TextEditingController _numeroCuentaController = TextEditingController();
   final TextEditingController _montoController = TextEditingController();
+  final TextEditingController _motivoController = TextEditingController();
   final TransferenciaController _transferenciaController = TransferenciaController();
 
   String? _nombreTitular;
@@ -59,6 +60,7 @@ class _TransferirViewState extends State<TransferirView> {
       await _transferenciaController.realizarTransferencia(
         _numeroCuentaController.text,
         double.parse(_montoController.text),
+        _motivoController.text,
       );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Transferencia realizada con éxito')),
@@ -73,14 +75,19 @@ class _TransferirViewState extends State<TransferirView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Realizar Transferencia')),
+      appBar: AppBar(
+        title: Text('Realizar Transferencia'),
+        backgroundColor: Color(0xFF1A237E),
+        foregroundColor: Colors.white, // Color de texto en el AppBar
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Card para número de cuenta
             Card(
-              elevation: 4,
+              elevation: 6,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -91,19 +98,25 @@ class _TransferirViewState extends State<TransferirView> {
                         Expanded(
                           child: TextField(
                             controller: _numeroCuentaController,
-                            decoration: InputDecoration(labelText: 'Número de Cuenta Destino'),
+                            decoration: InputDecoration(
+                              labelText: 'Número de Cuenta Destino',
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(),
+                            ),
                           ),
                         ),
                         SizedBox(width: 10),
-                        ElevatedButton(
+                        ElevatedButton.icon(
                           onPressed: _verificando ? null : _verificarCuenta,
-                          child: _verificando
-                              ? SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                              : Text('Verificar'),
+                          icon: _verificando
+                              ? CircularProgressIndicator(strokeWidth: 2, color: Colors.white)
+                              : Icon(Icons.check_circle_outline, color: Colors.white),
+                          label: Text(_verificando ? 'Verificando...' : 'Verificar'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFF1A237E),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                          ),
                         ),
                       ],
                     ),
@@ -124,18 +137,36 @@ class _TransferirViewState extends State<TransferirView> {
               ),
             ),
             SizedBox(height: 20),
+
+            // Campo para monto
             TextField(
               controller: _montoController,
-              decoration: InputDecoration(labelText: 'Monto'),
+              decoration: InputDecoration(
+                labelText: 'Monto',
+                labelStyle: TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(),
+              ),
               keyboardType: TextInputType.number,
             ),
             SizedBox(height: 20),
+
+            // Campo para motivo de la transferencia
+            TextField(
+              controller: _motivoController,
+              decoration: InputDecoration(
+                labelText: 'Motivo',
+                labelStyle: TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+
+            // Botón de realizar transferencia
             ElevatedButton(
               onPressed: _realizarTransferencia,
               child: Text('Realizar Transferencia'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                backgroundColor: Color(0xFF1A237E),
+                minimumSize: Size(double.infinity, 50), backgroundColor: Color(0xFF1A237E),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 textStyle: TextStyle(fontSize: 18, color: Colors.white),
               ),
