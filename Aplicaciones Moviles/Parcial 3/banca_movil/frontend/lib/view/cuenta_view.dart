@@ -3,37 +3,39 @@ import 'package:frontend/config/ApiConfig.dart';
 import 'package:frontend/view/transferir_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import '../config/Session.dart';
 import 'package:http/http.dart' as http;
-import '../controller/user_controller.dart';
-import 'login_view.dart';
 import 'tarjeta_view.dart';
+import 'login_view.dart';
 
 class CuentaView extends StatefulWidget {
-  final String nombre;
-  final String apellido;
-  final String numeroCuenta;
-  final double saldoDisponible;
-
-  CuentaView({
-    required this.nombre,
-    required this.apellido,
-    required this.numeroCuenta,
-    required this.saldoDisponible,
-  });
-
   @override
   _CuentaViewState createState() => _CuentaViewState();
 }
 
 class _CuentaViewState extends State<CuentaView> {
+  String nombre = '';
+  String apellido = '';
+  String numeroCuenta = '';
+  double saldoDisponible = 0.0;
   List<dynamic> transacciones = [];
   bool mostrandoEnviadas = true;
 
   @override
   void initState() {
     super.initState();
+    _cargarDatosUsuario();
     obtenerHistorialTransacciones();
+  }
+
+  Future<void> _cargarDatosUsuario() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      nombre = prefs.getString('nombre') ?? 'Nombre';
+      apellido = prefs.getString('apellido') ?? 'Apellido';
+      numeroCuenta = prefs.getString('numeroCuenta') ?? '0000';
+      saldoDisponible = double.parse(prefs.getString('saldoDisponible') ?? '0.0');
+      print("Datos cargados desde SharedPreferences: numeroCuenta=$numeroCuenta, nombre=$nombre, apellido=$apellido, saldoDisponible=$saldoDisponible"); // Debug
+    });
   }
 
   Future<void> obtenerHistorialTransacciones() async {
@@ -57,22 +59,28 @@ class _CuentaViewState extends State<CuentaView> {
   Widget build(BuildContext context) {
     List<dynamic> transaccionesFiltradas = transacciones.where((t) {
       return mostrandoEnviadas
-          ? t['emisor']['numeroCuenta'] == widget.numeroCuenta
-          : t['beneficiario']['numeroCuenta'] == widget.numeroCuenta;
+          ? t['emisor']['numeroCuenta'] == numeroCuenta
+          : t['beneficiario']['numeroCuenta'] == numeroCuenta;
     }).toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cuenta de ${widget.nombre} ${widget.apellido}", style: TextStyle(color: Colors.white)),
+        title: Text("Cuenta de $nombre $apellido", style: TextStyle(color: Colors.white)),
         backgroundColor: Color(0xFF1A237E),
         leading: IconButton(
           icon: Icon(Icons.logout, color: Colors.white),
-          onPressed: () {
-            emisorId = null;  // Aquí se limpia la variable global
+          onPressed: () async {
+            // Limpiar datos de SharedPreferences al cerrar sesión
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            await prefs.remove('nombre');
+            await prefs.remove('apellido');
+            await prefs.remove('numeroCuenta');
+            await prefs.remove('saldoDisponible');
+
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => LoginView()),
-                  (route) => false,  // Elimina el historial de navegación
+                  (route) => false,
             );
           },
         ),
@@ -84,19 +92,19 @@ class _CuentaViewState extends State<CuentaView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                '¡Bienvenido/a, ${widget.nombre} ${widget.apellido}!',
+                '¡Bienvenido/a, $nombre $apellido!',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700, color: Color(0xFF1A237E)),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 16),
               Text(
-                'Número de cuenta: ${widget.numeroCuenta}',
+                'Número de cuenta: $numeroCuenta',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
               Text('Tu saldo es:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black87)),
-              Text('\$${widget.saldoDisponible.toStringAsFixed(2)}',
+              Text('\$$saldoDisponible',
                   style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800, color: Colors.green)),
               SizedBox(height: 40),
               ElevatedButton(
@@ -153,7 +161,7 @@ class _CuentaViewState extends State<CuentaView> {
                 itemCount: transaccionesFiltradas.length,
                 itemBuilder: (context, index) {
                   var transaccion = transaccionesFiltradas[index];
-                  bool esEnviada = transaccion['emisor']['numeroCuenta'] == widget.numeroCuenta;
+                  bool esEnviada = transaccion['emisor']['numeroCuenta'] == numeroCuenta;
 
                   return Card(
                     margin: EdgeInsets.symmetric(vertical: 8),

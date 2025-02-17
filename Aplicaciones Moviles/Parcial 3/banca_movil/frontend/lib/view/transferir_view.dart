@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../controller/transferencia_controller.dart';
-import '../config/Session.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../config/ApiConfig.dart';
 
 class TransferirView extends StatefulWidget {
@@ -20,12 +20,20 @@ class _TransferirViewState extends State<TransferirView> {
   bool _cuentaExiste = false;
   bool _verificando = false;
 
-  int? emisorIdLocal;
+  String? emisorNumeroCuenta;
 
   @override
   void initState() {
     super.initState();
-    emisorIdLocal = emisorId ?? 1;
+    _cargarNumeroCuentaEmisor();
+  }
+
+  Future<void> _cargarNumeroCuentaEmisor() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      emisorNumeroCuenta = prefs.getString('numeroCuenta');
+      print("Numero de cuenta del emisor cargado: $emisorNumeroCuenta");
+    });
   }
 
   Future<void> _verificarCuenta() async {
@@ -65,11 +73,28 @@ class _TransferirViewState extends State<TransferirView> {
       return;
     }
 
+    if (emisorNumeroCuenta == null || emisorNumeroCuenta!.isEmpty) {
+      print("ERROR: emisorNumeroCuenta es nulo o vacío!");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: No se pudo obtener el número de cuenta del emisor')),
+      );
+      return;
+    }
+
+    final monto = double.tryParse(_montoController.text);
+    if (monto == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Monto inválido')),
+      );
+      return;
+    }
+
+    print("Enviando transferencia con emisorNumeroCuenta: $emisorNumeroCuenta, numeroCuentaDestino: ${_numeroCuentaController.text}, monto: $monto, motivo: ${_motivoController.text}");
     try {
       await _transferenciaController.realizarTransferencia(
-        emisorIdLocal!,
+        emisorNumeroCuenta!,
         _numeroCuentaController.text,
-        double.parse(_montoController.text),
+        monto,
         _motivoController.text,
       );
       ScaffoldMessenger.of(context).showSnackBar(

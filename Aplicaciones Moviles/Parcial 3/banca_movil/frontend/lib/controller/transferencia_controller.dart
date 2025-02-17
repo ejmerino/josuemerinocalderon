@@ -1,22 +1,27 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../config/ApiConfig.dart'; // Importar ApiConfig
+import '../config/ApiConfig.dart';
 
 class TransferenciaController {
-  final String apiUrl = '${ApiConfig.baseUrl}/transferencias/realizar'; // Usar URL centralizada
+  Future<void> realizarTransferencia(
+      String emisorNumeroCuenta, String numeroCuentaDestino, double monto, String motivo) async {
+    final url = Uri.parse('${ApiConfig.baseUrl}/transferencias/realizar');
+    final headers = {'Content-Type': 'application/json'};
+    final body = json.encode({
+      'numeroCuentaEmisor': emisorNumeroCuenta,
+      'numeroCuentaDestino': numeroCuentaDestino,
+      'monto': monto,
+      'motivo': motivo,
+    });
 
-  Future<void> realizarTransferencia(int emisorId, String numeroCuentaDestino, double monto, String motivo) async {
-    final url = Uri.parse('$apiUrl?emisorId=$emisorId&numeroCuentaDestino=$numeroCuentaDestino&monto=$monto&motivo=$motivo');
+    print("Cuerpo de la solicitud (TransferenciaController): $body"); // Debug
 
-    final response = await http.post(
-      url,
-      headers: {"Content-Type": "application/json"},
-    );
+    final response = await http.post(url, headers: headers, body: body);
 
-    if (response.statusCode == 200) {
-      print('Transferencia realizada con éxito');
-    } else {
-      throw Exception('Error en la transferencia: ${response.body}');
+    if (response.statusCode != 200) {
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      throw Exception('Error al realizar la transferencia: ${response.body}');
     }
   }
 }

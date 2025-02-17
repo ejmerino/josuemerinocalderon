@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:frontend/view/registro_view.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../config/Session.dart'; // Importa la variable global
+import 'package:shared_preferences/shared_preferences.dart';
 import '../config/ApiConfig.dart';
-import './cuenta_view.dart';  // Asegúrate de que la importación sea correcta
+import './cuenta_view.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -42,17 +42,20 @@ class _LoginViewState extends State<LoginView> {
         final String apellido = data['apellido'];
         final String numeroCuenta = data['numeroCuenta'];
         final double saldoDisponible = data['saldoDisponible'];
-        //emisorId = data['id'];
 
-        Navigator.push(
+        // Guardar datos en SharedPreferences
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('numeroCuenta', numeroCuenta);
+        await prefs.setString('nombre', nombre);
+        await prefs.setString('apellido', apellido);
+        await prefs.setString('saldoDisponible', saldoDisponible.toString());
+
+        print("Datos del usuario: nombre=$nombre, numeroCuenta=$numeroCuenta, saldoDisponible=$saldoDisponible"); // Debug
+
+        Navigator.pushReplacement( // Use pushReplacement to avoid going back to login
           context,
           MaterialPageRoute(
-            builder: (context) => CuentaView(
-              nombre: nombre,
-              apellido: apellido,
-              numeroCuenta: numeroCuenta,
-              saldoDisponible: saldoDisponible,
-            ),
+            builder: (context) => CuentaView(),
           ),
         );
       } else {
@@ -77,11 +80,10 @@ class _LoginViewState extends State<LoginView> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Iniciar sesión", style: TextStyle(color: Colors.white)),
-        backgroundColor: Color(0xFF1A237E), // Azul oscuro para el AppBar
+        backgroundColor: Color(0xFF1A237E),
         elevation: 0,
-        automaticallyImplyLeading: false, // Quitar la flecha hacia atrás
+        automaticallyImplyLeading: false,
       ),
-
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),
         child: Column(
@@ -131,8 +133,6 @@ class _LoginViewState extends State<LoginView> {
               Text(errorMessage, style: TextStyle(color: Colors.red, fontSize: 16)),
             ],
             SizedBox(height: 40),
-            //Text("¿Olvidaste tu contraseña?", style: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold)),
-            //SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => Navigator.push(
                 context,
