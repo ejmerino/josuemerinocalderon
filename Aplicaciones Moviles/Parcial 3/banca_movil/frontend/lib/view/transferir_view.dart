@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../controller/transferencia_controller.dart';
+import '../config/Session.dart';
 import '../config/ApiConfig.dart';
 
 class TransferirView extends StatefulWidget {
@@ -18,6 +19,14 @@ class _TransferirViewState extends State<TransferirView> {
   String? _nombreTitular;
   bool _cuentaExiste = false;
   bool _verificando = false;
+
+  int? emisorIdLocal;
+
+  @override
+  void initState() {
+    super.initState();
+    emisorIdLocal = emisorId ?? 1;
+  }
 
   Future<void> _verificarCuenta() async {
     setState(() {
@@ -58,6 +67,7 @@ class _TransferirViewState extends State<TransferirView> {
 
     try {
       await _transferenciaController.realizarTransferencia(
+        emisorIdLocal!,
         _numeroCuentaController.text,
         double.parse(_montoController.text),
         _motivoController.text,
@@ -78,14 +88,13 @@ class _TransferirViewState extends State<TransferirView> {
       appBar: AppBar(
         title: Text('Realizar Transferencia'),
         backgroundColor: Color(0xFF1A237E),
-        foregroundColor: Colors.white, // Color de texto en el AppBar
+        foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Card para número de cuenta
             Card(
               elevation: 6,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -137,8 +146,6 @@ class _TransferirViewState extends State<TransferirView> {
               ),
             ),
             SizedBox(height: 20),
-
-            // Campo para monto
             TextField(
               controller: _montoController,
               decoration: InputDecoration(
@@ -149,8 +156,6 @@ class _TransferirViewState extends State<TransferirView> {
               keyboardType: TextInputType.number,
             ),
             SizedBox(height: 20),
-
-            // Campo para motivo de la transferencia
             TextField(
               controller: _motivoController,
               decoration: InputDecoration(
@@ -160,13 +165,12 @@ class _TransferirViewState extends State<TransferirView> {
               ),
             ),
             SizedBox(height: 20),
-
-            // Botón de realizar transferencia
             ElevatedButton(
               onPressed: _realizarTransferencia,
               child: Text('Realizar Transferencia'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), backgroundColor: Color(0xFF1A237E),
+                minimumSize: Size(double.infinity, 50),
+                backgroundColor: Color(0xFF1A237E),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 textStyle: TextStyle(fontSize: 18, color: Colors.white),
               ),

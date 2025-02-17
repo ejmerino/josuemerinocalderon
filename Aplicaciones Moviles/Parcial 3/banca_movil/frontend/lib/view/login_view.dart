@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/view/registro_view.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../config/Session.dart'; // Importa la variable global
 import '../config/ApiConfig.dart';
 import './cuenta_view.dart';  // Asegúrate de que la importación sea correcta
 
@@ -41,6 +42,7 @@ class _LoginViewState extends State<LoginView> {
         final String apellido = data['apellido'];
         final String numeroCuenta = data['numeroCuenta'];
         final double saldoDisponible = data['saldoDisponible'];
+        //emisorId = data['id'];
 
         Navigator.push(
           context,

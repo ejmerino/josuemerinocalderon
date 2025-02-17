@@ -1,26 +1,22 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../config/ApiConfig.dart'; // Importar ApiConfig
 
 class TransferenciaController {
-  final String apiUrl = 'http://localhost:8080/transferencias/realizar'; // Cambiar con la URL del backend
+  final String apiUrl = '${ApiConfig.baseUrl}/transferencias/realizar'; // Usar URL centralizada
 
-  Future<void> realizarTransferencia(String numeroCuentaDestino, double monto, String motivo) async {
+  Future<void> realizarTransferencia(int emisorId, String numeroCuentaDestino, double monto, String motivo) async {
+    final url = Uri.parse('$apiUrl?emisorId=$emisorId&numeroCuentaDestino=$numeroCuentaDestino&monto=$monto&motivo=$motivo');
+
     final response = await http.post(
-      Uri.parse(apiUrl),
-      body: {
-        'emisorId': '1', // Esto debe ser el ID del usuario autenticado
-        'numeroCuentaDestino': numeroCuentaDestino,
-        'monto': monto.toString(),
-        'motivo': motivo.toString(),
-      },
+      url,
+      headers: {"Content-Type": "application/json"},
     );
 
     if (response.statusCode == 200) {
-      // Transferencia exitosa
-      print('Transferencia realizada');
+      print('Transferencia realizada con éxito');
     } else {
-      // Error en la transferencia
-      throw Exception('Error al realizar la transferencia');
+      throw Exception('Error en la transferencia: ${response.body}');
     }
   }
 }

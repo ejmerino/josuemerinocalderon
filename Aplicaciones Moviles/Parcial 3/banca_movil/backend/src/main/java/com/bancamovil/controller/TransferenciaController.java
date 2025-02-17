@@ -24,6 +24,7 @@ public class TransferenciaController {
         return transferenciaService.realizarTransferencia(emisorId, numeroCuentaDestino, monto, motivo);
     }
 
+
     // Obtener todas las transferencias
     @GetMapping
     public List<Transferencia> obtenerTransferencias() {

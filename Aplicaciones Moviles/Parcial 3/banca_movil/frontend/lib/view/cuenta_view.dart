@@ -3,6 +3,7 @@ import 'package:frontend/config/ApiConfig.dart';
 import 'package:frontend/view/transferir_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import '../config/Session.dart';
 import 'package:http/http.dart' as http;
 import '../controller/user_controller.dart';
 import 'login_view.dart';
@@ -67,7 +68,12 @@ class _CuentaViewState extends State<CuentaView> {
         leading: IconButton(
           icon: Icon(Icons.logout, color: Colors.white),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginView()));
+            emisorId = null;  // Aquí se limpia la variable global
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => LoginView()),
+                  (route) => false,  // Elimina el historial de navegación
+            );
           },
         ),
       ),
