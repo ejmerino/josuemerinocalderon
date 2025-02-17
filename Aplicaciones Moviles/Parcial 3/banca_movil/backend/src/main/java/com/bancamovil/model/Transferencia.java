@@ -20,6 +20,8 @@ public class Transferencia {
 
     private Double monto;
 
+    private String numeroCuentaEmisor;
+
     private String numeroCuentaDestino;
 
     private String motivo;
@@ -58,6 +60,10 @@ public class Transferencia {
     public void setMonto(Double monto) {
         this.monto = monto;
     }
+
+    public String getNumeroCuentaEmisor() { return numeroCuentaEmisor;  }
+
+    public void setNumeroCuentaEmisor(String numeroCuentaEmisor) {this.numeroCuentaEmisor = numeroCuentaEmisor; }
 
     public String getNumeroCuentaDestino() {
         return numeroCuentaDestino;

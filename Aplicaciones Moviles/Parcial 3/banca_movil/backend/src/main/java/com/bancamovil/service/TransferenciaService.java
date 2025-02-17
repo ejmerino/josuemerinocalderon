@@ -19,20 +19,21 @@ public class TransferenciaService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    // Realizar transferencia
-    public Transferencia realizarTransferencia(Long emisorId, String numeroCuentaDestino, Double monto, String motivo) {
+    // Realizar la transferencia
+    public Transferencia realizarTransferencia(String numeroCuentaEmisor,
+                                               String numeroCuentaDestino,
+                                               Double monto,
+                                               String motivo) {
         // Verificar que el emisor existe y tiene saldo suficiente
-        Usuario emisor = usuarioRepository.findById(emisorId).orElseThrow(() -> new RuntimeException("Emisor no encontrado"));
+        Usuario emisor = usuarioRepository.findByNumeroCuenta(numeroCuentaEmisor)
+                .orElseThrow(() -> new RuntimeException("Emisor no encontrado"));
         if (emisor.getSaldoDisponible() < monto) {
             throw new RuntimeException("Saldo insuficiente en la cuenta del emisor");
         }
 
         // Verificar que la cuenta de destino existe
-        Optional<Usuario> beneficiarioOpt = usuarioRepository.findByNumeroCuenta(numeroCuentaDestino);
-        if (beneficiarioOpt.isEmpty()) {
-            throw new RuntimeException("Número de cuenta de destino no encontrado");
-        }
-        Usuario beneficiario = beneficiarioOpt.get();
+        Usuario beneficiario = usuarioRepository.findByNumeroCuenta(numeroCuentaDestino)
+                .orElseThrow(() -> new RuntimeException("Número de cuenta de destino no encontrado"));
 
         // Realizar la transferencia (restar del emisor y sumar al beneficiario)
         emisor.setSaldoDisponible(emisor.getSaldoDisponible() - monto);
@@ -47,20 +48,18 @@ public class TransferenciaService {
         transferencia.setEmisor(emisor);
         transferencia.setBeneficiario(beneficiario);
         transferencia.setMonto(monto);
+        transferencia.setNumeroCuentaEmisor(numeroCuentaEmisor);
         transferencia.setNumeroCuentaDestino(numeroCuentaDestino);
         transferencia.setMotivo(motivo);
-
 
         return transferenciaRepository.save(transferencia);
     }
 
-    // Obtener todas las transferencias
     public List<Transferencia> obtenerTransferencias() {
-        return transferenciaRepository.findAll(); // Devuelve todas las transferencias
+        return transferenciaRepository.findAll();
     }
 
-    // Obtener transferencias por emisor
     public List<Transferencia> obtenerTransferenciasPorEmisor(Long emisorId) {
-        return transferenciaRepository.findByEmisorId(emisorId); // Devuelve transferencias de un emisor específico
+        return transferenciaRepository.findByEmisorId(emisorId);
     }
 }
