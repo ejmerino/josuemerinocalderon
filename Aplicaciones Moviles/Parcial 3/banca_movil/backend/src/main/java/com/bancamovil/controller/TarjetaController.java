@@ -1,4 +1,5 @@
-package com.bancamovil.controller;// TarjetaController.java
+package com.bancamovil.controller;
+
 import com.bancamovil.model.Tarjeta;
 import com.bancamovil.model.Usuario;
 import com.bancamovil.service.TarjetaService;
@@ -27,7 +28,7 @@ public class TarjetaController {
     public ResponseEntity<?> agregarTarjeta(@RequestBody Map<String, Object> payload) {
         Long usuarioId = ((Number) payload.get("usuarioId")).longValue();
         String tipo = (String) payload.get("tipo");
-        // String marca = (String) payload.get("marca"); // Ya no se usa en el frontend
+        String marca; // Variable para almacenar la marca
 
         try {
             Usuario usuario = usuarioService.obtenerUsuario(usuarioId);
@@ -52,6 +53,16 @@ public class TarjetaController {
             tarjeta.setAnioExpiracion(anioExpiracion);
             tarjeta.setCvv(cvv);
             tarjeta.setEstado(true);
+
+            // Asignar la marca basada en el tipo
+            if ("credito".equals(tipo)) {
+                tarjeta.setMarca("Mastercard");
+            } else if ("debito".equals(tipo)) {
+                tarjeta.setMarca("Visa");
+            } else {
+                tarjeta.setMarca("Unknown"); // O lanza una excepción, según tu lógica
+            }
+
             tarjetaService.agregarTarjeta(tarjeta);
 
             return ResponseEntity.ok(tarjeta); // Devuelve la tarjeta creada
