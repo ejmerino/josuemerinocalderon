@@ -18,8 +18,6 @@ class CuentaView extends StatefulWidget {
   _CuentaViewState createState() => _CuentaViewState();
 }
 
-enum SortOrder { ascending, descending }
-
 class _CuentaViewState extends State<CuentaView> {
   String nombre = '';
   String apellido = '';
@@ -27,7 +25,7 @@ class _CuentaViewState extends State<CuentaView> {
   double saldoDisponible = 0.0;
   List<dynamic> transacciones = [];
   bool mostrandoEnviadas = true;
-  SortOrder _sortOrder = SortOrder.descending;
+  // Eliminamos SortOrder y _sortOrder porque no se usaran
 
   @override
   void initState() {
@@ -77,22 +75,13 @@ class _CuentaViewState extends State<CuentaView> {
       List<dynamic> data = jsonDecode(response.body);
       setState(() {
         transacciones = data;
-        _ordenarTransacciones();
+        // Invertir la lista para mostrar la última transacción primero
+        transacciones = transacciones.reversed.toList();
       });
     }
   }
 
-  void _ordenarTransacciones() {
-    setState(() {
-      transacciones.sort((a, b) {
-        final dateA = DateTime.parse(a['createdAt']);
-        final dateB = DateTime.parse(b['createdAt']);
-        return _sortOrder == SortOrder.ascending
-            ? dateA.compareTo(dateB)
-            : dateB.compareTo(dateA);
-      });
-    });
-  }
+  // Eliminamos el método _ordenarTransacciones porque ya no es necesario
 
   Future<int> obtenerUsuarioId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -132,13 +121,21 @@ class _CuentaViewState extends State<CuentaView> {
       ),
     );
 
-    final output = await getTemporaryDirectory();
-    final file = File("${output.path}/historial_transacciones.pdf");
-    await file.writeAsBytes(await pdf.save());
 
-    await Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => pdf.save(),
-    );
+    try {
+      final output = await getTemporaryDirectory();
+      final file = File("${output.path}/historial_transacciones.pdf");
+      await file.writeAsBytes(await pdf.save());
+
+      await Printing.layoutPdf(
+        onLayout: (PdfPageFormat format) async => pdf.save(),
+      );
+    } catch (e) {
+      print("Error al generar o descargar el PDF: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al generar el PDF. Por favor, inténtalo de nuevo.')),
+      );
+    }
   }
 
   @override
@@ -278,30 +275,7 @@ class _CuentaViewState extends State<CuentaView> {
                 children: [
                   Text('Historial de Transacciones',
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF1A237E))),
-                  PopupMenuButton<SortOrder>(
-                    onSelected: (SortOrder result) {
-                      setState(() {
-                        _sortOrder = result;
-                        _ordenarTransacciones();
-                      });
-                    },
-                    itemBuilder: (BuildContext context) => <PopupMenuEntry<SortOrder>>[
-                      const PopupMenuItem<SortOrder>(
-                        value: SortOrder.ascending,
-                        child: Text('Ascendente'),
-                      ),
-                      const PopupMenuItem<SortOrder>(
-                        value: SortOrder.descending,
-                        child: Text('Descendente'),
-                      ),
-                    ],
-                    child: Row(
-                      children: [
-                        Text('Ordenar por fecha:'),
-                        Icon(Icons.sort),
-                      ],
-                    ),
-                  ),
+
                 ],
               ),
               SizedBox(height: 10),
