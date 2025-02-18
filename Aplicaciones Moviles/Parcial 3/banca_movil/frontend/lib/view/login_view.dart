@@ -79,75 +79,104 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("Iniciar sesión", style: TextStyle(color: Colors.white)),
-        backgroundColor: Color(0xFF1A237E),
-        elevation: 0,
-        automaticallyImplyLeading: false,
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "Bienvenido a tu Banca Móvil",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blueAccent),
-            ),
-            SizedBox(height: 40),
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(
-                labelText: 'Usuario',
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: Colors.grey[100],
-                prefixIcon: Icon(Icons.person, color: Colors.blueAccent),
+      backgroundColor: Color(0xFFE3F2FD), // Fondo más claro
+      body: Center( // Centrar el contenido
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(32), // Aumentar el padding
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, // Alinear verticalmente en el centro
+            crossAxisAlignment: CrossAxisAlignment.stretch, // Estirar los elementos horizontalmente
+            children: [
+              // Icono de la aplicación
+              Icon(
+                Icons.account_balance, // Icono de banco (reemplaza con el que prefieras)
+                size: 72, // Aumentar el tamaño del icono
+                color: Color(0xFF1A237E), // Color principal
               ),
-            ),
-            SizedBox(height: 16),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Contraseña',
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: Colors.grey[100],
-                prefixIcon: Icon(Icons.lock, color: Colors.blueAccent),
+              SizedBox(height: 32),
+              Text(
+                "Bienvenido a tu Banca Móvil",
+                style: TextStyle(
+                  fontSize: 28, // Aumentar el tamaño del texto
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1A237E), // Color principal
+                ),
+                textAlign: TextAlign.center, // Centrar el texto
               ),
-            ),
-            SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: isLoading ? null : login,
-              child: isLoading
-                  ? CircularProgressIndicator(color: Colors.white)
-                  : Text('Iniciar sesión', style: TextStyle(fontSize: 18, color: Colors.white)),
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                backgroundColor: Colors.blueAccent,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              SizedBox(height: 40),
+              // Campo de texto para el usuario
+              TextFormField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  labelText: 'Usuario',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12), // Bordes redondeados
+                  ),
+                  filled: true,
+                  fillColor: Colors.white, // Fondo blanco
+                  prefixIcon: Icon(Icons.person, color: Color(0xFF1A237E)),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20), // Aumentar el padding
+                ),
               ),
-            ),
-            if (errorMessage.isNotEmpty) ...[
               SizedBox(height: 20),
-              Text(errorMessage, style: TextStyle(color: Colors.red, fontSize: 16)),
+              // Campo de texto para la contraseña
+              TextFormField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Contraseña',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12), // Bordes redondeados
+                  ),
+                  filled: true,
+                  fillColor: Colors.white, // Fondo blanco
+                  prefixIcon: Icon(Icons.lock, color: Color(0xFF1A237E)),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20), // Aumentar el padding
+                ),
+              ),
+              SizedBox(height: 24),
+              // Botón de inicio de sesión
+              ElevatedButton(
+                onPressed: isLoading ? null : login,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16), // Aumentar el padding
+                  child: isLoading
+                      ? SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: CircularProgressIndicator(color: Colors.white),
+                  )
+                      : Text('Iniciar sesión', style: TextStyle(fontSize: 18, color: Colors.white)),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF1A237E), // Color principal
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), // Bordes redondeados
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+              ),
+              // Mensaje de error
+              if (errorMessage.isNotEmpty) ...[
+                SizedBox(height: 20),
+                Text(errorMessage, style: TextStyle(color: Colors.red, fontSize: 16), textAlign: TextAlign.center),
+              ],
+              SizedBox(height: 32),
+              // Botón para crear cuenta
+              TextButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegistroView()),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 14), // Aumentar el padding
+                  child: Text("¿No tienes cuenta? Crear cuenta", style: TextStyle(fontSize: 16, color: Color(0xFF1A237E))),
+                ),
+                style: TextButton.styleFrom(
+                  textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+              ),
             ],
-            SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => RegistroView()),
-              ),
-              child: Text("Crear cuenta", style: TextStyle(fontSize: 18, color: Colors.white)),
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                backgroundColor: Colors.greenAccent,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
