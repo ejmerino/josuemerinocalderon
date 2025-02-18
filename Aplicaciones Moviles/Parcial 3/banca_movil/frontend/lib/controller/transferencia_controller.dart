@@ -18,7 +18,7 @@ class TransferenciaController {
 
     final response = await http.post(url, headers: headers, body: body);
 
-    if (response.statusCode != 200) {
+    if (response.statusCode != 201) { // Cambiado a 201
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
       throw Exception('Error al realizar la transferencia: ${response.body}');

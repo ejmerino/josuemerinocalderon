@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import '../controller/transferencia_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../config/ApiConfig.dart';
+import 'cuenta_view.dart'; // Importa CuentaView
 
 class TransferirView extends StatefulWidget {
   @override
@@ -97,9 +98,18 @@ class _TransferirViewState extends State<TransferirView> {
         monto,
         _motivoController.text,
       );
+
+      // Mostrar notificación de éxito
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Transferencia realizada con éxito')),
       );
+
+      // Navegar de regreso a CuentaView y recargar los datos del usuario
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => CuentaView()),
+      );
+
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error en la transferencia: $e')),

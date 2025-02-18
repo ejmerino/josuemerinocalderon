@@ -29,14 +29,41 @@ class _CuentaViewState extends State<CuentaView> {
 
   Future<void> _cargarDatosUsuario() async {
     final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      nombre = prefs.getString('nombre') ?? 'Nombre';
-      apellido = prefs.getString('apellido') ?? 'Apellido';
-      numeroCuenta = prefs.getString('numeroCuenta') ?? '0000';
-      saldoDisponible = double.parse(prefs.getString('saldoDisponible') ?? '0.0');
-      print("Datos cargados desde SharedPreferences: numeroCuenta=$numeroCuenta, nombre=$nombre, apellido=$apellido, saldoDisponible=$saldoDisponible"); // Debug
-    });
+    final numeroCuentaLocal = prefs.getString('numeroCuenta');
+
+    if (numeroCuentaLocal != null) {
+      try {
+        final response = await http.get(Uri.parse('${ApiConfig.baseUrl}/usuarios/cuenta/$numeroCuentaLocal'));
+
+        if (response.statusCode == 200) {
+          final data = json.decode(response.body);
+          setState(() {
+            nombre = data['nombre'] ?? '';
+            apellido = data['apellido'] ?? '';
+            numeroCuenta = data['numeroCuenta'] ?? '';
+            saldoDisponible = data['saldoDisponible']?.toDouble() ?? 0.0;
+
+            // Actualizar SharedPreferences con los nuevos datos
+            prefs.setString('nombre', nombre);
+            prefs.setString('apellido', apellido);
+            prefs.setString('saldoDisponible', saldoDisponible.toString());
+
+            print("Datos del usuario recargados desde el backend: nombre=$nombre, numeroCuenta=$numeroCuenta, saldoDisponible=$saldoDisponible"); // Debug
+          });
+        } else {
+          print('Error al cargar datos del usuario desde el backend: ${response.statusCode}');
+          // Manejar el error (mostrar un mensaje al usuario, etc.)
+        }
+      } catch (e) {
+        print('Error de conexión al cargar datos del usuario: $e');
+        // Manejar el error de conexión
+      }
+    } else {
+      print('No se encontró el número de cuenta en SharedPreferences');
+      // Manejar el caso en que no se encuentra el número de cuenta
+    }
   }
+
 
   Future<void> obtenerHistorialTransacciones() async {
     final String url = '${ApiConfig.baseUrl}/transferencias';
@@ -76,6 +103,7 @@ class _CuentaViewState extends State<CuentaView> {
             await prefs.remove('apellido');
             await prefs.remove('numeroCuenta');
             await prefs.remove('saldoDisponible');
+            print("SharedPreferences borrados al cerrar sesión"); // Debug
 
             Navigator.pushAndRemoveUntil(
               context,
