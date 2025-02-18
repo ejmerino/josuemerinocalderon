@@ -18,20 +18,55 @@ class _EditarPerfilViewState extends State<EditarPerfilView> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
 
+  String? _initialEmail;
+  String? _initialUsername;
+
+  @override
+  void initState() {
+    super.initState();
+    _cargarDatosUsuario();
+  }
+
+  Future<void> _cargarDatosUsuario() async {
+    final prefs = await SharedPreferences.getInstance();
+    final numeroCuenta = prefs.getString('numeroCuenta');
+
+    if (numeroCuenta != null) {
+      try {
+        final response = await http.get(Uri.parse('${ApiConfig.baseUrl}/usuarios/cuenta/$numeroCuenta'));
+        if (response.statusCode == 200) {
+          final data = json.decode(response.body);
+          setState(() {
+            _initialEmail = data['email'] ?? '';
+            _initialUsername = data['username'] ?? '';
+            _emailController.text = _initialEmail!;
+            _usernameController.text = _initialUsername!;
+          });
+        } else {
+          print('Error al cargar datos del usuario: ${response.statusCode}');
+        }
+      } catch (e) {
+        print('Error de conexión: $e');
+      }
+    } else {
+      print('No se encontró el número de cuenta en SharedPreferences');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200], // Fondo más claro
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('Editar perfil', style: TextStyle(color: Colors.white)), // Texto blanco
-        backgroundColor: Color(0xFF1A237E), // Azul oscuro
+        title: Text('Editar perfil', style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFF1A237E),
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0), // Aumenta el padding
+        padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
-          child: Card( // Encerramos el formulario en una Card
+          child: Card(
             elevation: 5,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
             child: Padding(
@@ -58,7 +93,7 @@ class _EditarPerfilViewState extends State<EditarPerfilView> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 15), // Aumenta el espacio entre los campos
+                  SizedBox(height: 15),
                   TextFormField(
                     controller: _usernameController,
                     decoration: InputDecoration(
@@ -117,7 +152,7 @@ class _EditarPerfilViewState extends State<EditarPerfilView> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 30), // Aumenta el espacio antes del botón
+                  SizedBox(height: 30),
                   ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
@@ -166,7 +201,7 @@ class _EditarPerfilViewState extends State<EditarPerfilView> {
                     },
                     child: Text('Guardar cambios', style: TextStyle(fontSize: 18, color: Colors.white)),
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 15), // Aumenta el padding vertical
+                      padding: EdgeInsets.symmetric(vertical: 15),
                       backgroundColor: Colors.blueAccent,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                     ),

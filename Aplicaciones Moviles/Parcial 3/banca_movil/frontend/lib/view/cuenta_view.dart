@@ -49,8 +49,8 @@ class _CuentaViewState extends State<CuentaView> {
             prefs.setString('nombre', nombre);
             prefs.setString('apellido', apellido);
             prefs.setString('saldoDisponible', saldoDisponible.toString());
-
             print("Datos del usuario recargados desde el backend: nombre=$nombre, numeroCuenta=$numeroCuenta, saldoDisponible=$saldoDisponible");
+
           });
         } else {
           print('Error al cargar datos del usuario desde el backend: ${response.statusCode}');
@@ -84,11 +84,6 @@ class _CuentaViewState extends State<CuentaView> {
         transacciones = List.from(transacciones.reversed);
       }
     });
-  }
-
-  Future<int> obtenerUsuarioId() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getInt('id') ?? 0;
   }
 
   Future<void> _launchURL(String url) async {
@@ -261,8 +256,14 @@ class _CuentaViewState extends State<CuentaView> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  int usuarioId = await obtenerUsuarioId();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => TarjetaView(usuarioId: usuarioId)));
+                  // Obtener el usuarioId de SharedPreferences directamente
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  int usuarioId = prefs.getInt('usuarioId') ?? 0;
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TarjetaView()),
+                  );
                 },
                 child: Text('Tarjetas', style: TextStyle(fontSize: 18, color: Colors.white)),
                 style: ElevatedButton.styleFrom(

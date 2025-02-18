@@ -42,6 +42,7 @@ class _LoginViewState extends State<LoginView> {
         final String apellido = data['apellido'];
         final String numeroCuenta = data['numeroCuenta'];
         final double saldoDisponible = data['saldoDisponible'];
+        final int usuarioId = data['id']; // Obtén el ID del usuario
 
         // Guardar datos en SharedPreferences
         final prefs = await SharedPreferences.getInstance();
@@ -49,8 +50,9 @@ class _LoginViewState extends State<LoginView> {
         await prefs.setString('nombre', nombre);
         await prefs.setString('apellido', apellido);
         await prefs.setString('saldoDisponible', saldoDisponible.toString());
+        await prefs.setInt('usuarioId', usuarioId); // Guarda el usuarioId
 
-        print("Datos del usuario: nombre=$nombre, numeroCuenta=$numeroCuenta, saldoDisponible=$saldoDisponible"); // Debug
+        print("Datos del usuario: nombre=$nombre, numeroCuenta=$numeroCuenta, saldoDisponible=$saldoDisponible, usuarioId=$usuarioId"); // Debug
 
         Navigator.pushReplacement( // Use pushReplacement to avoid going back to login
           context,
