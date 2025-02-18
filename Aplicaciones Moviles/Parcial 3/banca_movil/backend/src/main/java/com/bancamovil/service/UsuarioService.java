@@ -15,37 +15,40 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    // Método para login
     public Usuario login(String username, String password) {
         Usuario usuario = usuarioRepository.findByUsername(username);
         if (usuario != null && usuario.getPassword().equals(password)) {
-            return usuario; // Login exitoso
+            return usuario;
         } else {
             throw new RuntimeException("Usuario o contraseña incorrectos");
         }
     }
 
-    // Método para generar un número de cuenta único
     public String generarNumeroCuentaUnico() {
         Random random = new Random();
         String numero;
         do {
-            // Genera un número entre 1000000000L y 9999999999L
             numero = String.format("%010d", (random.nextLong(9000000000L) + 1000000000L));
         } while (usuarioRepository.existsByNumeroCuenta(numero));
         return numero;
     }
 
-
-    // Método para registrar un usuario
     public Usuario registrarUsuario(Usuario usuario) {
         usuario.setNumeroCuenta(generarNumeroCuentaUnico());
         return usuarioRepository.save(usuario);
     }
 
-    // Método para obtener todos los usuarios (añadido)
     public List<Usuario> obtenerUsuarios() {
-        return usuarioRepository.findAll();  // Devuelve todos los usuarios
+        return usuarioRepository.findAll();
+    }
+
+    public Usuario obtenerUsuario(Long usuarioId) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioId);
+        if (usuarioOptional.isPresent()) {
+            return usuarioOptional.get();
+        } else {
+            throw new RuntimeException("Usuario no encontrado");
+        }
     }
 
     public Optional<Usuario> obtenerUsuarioPorNumeroCuenta(String numeroCuenta) {
@@ -62,5 +65,4 @@ public class UsuarioService {
 
         usuarioRepository.save(usuario);
     }
-
 }

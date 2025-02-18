@@ -13,32 +13,29 @@ public class TarjetaService {
     @Autowired
     private TarjetaRepository tarjetaRepository;
 
-    // Crear una tarjeta
     public Tarjeta agregarTarjeta(Tarjeta tarjeta) {
         return tarjetaRepository.save(tarjeta);
     }
 
-    // Obtener todas las tarjetas
     public List<Tarjeta> obtenerTodasLasTarjetas() {
-        return tarjetaRepository.findAll(); // Retorna todas las tarjetas almacenadas
+        return tarjetaRepository.findAll();
     }
 
-    // Obtener tarjetas de un usuario
     public List<Tarjeta> obtenerTarjetasPorUsuario(Long usuarioId) {
         return tarjetaRepository.findByUsuarioId(usuarioId);
     }
 
-    // Congelar tarjeta (estado = false)
     public Tarjeta congelarTarjeta(Long tarjetaId) {
-        Tarjeta tarjeta = tarjetaRepository.findById(tarjetaId).orElseThrow(() -> new RuntimeException("Tarjeta no encontrada"));
-        tarjeta.setEstado(false);  // Estado 'false' indica que la tarjeta está congelada
+        Tarjeta tarjeta = tarjetaRepository.findById(tarjetaId)
+                .orElseThrow(() -> new RuntimeException("Tarjeta no encontrada"));
+        tarjeta.setEstado(false);
         return tarjetaRepository.save(tarjeta);
     }
 
-    // Descongelar tarjeta (estado = true)
     public Tarjeta descongelarTarjeta(Long tarjetaId) {
-        Tarjeta tarjeta = tarjetaRepository.findById(tarjetaId).orElseThrow(() -> new RuntimeException("Tarjeta no encontrada"));
-        tarjeta.setEstado(true);  // Estado 'true' indica que la tarjeta está activa
+        Tarjeta tarjeta = tarjetaRepository.findById(tarjetaId)
+                .orElseThrow(() -> new RuntimeException("Tarjeta no encontrada"));
+        tarjeta.setEstado(true);
         return tarjetaRepository.save(tarjeta);
     }
 }
