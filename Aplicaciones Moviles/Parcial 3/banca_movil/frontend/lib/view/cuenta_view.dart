@@ -102,6 +102,7 @@ class _CuentaViewState extends State<CuentaView> {
     }).toList();
 
     return Scaffold(
+      backgroundColor: Color(0xFFE3F2FD),
       appBar: AppBar(
         title: Text("Cuenta de $nombre $apellido", style: TextStyle(color: Colors.white)),
         backgroundColor: Color(0xFF1A237E),
@@ -150,8 +151,8 @@ class _CuentaViewState extends State<CuentaView> {
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.edit),
-                    title: Text('Editar perfil'),
+                    leading: Icon(Icons.edit, color: Color(0xFF1A237E)),
+                    title: Text('Editar perfil', style: TextStyle(color: Colors.black87)),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
@@ -161,15 +162,14 @@ class _CuentaViewState extends State<CuentaView> {
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.logout),
-                    title: Text('Cerrar sesión'),
+                    leading: Icon(Icons.logout, color: Colors.redAccent),
+                    title: Text('Cerrar sesión', style: TextStyle(color: Colors.black87)),
                     onTap: () async {
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       await prefs.remove('nombre');
                       await prefs.remove('apellido');
                       await prefs.remove('numeroCuenta');
                       await prefs.remove('saldoDisponible');
-                      print("SharedPreferences borrados al cerrar sesión");
 
                       Navigator.pushAndRemoveUntil(
                         context,
@@ -181,7 +181,6 @@ class _CuentaViewState extends State<CuentaView> {
                 ],
               ),
             ),
-            // Pie de página del Drawer
             Container(
               padding: EdgeInsets.all(16.0),
               decoration: BoxDecoration(
@@ -226,21 +225,46 @@ class _CuentaViewState extends State<CuentaView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: 20),
               Text(
-                '¡Bienvenido/a, $nombre $apellido!',
+                '¡Bienvenido/a,\n$nombre $apellido!',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700, color: Color(0xFF1A237E)),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 12),
               Text(
                 'Número de cuenta: $numeroCuenta',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 20),
-              Text('Tu saldo es:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black87)),
-              Text('\$$saldoDisponible',
-                  style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800, color: Colors.green)),
+              SizedBox(height: 30),
+              // Contenedor estilizado para el saldo
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('Tu saldo es:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black87)),
+                    Text(
+                      '\$$saldoDisponible',
+                      style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: Colors.green),
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
@@ -250,26 +274,24 @@ class _CuentaViewState extends State<CuentaView> {
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 55),
                   backgroundColor: Color(0xFF1A237E),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  elevation: 5,
                 ),
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  // Obtener el usuarioId de SharedPreferences directamente
-                  SharedPreferences prefs = await SharedPreferences.getInstance();
-                  int usuarioId = prefs.getInt('usuarioId') ?? 0;
-
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => TarjetaView()),
                   );
                 },
-                child: Text('Tarjetas', style: TextStyle(fontSize: 18, color: Colors.white)),
+                child: Text('Administrar Tarjetas', style: TextStyle(fontSize: 18, color: Colors.white)),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 55),
                   backgroundColor: Colors.teal,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  elevation: 5,
                 ),
               ),
               SizedBox(height: 40),
@@ -279,7 +301,7 @@ class _CuentaViewState extends State<CuentaView> {
                   Text('Historial de Transacciones',
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF1A237E))),
                   IconButton(
-                    icon: Icon(_ordenAscendente ? Icons.arrow_downward : Icons.arrow_upward),
+                    icon: Icon(_ordenAscendente ? Icons.arrow_downward : Icons.arrow_upward, color: Color(0xFF1A237E)),
                     onPressed: () {
                       setState(() {
                         _ordenAscendente = !_ordenAscendente;
@@ -291,7 +313,7 @@ class _CuentaViewState extends State<CuentaView> {
               ),
               SizedBox(height: 10),
               ToggleButtons(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(15),
                 selectedColor: Colors.white,
                 fillColor: Color(0xFF1A237E),
                 color: Colors.black87,
@@ -303,11 +325,11 @@ class _CuentaViewState extends State<CuentaView> {
                   });
                 },
                 children: [
-                  Text("Realizadas", style: TextStyle(fontSize: 16)),
+                  Text("Enviadas", style: TextStyle(fontSize: 16)),
                   Text("Recibidas", style: TextStyle(fontSize: 16)),
                 ],
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               transaccionesFiltradas.isEmpty
                   ? Text('No hay transacciones recientes', style: TextStyle(fontSize: 16, color: Colors.black54))
                   : ListView.builder(
@@ -318,30 +340,49 @@ class _CuentaViewState extends State<CuentaView> {
                   var transaccion = transaccionesFiltradas[index];
                   bool esEnviada = transaccion['emisor']['numeroCuenta'] == numeroCuenta;
 
-                  return Card(
+                  return Container(
                     margin: EdgeInsets.symmetric(vertical: 8),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
                     child: ListTile(
-                      contentPadding: EdgeInsets.all(12),
+                      contentPadding: EdgeInsets.all(16),
+                      leading: Icon(
+                        Icons.monetization_on,
+                        color: esEnviada ? Colors.redAccent : Colors.greenAccent,
+                        size: 30, // Aumentar el tamaño del icono
+                      ),
                       title: Text(
                         esEnviada
                             ? 'Para: ${transaccion['beneficiario']['nombre']} ${transaccion['beneficiario']['apellido']}'
                             : 'De: ${transaccion['emisor']['nombre']} ${transaccion['emisor']['apellido']}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17), // Ajustar estilo
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Cuenta: ${esEnviada ? transaccion['numeroCuentaDestino'] : transaccion['emisor']['numeroCuenta']}',
+                            style: TextStyle(fontSize: 15, color: Colors.black54), // Ajustar estilo
                           ),
-                          Text('Monto: \$${transaccion['monto']}'),
-                          Text('Motivo: ${transaccion['motivo'] ?? 'No especificado'}'),
+                          Text(
+                            'Monto: \$${transaccion['monto']}',
+                            style: TextStyle(fontSize: 15, color: Colors.black54), // Ajustar estilo
+                          ),
+                          Text(
+                            'Motivo: ${transaccion['motivo'] ?? 'No especificado'}',
+                            style: TextStyle(fontSize: 15, color: Colors.black54), // Ajustar estilo
+                          ),
                         ],
-                      ),
-                      trailing: Icon(
-                        Icons.monetization_on,
-                        color: esEnviada ? Colors.green : Colors.blue,
                       ),
                     ),
                   );
@@ -351,7 +392,6 @@ class _CuentaViewState extends State<CuentaView> {
           ),
         ),
       ),
-      backgroundColor: Color(0xFFF4F4F4),
     );
   }
 }
