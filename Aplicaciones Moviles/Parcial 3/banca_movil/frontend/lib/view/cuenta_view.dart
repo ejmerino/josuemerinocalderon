@@ -6,11 +6,19 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'tarjeta_view.dart';
 import 'login_view.dart';
+import 'editar_perfil_view.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class CuentaView extends StatefulWidget {
   @override
   _CuentaViewState createState() => _CuentaViewState();
 }
+
+enum SortOrder { ascending, descending }
 
 class _CuentaViewState extends State<CuentaView> {
   String nombre = '';
@@ -19,6 +27,7 @@ class _CuentaViewState extends State<CuentaView> {
   double saldoDisponible = 0.0;
   List<dynamic> transacciones = [];
   bool mostrandoEnviadas = true;
+  SortOrder _sortOrder = SortOrder.descending;
 
   @override
   void initState() {
@@ -43,27 +52,22 @@ class _CuentaViewState extends State<CuentaView> {
             numeroCuenta = data['numeroCuenta'] ?? '';
             saldoDisponible = data['saldoDisponible']?.toDouble() ?? 0.0;
 
-            // Actualizar SharedPreferences con los nuevos datos
             prefs.setString('nombre', nombre);
             prefs.setString('apellido', apellido);
             prefs.setString('saldoDisponible', saldoDisponible.toString());
 
-            print("Datos del usuario recargados desde el backend: nombre=$nombre, numeroCuenta=$numeroCuenta, saldoDisponible=$saldoDisponible"); // Debug
+            print("Datos del usuario recargados desde el backend: nombre=$nombre, numeroCuenta=$numeroCuenta, saldoDisponible=$saldoDisponible");
           });
         } else {
           print('Error al cargar datos del usuario desde el backend: ${response.statusCode}');
-          // Manejar el error (mostrar un mensaje al usuario, etc.)
         }
       } catch (e) {
         print('Error de conexión al cargar datos del usuario: $e');
-        // Manejar el error de conexión
       }
     } else {
       print('No se encontró el número de cuenta en SharedPreferences');
-      // Manejar el caso en que no se encuentra el número de cuenta
     }
   }
-
 
   Future<void> obtenerHistorialTransacciones() async {
     final String url = '${ApiConfig.baseUrl}/transferencias';
@@ -73,13 +77,68 @@ class _CuentaViewState extends State<CuentaView> {
       List<dynamic> data = jsonDecode(response.body);
       setState(() {
         transacciones = data;
+        _ordenarTransacciones();
       });
     }
+  }
+
+  void _ordenarTransacciones() {
+    setState(() {
+      transacciones.sort((a, b) {
+        final dateA = DateTime.parse(a['createdAt']);
+        final dateB = DateTime.parse(b['createdAt']);
+        return _sortOrder == SortOrder.ascending
+            ? dateA.compareTo(dateB)
+            : dateB.compareTo(dateA);
+      });
+    });
   }
 
   Future<int> obtenerUsuarioId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getInt('id') ?? 0;
+  }
+
+  Future<void> _generarYDescargarPDF(BuildContext context) async {
+    final pdf = pw.Document();
+
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) {
+          return pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: [
+              pw.Text('Historial de Transacciones', style: pw.TextStyle(fontSize: 20)),
+              pw.SizedBox(height: 10),
+              pw.ListView.builder(
+                itemCount: transacciones.length,
+                itemBuilder: (context, index) {
+                  final transaccion = transacciones[index];
+                  return pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: [
+                      pw.Text('Para: ${transaccion['beneficiario']['nombre']} ${transaccion['beneficiario']['apellido']}'),
+                      pw.Text('De: ${transaccion['emisor']['nombre']} ${transaccion['emisor']['apellido']}'),
+                      pw.Text('Monto: \$${transaccion['monto']}'),
+                      pw.Text('Motivo: ${transaccion['motivo'] ?? 'No especificado'}'),
+                      pw.SizedBox(height: 5),
+                    ],
+                  );
+                },
+              ),
+            ],
+          );
+        },
+      ),
+    );
+
+    final output = await getTemporaryDirectory();
+    final file = File("${output.path}/historial_transacciones.pdf");
+    await file.writeAsBytes(await pdf.save());
+
+    await Printing.layoutPdf(
+      onLayout: (PdfPageFormat format) async => pdf.save(),
+    );
   }
 
   @override
@@ -94,23 +153,77 @@ class _CuentaViewState extends State<CuentaView> {
       appBar: AppBar(
         title: Text("Cuenta de $nombre $apellido", style: TextStyle(color: Colors.white)),
         backgroundColor: Color(0xFF1A237E),
-        leading: IconButton(
-          icon: Icon(Icons.logout, color: Colors.white),
-          onPressed: () async {
-            // Limpiar datos de SharedPreferences al cerrar sesión
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            await prefs.remove('nombre');
-            await prefs.remove('apellido');
-            await prefs.remove('numeroCuenta');
-            await prefs.remove('saldoDisponible');
-            print("SharedPreferences borrados al cerrar sesión"); // Debug
-
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => LoginView()),
-                  (route) => false,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: Colors.white),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
             );
           },
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF1A237E),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(Icons.account_circle, size: 48, color: Colors.white),
+                  SizedBox(height: 8),
+                  Text(
+                    '$nombre $apellido',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    numeroCuenta,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.edit),
+              title: Text('Editar perfil'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EditarPerfilView()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Cerrar sesión'),
+              onTap: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.remove('nombre');
+                await prefs.remove('apellido');
+                await prefs.remove('numeroCuenta');
+                await prefs.remove('saldoDisponible');
+                print("SharedPreferences borrados al cerrar sesión");
+
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginView()),
+                      (route) => false,
+                );
+              },
+            ),
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -160,8 +273,42 @@ class _CuentaViewState extends State<CuentaView> {
                 ),
               ),
               SizedBox(height: 40),
-              Text('Historial de Transacciones',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF1A237E))),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Historial de Transacciones',
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF1A237E))),
+                  PopupMenuButton<SortOrder>(
+                    onSelected: (SortOrder result) {
+                      setState(() {
+                        _sortOrder = result;
+                        _ordenarTransacciones();
+                      });
+                    },
+                    itemBuilder: (BuildContext context) => <PopupMenuEntry<SortOrder>>[
+                      const PopupMenuItem<SortOrder>(
+                        value: SortOrder.ascending,
+                        child: Text('Ascendente'),
+                      ),
+                      const PopupMenuItem<SortOrder>(
+                        value: SortOrder.descending,
+                        child: Text('Descendente'),
+                      ),
+                    ],
+                    child: Row(
+                      children: [
+                        Text('Ordenar por fecha:'),
+                        Icon(Icons.sort),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () => _generarYDescargarPDF(context),
+                child: Text('Descargar Historial (PDF)'),
+              ),
               SizedBox(height: 10),
               ToggleButtons(
                 borderRadius: BorderRadius.circular(12),

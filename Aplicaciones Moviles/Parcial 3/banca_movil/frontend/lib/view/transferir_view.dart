@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import '../controller/transferencia_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../config/ApiConfig.dart';
-import 'cuenta_view.dart'; // Importa CuentaView
+import 'cuenta_view.dart';
 
 class TransferirView extends StatefulWidget {
   @override
@@ -12,6 +12,7 @@ class TransferirView extends StatefulWidget {
 }
 
 class _TransferirViewState extends State<TransferirView> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _numeroCuentaController = TextEditingController();
   final TextEditingController _montoController = TextEditingController();
   final TextEditingController _motivoController = TextEditingController();
@@ -20,7 +21,6 @@ class _TransferirViewState extends State<TransferirView> {
   String? _nombreTitular;
   bool _cuentaExiste = false;
   bool _verificando = false;
-
   String? emisorNumeroCuenta;
 
   @override
@@ -67,150 +67,167 @@ class _TransferirViewState extends State<TransferirView> {
   }
 
   void _realizarTransferencia() async {
-    if (!_cuentaExiste) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Verifica la cuenta antes de transferir')),
-      );
-      return;
-    }
+    if (_formKey.currentState!.validate()) {
+      if (!_cuentaExiste) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Verifica la cuenta antes de transferir')),
+        );
+        return;
+      }
 
-    if (emisorNumeroCuenta == null || emisorNumeroCuenta!.isEmpty) {
-      print("ERROR: emisorNumeroCuenta es nulo o vacío!");
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: No se pudo obtener el número de cuenta del emisor')),
-      );
-      return;
-    }
+      if (emisorNumeroCuenta == null || emisorNumeroCuenta!.isEmpty) {
+        print("ERROR: emisorNumeroCuenta es nulo o vacío!");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: No se pudo obtener el número de cuenta del emisor')),
+        );
+        return;
+      }
 
-    final monto = double.tryParse(_montoController.text);
-    if (monto == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Monto inválido')),
-      );
-      return;
-    }
+      if (_numeroCuentaController.text == emisorNumeroCuenta) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('No puedes realizar una transferencia a tu misma cuenta')),
+        );
+        return;
+      }
 
-    print("Enviando transferencia con emisorNumeroCuenta: $emisorNumeroCuenta, numeroCuentaDestino: ${_numeroCuentaController.text}, monto: $monto, motivo: ${_motivoController.text}");
-    try {
-      await _transferenciaController.realizarTransferencia(
-        emisorNumeroCuenta!,
-        _numeroCuentaController.text,
-        monto,
-        _motivoController.text,
-      );
+      final monto = double.parse(_montoController.text);
 
-      // Mostrar notificación de éxito
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Transferencia realizada con éxito')),
-      );
+      print("Enviando transferencia con emisorNumeroCuenta: $emisorNumeroCuenta, numeroCuentaDestino: ${_numeroCuentaController.text}, monto: $monto, motivo: ${_motivoController.text}");
+      try {
+        await _transferenciaController.realizarTransferencia(
+          emisorNumeroCuenta!,
+          _numeroCuentaController.text,
+          monto,
+          _motivoController.text,
+        );
 
-      // Navegar de regreso a CuentaView y recargar los datos del usuario
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => CuentaView()),
-      );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Transferencia realizada con éxito')),
+        );
 
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error en la transferencia: $e')),
-      );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => CuentaView()),
+        );
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error en la transferencia: $e')),
+        );
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('Realizar Transferencia'),
+        title: Text('Realizar Transferencia', style: TextStyle(color: Colors.white)),
         backgroundColor: Color(0xFF1A237E),
-        foregroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Card(
-              elevation: 6,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            controller: _numeroCuentaController,
-                            decoration: InputDecoration(
-                              labelText: 'Número de Cuenta Destino',
-                              labelStyle: TextStyle(color: Colors.grey),
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        ElevatedButton.icon(
-                          onPressed: _verificando ? null : _verificarCuenta,
-                          icon: _verificando
-                              ? CircularProgressIndicator(strokeWidth: 2, color: Colors.white)
-                              : Icon(Icons.check_circle_outline, color: Colors.white),
-                          label: Text(_verificando ? 'Verificando...' : 'Verificar'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF1A237E),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                          ),
-                        ),
-                      ],
+        padding: const EdgeInsets.all(20.0),
+        child: Form(
+          key: _formKey,
+          child: Card(
+            elevation: 5,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TextFormField(
+                    controller: _numeroCuentaController,
+                    decoration: InputDecoration(
+                      labelText: 'Número de Cuenta Destino',
+                      hintText: 'Ingresa el número de cuenta',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                      prefixIcon: Icon(Icons.account_balance, color: Colors.blueAccent),
+                      filled: true,
+                      fillColor: Colors.white,
                     ),
-                    if (_nombreTitular != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Text(
-                          _nombreTitular!,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: _cuentaExiste ? Colors.green : Colors.red,
-                          ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, ingresa el número de cuenta';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 15),
+                  ElevatedButton.icon(
+                    onPressed: _verificando ? null : _verificarCuenta,
+                    icon: _verificando
+                        ? CircularProgressIndicator(strokeWidth: 2, color: Colors.white)
+                        : Icon(Icons.check_circle_outline, color: Colors.white),
+                    label: Text(_verificando ? 'Verificando...' : 'Verificar', style: TextStyle(fontSize: 16, color: Colors.white)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF1A237E),
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    ),
+                  ),
+                  if (_nombreTitular != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Text(
+                        _nombreTitular!,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: _cuentaExiste ? Colors.green : Colors.red,
                         ),
                       ),
-                  ],
-                ),
+                    ),
+                  SizedBox(height: 15),
+                  TextFormField(
+                    controller: _montoController,
+                    decoration: InputDecoration(
+                      labelText: 'Monto',
+                      hintText: 'Ingresa el monto a transferir',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                      prefixIcon: Icon(Icons.monetization_on, color: Colors.green),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, ingresa el monto';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return 'Por favor, ingresa un número válido';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 15),
+                  TextFormField(
+                    controller: _motivoController,
+                    decoration: InputDecoration(
+                      labelText: 'Motivo (opcional)',
+                      hintText: 'Ingresa un motivo para la transferencia',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                      prefixIcon: Icon(Icons.description, color: Colors.grey),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  ElevatedButton(
+                    onPressed: _realizarTransferencia,
+                    child: Text('Realizar Transferencia', style: TextStyle(fontSize: 18, color: Colors.white)),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      backgroundColor: Color(0xFF1A237E),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _montoController,
-              decoration: InputDecoration(
-                labelText: 'Monto',
-                labelStyle: TextStyle(color: Colors.grey),
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _motivoController,
-              decoration: InputDecoration(
-                labelText: 'Motivo',
-                labelStyle: TextStyle(color: Colors.grey),
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _realizarTransferencia,
-              child: Text('Realizar Transferencia'),
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                backgroundColor: Color(0xFF1A237E),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                textStyle: TextStyle(fontSize: 18, color: Colors.white),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
