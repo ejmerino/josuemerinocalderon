@@ -69,6 +69,8 @@ class _RegistroViewState extends State<RegistroView> {
       errorMessage = '';
     });
 
+    validarDatos(); // Validar datos antes de registrar
+
     if (_nombreController.text.isEmpty || _apellidoController.text.isEmpty || _cedulaController.text.isEmpty || _emailController.text.isEmpty || _usernameController.text.isEmpty || _passwordController.text.isEmpty || cedulaError.isNotEmpty || emailError.isNotEmpty || passwordError.isNotEmpty) {
       setState(() {
         isLoading = false; // Detener el loader si hay error
@@ -115,159 +117,164 @@ class _RegistroViewState extends State<RegistroView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFE3F2FD), // Fondo más claro
       appBar: AppBar(
-        title: Text("Registro de Usuario"),
-        backgroundColor: Colors.blueAccent,
+        title: Text("Registro de Usuario", style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFF1A237E), // Color principal
         elevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(32),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Título de la app
+              Icon(
+                Icons.person_add, // Ícono para el registro
+                size: 72,
+                color: Color(0xFF1A237E),
+              ),
+              SizedBox(height: 32),
               Text(
                 "Regístrate en tu Banca Móvil",
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent,
+                  color: Color(0xFF1A237E),
                 ),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 40),
-
-              // Caja de texto para el nombre
-              TextField(
+              TextFormField(
                 controller: _nombreController,
                 onChanged: (_) => validarDatos(),
                 decoration: InputDecoration(
                   labelText: 'Nombre',
                   hintText: 'Ingresa tu nombre',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   filled: true,
-                  fillColor: Colors.grey[100],
-                  prefixIcon: Icon(Icons.person, color: Colors.blueAccent),
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.person, color: Color(0xFF1A237E)),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                 ),
-                style: TextStyle(color: Colors.blueAccent),
               ),
               SizedBox(height: 16),
-
-              // Caja de texto para el apellido
-              TextField(
+              TextFormField(
                 controller: _apellidoController,
                 onChanged: (_) => validarDatos(),
                 decoration: InputDecoration(
                   labelText: 'Apellido',
                   hintText: 'Ingresa tu apellido',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   filled: true,
-                  fillColor: Colors.grey[100],
-                  prefixIcon: Icon(Icons.person, color: Colors.blueAccent),
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.person, color: Color(0xFF1A237E)),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                 ),
-                style: TextStyle(color: Colors.blueAccent),
               ),
               SizedBox(height: 16),
-
-              // Caja de texto para la cédula
-              TextField(
+              TextFormField(
                 controller: _cedulaController,
                 onChanged: (_) => validarDatos(),
                 decoration: InputDecoration(
                   labelText: 'Cédula',
                   hintText: 'Ingresa tu número de cédula',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   filled: true,
-                  fillColor: Colors.grey[100],
-                  prefixIcon: Icon(Icons.credit_card, color: Colors.blueAccent),
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.credit_card, color: Color(0xFF1A237E)),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                  errorText: cedulaError.isNotEmpty ? cedulaError : null, // Mostrar error directamente
                 ),
                 keyboardType: TextInputType.number,
-                style: TextStyle(color: Colors.blueAccent),
               ),
-              if (cedulaError.isNotEmpty) ...[
-                SizedBox(height: 5),
-                Text(cedulaError, style: TextStyle(color: Colors.red, fontSize: 14)),
-              ],
               SizedBox(height: 16),
-
-              // Caja de texto para el email
-              TextField(
+              TextFormField(
                 controller: _emailController,
                 onChanged: (_) => validarDatos(),
                 decoration: InputDecoration(
                   labelText: 'Email',
                   hintText: 'Ingresa tu correo electrónico',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   filled: true,
-                  fillColor: Colors.grey[100],
-                  prefixIcon: Icon(Icons.email, color: Colors.blueAccent),
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.email, color: Color(0xFF1A237E)),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                  errorText: emailError.isNotEmpty ? emailError : null,
                 ),
-                style: TextStyle(color: Colors.blueAccent),
               ),
-              if (emailError.isNotEmpty) ...[
-                SizedBox(height: 5),
-                Text(emailError, style: TextStyle(color: Colors.red, fontSize: 14)),
-              ],
               SizedBox(height: 16),
-
-              // Caja de texto para el username
-              TextField(
+              TextFormField(
                 controller: _usernameController,
                 onChanged: (_) => validarDatos(),
                 decoration: InputDecoration(
                   labelText: 'Username',
                   hintText: 'Ingresa un nombre de usuario',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   filled: true,
-                  fillColor: Colors.grey[100],
-                  prefixIcon: Icon(Icons.person, color: Colors.blueAccent),
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.person, color: Color(0xFF1A237E)),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                 ),
-                style: TextStyle(color: Colors.blueAccent),
               ),
               SizedBox(height: 16),
-
-              // Caja de texto para la contraseña
-              TextField(
+              TextFormField(
                 controller: _passwordController,
                 onChanged: (_) => validarDatos(),
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Contraseña',
                   hintText: 'Ingresa tu contraseña',
-                  border: OutlineInputBorder(),
-                  filled: true,
-                  fillColor: Colors.grey[100],
-                  prefixIcon: Icon(Icons.lock, color: Colors.blueAccent),
-                ),
-                style: TextStyle(color: Colors.blueAccent),
-              ),
-              if (passwordError.isNotEmpty) ...[
-                SizedBox(height: 5),
-                Text(passwordError, style: TextStyle(color: Colors.red, fontSize: 14)),
-              ],
-              SizedBox(height: 24),
-
-              // Botón de registro
-              ElevatedButton(
-                onPressed: isLoading ? null : registrarUsuario, // Desactivar el botón mientras se carga
-                child: isLoading
-                    ? CircularProgressIndicator(color: Colors.white) // Mostrar spinner mientras carga
-                    : Text('Registrarse', style: TextStyle(fontSize: 18)),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50), backgroundColor: Colors.blueAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  elevation: 5,
+                  filled: true,
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.lock, color: Color(0xFF1A237E)),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                  errorText: passwordError.isNotEmpty ? passwordError : null,
                 ),
               ),
-
-              // Mensaje de error general
+              SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: isLoading ? null : registrarUsuario,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: isLoading
+                      ? SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: CircularProgressIndicator(color: Colors.white),
+                  )
+                      : Text('Registrarse', style: TextStyle(fontSize: 18, color: Colors.white)),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF1A237E),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+              ),
               if (errorMessage.isNotEmpty) ...[
                 SizedBox(height: 20),
                 Text(
                   errorMessage,
                   style: TextStyle(color: Colors.red, fontSize: 16),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ],
