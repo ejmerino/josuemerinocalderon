@@ -52,4 +52,15 @@ public class UsuarioService {
         return usuarioRepository.findByNumeroCuenta(numeroCuenta);
     }
 
+    public void editarUsuario(String numeroCuenta, String email, String username, String password) {
+        Usuario usuario = usuarioRepository.findByNumeroCuenta(numeroCuenta)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        usuario.setEmail(email);
+        usuario.setUsername(username);
+        usuario.setPassword(password);
+
+        usuarioRepository.save(usuario);
+    }
+
 }
