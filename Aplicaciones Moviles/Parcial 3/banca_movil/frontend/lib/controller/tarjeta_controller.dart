@@ -16,11 +16,16 @@ class TarjetaController {
     }
   }
 
-  Future<Tarjeta> agregarTarjeta(Tarjeta tarjeta) async {
+  // Modifica este método para que no espere un objeto Tarjeta completo
+  // Sino solo los datos necesarios para crear la tarjeta (usuarioId, tipo)
+  Future<Tarjeta> agregarTarjeta(int usuarioId, String tipo) async {
     final response = await http.post(
       Uri.parse('$_url/agregar'),
       headers: {'Content-Type': 'application/json'},
-      body: json.encode(tarjeta.toJson()),
+      body: json.encode({
+        'usuarioId': usuarioId,
+        'tipo': tipo,
+      }),
     );
 
     if (response.statusCode == 200) {
