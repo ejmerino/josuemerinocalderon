@@ -16,21 +16,43 @@ class SolicitarTarjetaView extends StatefulWidget {
 class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
   String _tipoTarjeta = 'debito';
 
+  Future<void> _mostrarDialogo(String mensaje, bool exito) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(exito ? 'Éxito' : 'Error'),
+          content: Text(mensaje),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Aceptar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                if (exito) {
+                  Navigator.pop(context); // Regresa a la vista anterior solo si fue exitoso
+                }
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> _solicitarTarjeta() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int usuarioId = prefs.getInt('usuarioId') ?? 0;
+
     if (usuarioId == 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: usuarioId no encontrado')),
-      );
+      _mostrarDialogo('Error: usuarioId no encontrado', false);
       return;
     }
-
 
     final String url = '${ApiConfig.baseUrl}/tarjetas/agregar';
 
     final Map<String, dynamic> payload = {
-      'usuarioId': usuarioId, // Envía el mismo ID que obtuviste al iniciar sesión
+      'usuarioId': usuarioId,
       'tipo': _tipoTarjeta,
     };
 
@@ -43,20 +65,17 @@ class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
 
       if (response.statusCode == 200) {
         print('Tarjeta solicitada con éxito');
+        _mostrarDialogo('¡Tarjeta solicitada con éxito!', true);
         widget.onTarjetaSolicitada();
-        Navigator.pop(context);
+
       } else {
         print('Error al solicitar la tarjeta: ${response.statusCode}');
         print('Response body: ${response.body}');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al solicitar la tarjeta: ${response.body}')),
-        );
+        _mostrarDialogo('Error al solicitar la tarjeta: ${response.body}', false);
       }
     } catch (e) {
       print('Error de conexión: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error de conexión al solicitar la tarjeta')),
-      );
+      _mostrarDialogo('Error de conexión: $e', false);
     }
   }
 

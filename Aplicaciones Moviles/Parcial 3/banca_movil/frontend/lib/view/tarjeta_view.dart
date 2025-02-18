@@ -14,7 +14,7 @@ class TarjetaView extends StatefulWidget {
 class _TarjetaViewState extends State<TarjetaView> {
   List<Tarjeta> _tarjetas = [];
   bool _isLoading = true;
-  int _usuarioId = 0; // Inicializamos con un valor por defecto
+  int _usuarioId = 0;
 
   @override
   void initState() {
@@ -25,8 +25,8 @@ class _TarjetaViewState extends State<TarjetaView> {
   Future<void> _cargarUsuarioId() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _usuarioId = prefs.getInt('usuarioId') ?? 0; // Recupera el usuarioId o usa 0 si no existe
-      _loadTarjetas(); // Llama a _loadTarjetas después de cargar el usuarioId
+      _usuarioId = prefs.getInt('usuarioId') ?? 0;
+      _loadTarjetas();
     });
   }
 
@@ -35,7 +35,6 @@ class _TarjetaViewState extends State<TarjetaView> {
       _isLoading = true;
     });
 
-    // Verifica que _usuarioId sea mayor que 0 antes de llamar a la API
     if (_usuarioId == 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: usuarioId no encontrado')),
@@ -99,6 +98,48 @@ class _TarjetaViewState extends State<TarjetaView> {
     }
   }
 
+  Future<void> _eliminarTarjeta(Tarjeta tarjeta) async {
+    final String url = '${ApiConfig.baseUrl}/tarjetas/eliminar/${tarjeta.id}';
+    try {
+      final response = await http.delete(Uri.parse(url));
+      if (response.statusCode == 200) {
+        _loadTarjetas();
+        // Muestra la alerta de éxito aquí
+        _mostrarAlerta('Tarjeta eliminada con éxito');
+      } else {
+        print('Error al eliminar la tarjeta: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error al eliminar la tarjeta: ${response.body}')),
+        );
+      }
+    } catch (e) {
+      print('Error de conexión: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error de conexión al eliminar la tarjeta')),
+      );
+    }
+  }
+  void _mostrarAlerta(String mensaje) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Éxito'),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Aceptar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,24 +153,31 @@ class _TarjetaViewState extends State<TarjetaView> {
         children: [
           _tarjetas.isEmpty
               ? Expanded(child: Center(child: Text('No tienes tarjetas registradas')))
-              : Container(
-            height: 200,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.all(16),
-              itemCount: _tarjetas.length,
-              itemBuilder: (context, index) {
-                final tarjeta = _tarjetas[index];
-                return Container(
-                  width: 300,
-                  margin: EdgeInsets.only(right: 16),
-                  child: CreditCardWidget(tarjeta: tarjeta, onToggleEstado: _toggleEstadoTarjeta),
-                );
-              },
+              : Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SingleChildScrollView(
+                child: Wrap(
+                  spacing: 8.0,
+                  runSpacing: 8.0,
+                  alignment: WrapAlignment.center,
+                  children: _tarjetas.map((tarjeta) =>
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: 200,
+                        child: CreditCardWidget(
+                          tarjeta: tarjeta,
+                          onToggleEstado: (Tarjeta t) => _mostrarConfirmacionCambioEstado(t),
+                          onEliminar: _mostrarConfirmacionEliminarTarjeta,
+                        ),
+                      ))
+                      .toList(),
+                ),
+              ),
             ),
           ),
           ElevatedButton(
-            onPressed: () {
+            onPressed: _tarjetas.length >= 3 ? null : () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -140,8 +188,106 @@ class _TarjetaViewState extends State<TarjetaView> {
             child: Text('Solicitar Tarjeta', style: TextStyle(color: Colors.white)),
             style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF1A237E)),
           ),
+          if (_tarjetas.length >= 3)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Has alcanzado el límite de 3 tarjetas.', style: TextStyle(color: Colors.red)),
+            ),
         ],
       ),
+    );
+  }
+
+  Future<void> _mostrarConfirmacionCambioEstado(Tarjeta tarjeta) async {
+    String accion = tarjeta.estado ? 'congelar' : 'descongelar';
+    String titulo = tarjeta.estado ? 'Congelar Tarjeta' : 'Descongelar Tarjeta';
+    String mensaje = tarjeta.estado
+        ? '¿Estás seguro de que quieres congelar esta tarjeta?'
+        : '¿Estás seguro de que quieres descongelar esta tarjeta?';
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(titulo),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(mensaje),
+                SizedBox(height: 20),
+                Icon(
+                  tarjeta.estado ? Icons.ac_unit : Icons.wb_sunny,
+                  size: 60,
+                  color: tarjeta.estado ? Colors.blue : Colors.orange,
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: tarjeta.estado ? Colors.blue.shade900 : Colors.orange.shade800,
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Confirmar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _toggleEstadoTarjeta(tarjeta); // Llamar a la función definida en TarjetaView
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+  Future<void> _mostrarConfirmacionEliminarTarjeta(Tarjeta tarjeta) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Eliminar Tarjeta'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('¿Estás seguro de que quieres eliminar esta tarjeta?'),
+                SizedBox(height: 20),
+                Icon(
+                  Icons.warning,
+                  size: 60,
+                  color: Colors.red,
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red.shade900,
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Eliminar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _eliminarTarjeta(tarjeta); // Llamar a la función definida en TarjetaView
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -149,8 +295,9 @@ class _TarjetaViewState extends State<TarjetaView> {
 class CreditCardWidget extends StatefulWidget {
   final Tarjeta tarjeta;
   final Function(Tarjeta) onToggleEstado;
+  final Function(Tarjeta) onEliminar;
 
-  CreditCardWidget({required this.tarjeta, required this.onToggleEstado});
+  CreditCardWidget({required this.tarjeta, required this.onToggleEstado, required this.onEliminar});
 
   @override
   _CreditCardWidgetState createState() => _CreditCardWidgetState();
@@ -160,6 +307,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
   late AnimationController _controller;
   late Animation<double> _animation;
   bool _isFlipped = false;
+  bool _obscureNumber = true;
 
   @override
   void initState() {
@@ -189,8 +337,20 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
     _isFlipped = !_isFlipped;
   }
 
+  String _getCardType() {
+    if (widget.tarjeta.numero.startsWith('4')) {
+      return 'debito';
+    } else if (widget.tarjeta.numero.startsWith('5')) {
+      return 'credito';
+    } else {
+      return 'unknown';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final cardType = _getCardType();
+
     return GestureDetector(
       onTap: _flipCard,
       child: Transform(
@@ -201,7 +361,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF1A237E), Color(0xFF3F51B5)],
+              colors: cardType == 'debito'
+                  ? [Colors.green, Colors.teal]
+                  : cardType == 'credito' ? [Colors.purple, Colors.deepPurple] : [Colors.grey, Colors.blueGrey],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -211,32 +373,58 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
             elevation: 4,
             color: Colors.transparent,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            child: _animation.value < 0.5 ? _buildFrontView() : _buildBackView(),
+            child: _animation.value < 0.5 ? _buildFrontView(cardType) : _buildBackView(),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildFrontView() {
+  Widget _buildFrontView(String cardType) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildCardTypeIcon(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildCardTypeIcon(cardType),
+              IconButton(
+                icon: Icon(
+                  _obscureNumber ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.white70,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureNumber = !_obscureNumber;
+                  });
+                },
+              ),
+            ],
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '**** **** **** ${widget.tarjeta.numero.substring(widget.tarjeta.numero.length - 4)}',
+                _obscureNumber
+                    ? '**** **** **** ${widget.tarjeta.numero.substring(widget.tarjeta.numero.length - 4)}'
+                    : widget.tarjeta.numero,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               SizedBox(height: 8),
               Text(
                 'Expira: ${widget.tarjeta.mesExpiracion}/${widget.tarjeta.anioExpiracion}',
                 style: TextStyle(fontSize: 14, color: Colors.white70),
+              ),
+              Text(
+                'CVV: ${widget.tarjeta.cvv}',
+                style: TextStyle(fontSize: 14, color: Colors.white70),
+              ),
+              Text(
+                  cardType == 'debito' ? 'Visa' : cardType == 'credito' ? 'MasterCard' : 'Unknown',
+                  style: TextStyle(fontSize: 14, color: Colors.white70)
               ),
             ],
           ),
@@ -246,22 +434,14 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
   }
 
   Widget _buildBackView() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF1A237E), Color(0xFF3F51B5)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(16),
-      ),
+    return Transform.scale( // Usar Transform.scale
+      scaleX: -1.0,      // Invierte horizontalmente
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('¿Congelar tarjeta?', style: TextStyle(fontSize: 18, color: Colors.white)),
-            SizedBox(height: 16),
+            Text('¿Qué deseas hacer?', style: TextStyle(fontSize: 18, color: Colors.white)),
             ElevatedButton(
               onPressed: () {
                 widget.onToggleEstado(widget.tarjeta);
@@ -269,16 +449,37 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
               child: Text(widget.tarjeta.estado ? 'Congelar' : 'Descongelar', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
             ),
+            ElevatedButton(
+              onPressed: () {
+                widget.onEliminar(widget.tarjeta);
+              },
+              child: Text('Eliminar Tarjeta', style: TextStyle(color: Colors.white)),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildCardTypeIcon() {
-    // Aquí puedes implementar la lógica para determinar el tipo de tarjeta
-    // (Visa, MasterCard, etc.) basándote en el número de la tarjeta
-    // y mostrar el icono correspondiente
-    return Icon(Icons.credit_card, size: 32, color: Colors.white);
+
+  Widget _buildCardTypeIcon(String cardType) {
+    IconData iconData;
+    switch (cardType) {
+      case 'debito':
+        iconData = Icons.credit_card;
+        break;
+      case 'credito':
+        iconData = Icons.credit_card;
+        break;
+      default:
+        iconData = Icons.warning;
+        break;
+    }
+    return Icon(
+      iconData,
+      size: 32,
+      color: Colors.white,
+    );
   }
 }
