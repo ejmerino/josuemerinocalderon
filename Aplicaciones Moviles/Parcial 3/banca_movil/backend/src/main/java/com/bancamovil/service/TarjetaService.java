@@ -17,6 +17,13 @@ public class TarjetaService {
         return tarjetaRepository.save(tarjeta);
     }
 
+    public void eliminarTarjeta(Long tarjetaId) {
+        if (!tarjetaRepository.existsById(tarjetaId)) {
+            throw new RuntimeException("Tarjeta no encontrada");
+        }
+        tarjetaRepository.deleteById(tarjetaId);
+    }
+
     public List<Tarjeta> obtenerTodasLasTarjetas() {
         return tarjetaRepository.findAll();
     }

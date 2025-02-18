@@ -1,5 +1,4 @@
 package com.bancamovil.controller;// TarjetaController.java
-
 import com.bancamovil.model.Tarjeta;
 import com.bancamovil.model.Usuario;
 import com.bancamovil.service.TarjetaService;
@@ -28,10 +27,14 @@ public class TarjetaController {
     public ResponseEntity<?> agregarTarjeta(@RequestBody Map<String, Object> payload) {
         Long usuarioId = ((Number) payload.get("usuarioId")).longValue();
         String tipo = (String) payload.get("tipo");
-        String marca = (String) payload.get("marca");
+        // String marca = (String) payload.get("marca"); // Ya no se usa en el frontend
 
         try {
             Usuario usuario = usuarioService.obtenerUsuario(usuarioId);
+
+            if (usuario == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
+            }
 
             if ("credito".equals(tipo) && usuario.getSaldoDisponible() < 250) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Saldo insuficiente para tarjeta de crédito");
@@ -49,22 +52,24 @@ public class TarjetaController {
             tarjeta.setAnioExpiracion(anioExpiracion);
             tarjeta.setCvv(cvv);
             tarjeta.setEstado(true);
+            tarjetaService.agregarTarjeta(tarjeta);
 
-            if ("debito".equals(tipo)) {
-                // Todas las tarjetas de débito serán Visa
-                // No necesitas una variable separada para la marca en este caso
-            } else {
-                // Todas las tarjetas de crédito serán MasterCard
-                // No necesitas una variable separada para la marca en este caso
-            }
+            return ResponseEntity.ok(tarjeta); // Devuelve la tarjeta creada
 
-            Tarjeta nuevaTarjeta = tarjetaService.agregarTarjeta(tarjeta);
-            return ResponseEntity.ok(nuevaTarjeta);
-
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/eliminar/{tarjetaId}")
+    public ResponseEntity<?> eliminarTarjeta(@PathVariable Long tarjetaId) {
+        try {
+            tarjetaService.eliminarTarjeta(tarjetaId);
+            return ResponseEntity.ok("Tarjeta eliminada con éxito");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tarjeta no encontrada");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + e.getMessage());
         }
     }
 
@@ -73,10 +78,8 @@ public class TarjetaController {
         try {
             List<Tarjeta> tarjetas = tarjetaService.obtenerTarjetasPorUsuario(usuarioId);
             return ResponseEntity.ok(tarjetas);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + e.getMessage());
         }
     }
 
@@ -85,10 +88,8 @@ public class TarjetaController {
         try {
             Tarjeta tarjeta = tarjetaService.congelarTarjeta(tarjetaId);
             return ResponseEntity.ok(tarjeta);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tarjeta no encontrada");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + e.getMessage());
         }
     }
 
@@ -97,10 +98,8 @@ public class TarjetaController {
         try {
             Tarjeta tarjeta = tarjetaService.descongelarTarjeta(tarjetaId);
             return ResponseEntity.ok(tarjeta);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tarjeta no encontrada");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + e.getMessage());
         }
     }
 

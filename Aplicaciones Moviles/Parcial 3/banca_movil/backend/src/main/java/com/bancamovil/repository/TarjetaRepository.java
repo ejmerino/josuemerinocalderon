@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TarjetaRepository extends JpaRepository<Tarjeta, Long> {
     List<Tarjeta> findByUsuarioId(Long usuarioId);
+    boolean existsById(Long tarjetaId);
 }
