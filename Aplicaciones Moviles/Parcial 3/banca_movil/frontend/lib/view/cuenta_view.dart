@@ -7,11 +7,7 @@ import 'package:http/http.dart' as http;
 import 'tarjeta_view.dart';
 import 'login_view.dart';
 import 'editar_perfil_view.dart';
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CuentaView extends StatefulWidget {
   @override
@@ -25,7 +21,7 @@ class _CuentaViewState extends State<CuentaView> {
   double saldoDisponible = 0.0;
   List<dynamic> transacciones = [];
   bool mostrandoEnviadas = true;
-  // Eliminamos SortOrder y _sortOrder porque no se usaran
+  bool _ordenAscendente = false;
 
   @override
   void initState() {
@@ -75,66 +71,30 @@ class _CuentaViewState extends State<CuentaView> {
       List<dynamic> data = jsonDecode(response.body);
       setState(() {
         transacciones = data;
-        // Invertir la lista para mostrar la última transacción primero
-        transacciones = transacciones.reversed.toList();
+        _ordenarTransacciones();
       });
     }
   }
 
-  // Eliminamos el método _ordenarTransacciones porque ya no es necesario
+  void _ordenarTransacciones() {
+    setState(() {
+      if (_ordenAscendente) {
+        transacciones = List.from(transacciones.reversed);
+      } else {
+        transacciones = List.from(transacciones.reversed);
+      }
+    });
+  }
 
   Future<int> obtenerUsuarioId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getInt('id') ?? 0;
   }
 
-  Future<void> _generarYDescargarPDF(BuildContext context) async {
-    final pdf = pw.Document();
-
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) {
-          return pw.Column(
-            crossAxisAlignment: pw.CrossAxisAlignment.start,
-            children: [
-              pw.Text('Historial de Transacciones', style: pw.TextStyle(fontSize: 20)),
-              pw.SizedBox(height: 10),
-              pw.ListView.builder(
-                itemCount: transacciones.length,
-                itemBuilder: (context, index) {
-                  final transaccion = transacciones[index];
-                  return pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.start,
-                    children: [
-                      pw.Text('Para: ${transaccion['beneficiario']['nombre']} ${transaccion['beneficiario']['apellido']}'),
-                      pw.Text('De: ${transaccion['emisor']['nombre']} ${transaccion['emisor']['apellido']}'),
-                      pw.Text('Monto: \$${transaccion['monto']}'),
-                      pw.Text('Motivo: ${transaccion['motivo'] ?? 'No especificado'}'),
-                      pw.SizedBox(height: 5),
-                    ],
-                  );
-                },
-              ),
-            ],
-          );
-        },
-      ),
-    );
-
-
-    try {
-      final output = await getTemporaryDirectory();
-      final file = File("${output.path}/historial_transacciones.pdf");
-      await file.writeAsBytes(await pdf.save());
-
-      await Printing.layoutPdf(
-        onLayout: (PdfPageFormat format) async => pdf.save(),
-      );
-    } catch (e) {
-      print("Error al generar o descargar el PDF: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al generar el PDF. Por favor, inténtalo de nuevo.')),
-      );
+  Future<void> _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $url';
     }
   }
 
@@ -162,63 +122,105 @@ class _CuentaViewState extends State<CuentaView> {
         ),
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Column(
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF1A237E),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
                 children: [
-                  Icon(Icons.account_circle, size: 48, color: Colors.white),
-                  SizedBox(height: 8),
-                  Text(
-                    '$nombre $apellido',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
+                  DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Color(0xFF1A237E),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(Icons.account_circle, size: 48, color: Colors.white),
+                        SizedBox(height: 8),
+                        Text(
+                          '$nombre $apellido',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                        Text(
+                          numeroCuenta,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
-                    numeroCuenta,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                    ),
+                  ListTile(
+                    leading: Icon(Icons.edit),
+                    title: Text('Editar perfil'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EditarPerfilView()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.logout),
+                    title: Text('Cerrar sesión'),
+                    onTap: () async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      await prefs.remove('nombre');
+                      await prefs.remove('apellido');
+                      await prefs.remove('numeroCuenta');
+                      await prefs.remove('saldoDisponible');
+                      print("SharedPreferences borrados al cerrar sesión");
+
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginView()),
+                            (route) => false,
+                      );
+                    },
                   ),
                 ],
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.edit),
-              title: Text('Editar perfil'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EditarPerfilView()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Cerrar sesión'),
-              onTap: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                await prefs.remove('nombre');
-                await prefs.remove('apellido');
-                await prefs.remove('numeroCuenta');
-                await prefs.remove('saldoDisponible');
-                print("SharedPreferences borrados al cerrar sesión");
-
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginView()),
-                      (route) => false,
-                );
-              },
+            // Pie de página del Drawer
+            Container(
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                border: Border(top: BorderSide(color: Colors.grey[300]!)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.location_on, color: Colors.grey[600]),
+                        onPressed: () => _launchURL('https://maps.app.goo.gl/TvQzWP9pWpBt5oPg8'),
+                      ),
+                      Text(
+                        'Ubicación',
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.phone, color: Colors.grey[600]),
+                        onPressed: () => _launchURL('tel:0987800233'),
+                      ),
+                      Text(
+                        'Contacto',
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -275,13 +277,16 @@ class _CuentaViewState extends State<CuentaView> {
                 children: [
                   Text('Historial de Transacciones',
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF1A237E))),
-
+                  IconButton(
+                    icon: Icon(_ordenAscendente ? Icons.arrow_downward : Icons.arrow_upward),
+                    onPressed: () {
+                      setState(() {
+                        _ordenAscendente = !_ordenAscendente;
+                        _ordenarTransacciones();
+                      });
+                    },
+                  ),
                 ],
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => _generarYDescargarPDF(context),
-                child: Text('Descargar Historial (PDF)'),
               ),
               SizedBox(height: 10),
               ToggleButtons(
