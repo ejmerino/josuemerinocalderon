@@ -1,4 +1,3 @@
-// solicitar_tarjeta_view.dart
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -16,6 +15,7 @@ class SolicitarTarjetaView extends StatefulWidget {
 
 class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
   String _tipoTarjeta = 'debito';
+  bool _isLoading = false; // Para mostrar un indicador de carga
 
   Future<void> _mostrarDialogo(String mensaje, bool exito) async {
     return showDialog<void>(
@@ -23,10 +23,17 @@ class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(exito ? 'Éxito' : 'Error'),
-          content: Text(mensaje),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          title: Text(
+            exito ? '¡Éxito!' : 'Error',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          content: Text(mensaje, style: TextStyle(fontSize: 16)),
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.blue,
+              ),
               child: Text('Aceptar'),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -42,11 +49,18 @@ class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
   }
 
   Future<void> _solicitarTarjeta() async {
+    setState(() {
+      _isLoading = true; // Mostrar el indicador de carga
+    });
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int usuarioId = prefs.getInt('usuarioId') ?? 0;
 
     if (usuarioId == 0) {
       _mostrarDialogo('Error: usuarioId no encontrado', false);
+      setState(() {
+        _isLoading = false; // Ocultar el indicador de carga
+      });
       return;
     }
 
@@ -68,7 +82,6 @@ class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
         print('Tarjeta solicitada con éxito');
         _mostrarDialogo('¡Tarjeta solicitada con éxito!', true);
         widget.onTarjetaSolicitada();
-
       } else {
         print('Error al solicitar la tarjeta: ${response.statusCode}');
         print('Response body: ${response.body}');
@@ -77,6 +90,10 @@ class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
     } catch (e) {
       print('Error de conexión: $e');
       _mostrarDialogo('Error de conexión: $e', false);
+    } finally {
+      setState(() {
+        _isLoading = false; // Ocultar el indicador de carga
+      });
     }
   }
 
@@ -88,20 +105,25 @@ class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
         backgroundColor: Color(0xFF1A237E),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(24), // Aumentar el padding
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch, // Estirar los elementos horizontalmente
           children: [
             Text(
-              'Selecciona el tipo de tarjeta:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              '¿Qué tipo de tarjeta deseas solicitar?',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500), // Tamaño de fuente más grande y peso más ligero
+              textAlign: TextAlign.center, // Centrar el texto
             ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
+            SizedBox(height: 32), // Espacio más grande
+            Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
                   children: [
-                    Radio<String>(
+                    RadioListTile<String>(
+                      title: Text('Tarjeta de Débito', style: TextStyle(fontSize: 17)),
                       value: 'debito',
                       groupValue: _tipoTarjeta,
                       onChanged: (value) {
@@ -109,14 +131,11 @@ class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
                           _tipoTarjeta = value!;
                         });
                       },
+                      activeColor: Color(0xFF1A237E), // Color del radio activo
+                      controlAffinity: ListTileControlAffinity.platform, // Ubicación del radio
                     ),
-                    Text('Débito'),
-                  ],
-                ),
-                SizedBox(width: 40),
-                Column(
-                  children: [
-                    Radio<String>(
+                    RadioListTile<String>(
+                      title: Text('Tarjeta de Crédito', style: TextStyle(fontSize: 17)),
                       value: 'credito',
                       groupValue: _tipoTarjeta,
                       onChanged: (value) {
@@ -124,21 +143,31 @@ class _SolicitarTarjetaViewState extends State<SolicitarTarjetaView> {
                           _tipoTarjeta = value!;
                         });
                       },
+                      activeColor: Color(0xFF1A237E), // Color del radio activo
+                      controlAffinity: ListTileControlAffinity.platform, // Ubicación del radio
                     ),
-                    Text('Crédito'),
                   ],
                 ),
-              ],
+              ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 32),
             ElevatedButton(
-              onPressed: _solicitarTarjeta,
-              child: Text('Solicitar Tarjeta', style: TextStyle(color: Colors.white, fontSize: 16)),
+              onPressed: _isLoading ? null : _solicitarTarjeta, // Deshabilitar si está cargando
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF1A237E),
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                padding: EdgeInsets.symmetric(vertical: 16), // Aumentar el padding vertical
+                textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
+              child: _isLoading
+                  ? SizedBox(
+                height: 24,
+                width: 24,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              )
+                  : Text('Solicitar Tarjeta'),
             ),
           ],
         ),
