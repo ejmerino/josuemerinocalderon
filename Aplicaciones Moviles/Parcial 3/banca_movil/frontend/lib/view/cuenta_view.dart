@@ -93,6 +93,10 @@ class _CuentaViewState extends State<CuentaView> {
     }
   }
 
+  String _formatNumber(double number) {
+    return number.toStringAsFixed(2); // Trunca a 2 decimales
+  }
+
   @override
   Widget build(BuildContext context) {
     List<dynamic> transaccionesFiltradas = transacciones.where((t) {
@@ -259,7 +263,7 @@ class _CuentaViewState extends State<CuentaView> {
                   children: [
                     Text('Tu saldo es:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black87)),
                     Text(
-                      '\$$saldoDisponible',
+                      '\$${_formatNumber(saldoDisponible)}',
                       style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: Colors.green),
                     ),
                   ],
@@ -375,7 +379,7 @@ class _CuentaViewState extends State<CuentaView> {
                             style: TextStyle(fontSize: 15, color: Colors.black54), // Ajustar estilo
                           ),
                           Text(
-                            'Monto: \$${transaccion['monto']}',
+                            'Monto: \$${_formatNumber(transaccion['monto'])}',
                             style: TextStyle(fontSize: 15, color: Colors.black54), // Ajustar estilo
                           ),
                           Text(
