@@ -36,9 +36,7 @@ class _TarjetaViewState extends State<TarjetaView> {
     });
 
     if (_usuarioId == 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: usuarioId no encontrado')),
-      );
+      mostrarSnackBar('Error: usuarioId no encontrado', Colors.red); // Usar función para SnackBar
       setState(() {
         _isLoading = false;
       });
@@ -57,15 +55,11 @@ class _TarjetaViewState extends State<TarjetaView> {
       } else {
         print('Error al cargar tarjetas: ${response.statusCode}');
         print('Response body: ${response.body}');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al cargar tarjetas: ${response.body}')),
-        );
+        mostrarSnackBar('Error al cargar tarjetas: ${response.body}', Colors.red); // Usar función
       }
     } catch (e) {
       print('Error de conexión: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error de conexión al cargar tarjetas')),
-      );
+      mostrarSnackBar('Error de conexión al cargar tarjetas', Colors.red); // Usar función
     } finally {
       setState(() {
         _isLoading = false;
@@ -79,21 +73,15 @@ class _TarjetaViewState extends State<TarjetaView> {
       final response = await http.post(Uri.parse(url));
       if (response.statusCode == 200) {
         _loadTarjetas();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Tarjeta ${tarjeta.estado ? 'congelada' : 'descongelada'}')),
-        );
+        mostrarSnackBar('Tarjeta ${tarjeta.estado ? 'congelada' : 'descongelada'}', Colors.green); // Usar función
       } else {
         print('Error al cambiar estado de la tarjeta: ${response.statusCode}');
         print('Response body: ${response.body}');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al cambiar estado de la tarjeta: ${response.body}')),
-        );
+        mostrarSnackBar('Error al cambiar estado de la tarjeta: ${response.body}', Colors.red); // Usar función
       }
     } catch (e) {
       print('Error de conexión: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error de conexión al cambiar estado de la tarjeta')),
-      );
+      mostrarSnackBar('Error de conexión al cambiar estado de la tarjeta', Colors.red); // Usar función
     }
   }
 
@@ -107,15 +95,11 @@ class _TarjetaViewState extends State<TarjetaView> {
       } else {
         print('Error al eliminar la tarjeta: ${response.statusCode}');
         print('Response body: ${response.body}');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al eliminar la tarjeta: ${response.body}')),
-        );
+        mostrarSnackBar('Error al eliminar la tarjeta: ${response.body}', Colors.red); // Usar función
       }
     } catch (e) {
       print('Error de conexión: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error de conexión al eliminar la tarjeta')),
-      );
+      mostrarSnackBar('Error de conexión al eliminar la tarjeta', Colors.red); // Usar función
     }
   }
 
@@ -136,6 +120,20 @@ class _TarjetaViewState extends State<TarjetaView> {
           ],
         );
       },
+    );
+  }
+
+  // Función para mostrar SnackBar personalizado
+  void mostrarSnackBar(String mensaje, Color color) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(mensaje, style: TextStyle(color: Colors.white)),
+        backgroundColor: color,
+        duration: Duration(seconds: 3), // Duración configurable
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Padding más espacioso
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), // Bordes redondeados
+        behavior: SnackBarBehavior.floating, // SnackBar flotante
+      ),
     );
   }
 
@@ -333,14 +331,16 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
             Text('¿Qué deseas hacer?', style: TextStyle(fontSize: 18, color: Colors.white)),
             ElevatedButton(
               onPressed: () {
-                widget.onToggleEstado(widget.tarjeta);
+                //widget.onToggleEstado(widget.tarjeta);
+                _mostrarConfirmacionToggleEstado(widget.tarjeta);
               },
               child: Text(widget.tarjeta.estado ? 'Congelar' : 'Descongelar', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
             ),
             ElevatedButton(
               onPressed: () {
-                widget.onEliminar(widget.tarjeta);
+                // widget.onEliminar(widget.tarjeta);
+                _mostrarConfirmacionEliminar(widget.tarjeta);
               },
               child: Text('Eliminar Tarjeta', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
@@ -368,6 +368,79 @@ class _CreditCardWidgetState extends State<CreditCardWidget> with SingleTickerPr
       iconData,
       size: 32,
       color: Colors.white,
+    );
+  }
+
+  void _mostrarConfirmacionToggleEstado(Tarjeta tarjeta) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirmar', style: TextStyle(fontWeight: FontWeight.bold)),
+          content: Text('¿Seguro que quieres ${tarjeta.estado ? 'CONGELAR' : 'DESCONGELAR'} esta tarjeta?', style: TextStyle(fontSize: 16)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Cerrar el diálogo
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.grey[700], // Color del texto "Cancelar"
+              ),
+              child: Text('Cancelar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                widget.onToggleEstado(tarjeta);
+                Navigator.of(context).pop(); // Cerrar el diálogo
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: tarjeta.estado ? Colors.blue[800] : Colors.redAccent, // Color del botón "Confirmar"
+                textStyle: TextStyle(fontWeight: FontWeight.bold), // Estilo del texto "Confirmar"
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), // Bordes redondeados del botón
+              ),
+              child: Text('Confirmar', style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+  void _mostrarConfirmacionEliminar(Tarjeta tarjeta) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirmar', style: TextStyle(fontWeight: FontWeight.bold)),
+          content: Text('¿Estás seguro de que deseas ELIMINAR esta tarjeta? Esta acción es irreversible.', style: TextStyle(fontSize: 16)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Cerrar el diálogo
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.grey[700], // Color del texto "Cancelar"
+              ),
+              child: Text('Cancelar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                widget.onEliminar(tarjeta);
+                Navigator.of(context).pop(); // Cerrar el diálogo
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red[800], // Color del botón "Eliminar"
+                textStyle: TextStyle(fontWeight: FontWeight.bold), // Estilo del texto "Eliminar"
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), // Bordes redondeados del botón
+              ),
+              child: Text('Eliminar', style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        );
+      },
     );
   }
 }
